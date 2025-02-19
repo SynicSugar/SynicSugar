@@ -87,8 +87,9 @@ namespace SynicSugar.P2P {
                 }
             }
 
-            //Complement disconnected users. ここの処理の意図を考える。オーバーライトなのでもしかするとRemoveなどの可能性もある
-            foreach(var id in DisconnectedUserIds){
+            //Complement disconnected users. CurrentAllUserIds is Current lobby users + disconnected users.
+            foreach(var id in DisconnectedUserIds)
+            {
                 CurrentAllUserIds.Add(id);
             }
             //For the case this user did not have data of CurrentSessionStartUTC.
