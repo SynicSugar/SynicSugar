@@ -1402,7 +1402,7 @@ namespace SynicSugar.MatchMake {
 
                 userIds.AllUserIds.Add(targetId);
 
-                if(userIds.LocalUserId != targetId){
+                if(targetId != userIds.LocalUserId){
                     userIds.RemoteUserIds.Add(targetId);
                 }
             }
