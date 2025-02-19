@@ -12,23 +12,31 @@ namespace SynicSugar.P2P {
 
         /// <summary>
         /// Invoke when another user leaves.<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<UserId> OnTargetLeaved;
         /// <summary>
         /// Invoke when another user disconnects unexpectedly.<br />
-        /// This has a lag of about 5-10 seconds after a user downs in its local.
+        /// This has a lag of about 5-10 seconds after a user downs in its local.<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<UserId> OnTargetDisconnected;
         /// <summary>
         /// Invoke when a user re-connects after matchmaking.<br />
-        /// For returnee and newcomer
+        /// For returnee and newcomer<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<UserId> OnTargetConnected;
         
         /// <summary>
         /// Invoke when a connection is interrupted with another peer. <br />
         /// The connection is attempted to be restored, and if that's failed, "Diconnected" is fired.<br />
-        /// This notification is early, but this doesn't means just that other user is disconnected.
+        /// This notification is early, but this doesn't means just that other user is disconnected.<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<UserId> OnTargetEarlyDisconnected;
         
@@ -39,14 +47,16 @@ namespace SynicSugar.P2P {
         public event Action<UserId> OnTargetRestored;
         
         /// <summary>
-        /// Invoked when the Lobby is closed and the local user is removed　￥ from the Lobby.<br />
+        /// Invoked when the Lobby is closed and the local user is removed　from the Lobby.<br />
         /// Possible reasons include:<br />
         /// - Disconnected: An unexpected disconnection occurred.<br />
         /// - LobbyClosed: The host closed the Lobby.<br />
         /// - Kicked: The local user was kicked from the Lobby by Host.<br />
         /// Note: This does not include the process for destroying the NetworkManager. If it is no longer needed, please call `Destroy(MatchMakeManager.Instance.gameObject);`. <br />
         /// The LobbyID is deleted only if the Lobby was closed by the host (LobbyClosed). <br />
-        /// If disconnected or kicked, can use `MatchMaking.Instance.ReconnectLobby()` to rejoin.
+        /// If disconnected or kicked, can use `MatchMaking.Instance.ReconnectLobby()` to rejoin.　<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<Reason> OnLobbyClosed;
 
@@ -61,15 +71,25 @@ namespace SynicSugar.P2P {
             OnTargetEarlyDisconnected += earlyDisconnected;
             OnTargetRestored += restored;
         }
-        internal void Clear(){
+        /// <summary>
+        /// Remove all events and init all variables. <br />
+        /// NetworkObject can be used without being initialized, so called this on the last of the session.
+        /// </summary>
+        internal void Reset(){
+            Clear();
+            establishedMemberCounts = 0;
+            completeConnectPreparetion = false;
+        }
+        /// <summary>
+        /// Remove all events from the actions.
+        /// </summary>
+        public void Clear(){
             OnTargetLeaved = null;
             OnTargetDisconnected = null;
             OnTargetConnected = null;
             OnTargetEarlyDisconnected = null;
             OnTargetRestored = null;
             OnLobbyClosed = null;
-            establishedMemberCounts = 0;
-            completeConnectPreparetion = false;
         }
         /// <summary>
         /// Invoked when someone leaves the lobby for reasons other than Leave.
