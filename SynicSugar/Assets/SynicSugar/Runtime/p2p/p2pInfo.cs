@@ -28,7 +28,7 @@ namespace SynicSugar.P2P {
             if( Instance == this ) {
                 UserId.CacheClear();
                 ConnectionNotifier.Reset();
-                SyncSnyicNotifier.Clear();
+                SyncSnyicNotifier.Reset();
 
                 Instance = null;
             }
@@ -44,7 +44,7 @@ namespace SynicSugar.P2P {
             CurrentSessionStartUTC = DateTime.MinValue;
             UserId.CacheClear();
             ConnectionNotifier.Reset();
-            SyncSnyicNotifier.Clear();
+            SyncSnyicNotifier.Reset();
         }
         /// <summary>
         /// Set reference of some manager classes.
