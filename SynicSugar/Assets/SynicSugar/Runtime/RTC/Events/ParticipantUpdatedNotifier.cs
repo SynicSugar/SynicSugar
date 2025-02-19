@@ -17,7 +17,12 @@ namespace SynicSugar.RTC {
             OnStartTargetSpeaking += startSpeaking;
             OnStopTargetSpeaking += stopSpeaking;
         }
-        internal void Clear(){
+
+        /// <summary>
+        /// Remove all events from the actions. <br />
+        /// Events are automatically cleared when they are no longer needed
+        /// </summary>
+        public void Clear(){
             OnStartSpeaking = null;
             OnStopSpeaking = null;
             OnStartTargetSpeaking = null;

@@ -14,7 +14,11 @@ namespace SynicSugar.MatchMake {
         public void Register(Action<UserId> attributesUpdated){
             OnAttributesUpdated += attributesUpdated;
         }
-        internal void Clear(){
+        /// <summary>
+        /// Remove all events from the actions. <br />
+        /// Events are automatically cleared when they are no longer needed.
+        /// </summary>
+        public void Clear(){
             OnAttributesUpdated = null;
         }
         internal void MemberAttributesUpdated(UserId target){

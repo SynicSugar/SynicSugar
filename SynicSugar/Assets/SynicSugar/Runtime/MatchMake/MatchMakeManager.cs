@@ -45,7 +45,7 @@ namespace SynicSugar.MatchMake {
                 lobbyIDMethod.Clear();
                 asyncLobbyIDMethod.Clear();
                 MemberUpdatedNotifier.Clear();
-                MatchMakingGUIEvents.Clear();
+                MatchMakingGUIEvents.Reset();
 
                 Instance = null;
             }

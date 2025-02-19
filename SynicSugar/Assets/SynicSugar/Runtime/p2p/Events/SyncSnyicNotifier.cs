@@ -24,7 +24,8 @@ namespace SynicSugar.P2P {
             includeDisconnectedData = false;
         }
         /// <summary>
-        /// Remove all events from the actions.
+        /// Remove all events from the actions. <br />
+        /// Events are automatically cleared when they are no longer needed.
         /// </summary>
         public void Clear(){
             OnSyncedSynic = null;

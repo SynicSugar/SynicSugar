@@ -131,7 +131,31 @@ namespace SynicSugar.MatchMake {
             /// </summary>
             Reconnect
         }
-        internal void Clear(){
+        /// <summary>
+        /// Remove all event and clear string data.
+        /// </summary>
+        internal void Reset(){
+            Clear();
+            
+        #if SYNICSUGAR_TMP
+            stateText = null;
+        #else
+            stateText = null;
+        #endif
+
+            Standby = string.Empty;
+            StartMatchmaking = string.Empty;
+            WaitForOpponents = string.Empty;
+            FinishMatchmaking = string.Empty;
+            ReadyForConnection = string.Empty;
+            TryToCancel = string.Empty;
+            StartReconnection = string.Empty;
+        }
+        /// <summary>
+        /// Remove all events from the actions. <br />
+        /// Events are automatically cleared when they are no longer needed.
+        /// </summary>
+        public void Clear(){
             DisableStart = null;
             EnableCancelKick = null;
             EnableHostConclude = null;
