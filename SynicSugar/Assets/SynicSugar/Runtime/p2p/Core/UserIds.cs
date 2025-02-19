@@ -44,11 +44,11 @@ namespace SynicSugar.P2P {
             isJustReconnected = false;
         }
         /// <summary>
-        /// Update AllUserIds with Host's sending data.
+        /// Update UserId Listｓ with Host's sending data.
         /// </summary>
         /// <param name="data">Contains All UserIds and Disconnected user indexes</param>
-        internal void OverwriteAllUserIdsWithOrdered(BasicInfo data){
-            Logger.Log("OverwriteAllUserIdsWithOrdered", $"Overwrite AllUserIds with {data.userIds.Count} users. , isReconencter: {isJustReconnected}");
+        internal void OverwriteUserIdsWithHostData(BasicInfo data){
+            Logger.Log("OverwriteUserIdsWithHostData", $"Update lists with {data.userIds.Count} users. , isReconencter: {isJustReconnected}");
 
             //Change order　to same in host local.
             if(AllUserIds.Count == data.userIds.Count)
@@ -87,7 +87,7 @@ namespace SynicSugar.P2P {
                 }
             }
 
-            //Complement disconnected users.
+            //Complement disconnected users. ここの処理の意図を考える。オーバーライトなのでもしかするとRemoveなどの可能性もある
             foreach(var id in DisconnectedUserIds){
                 CurrentAllUserIds.Add(id);
             }

@@ -167,7 +167,7 @@ namespace SynicSugar.MatchMake {
             var decompressed = decompressor.Decompress(payload);
 
             BasicInfo data = MemoryPackSerializer.Deserialize<BasicInfo>(decompressed);
-            p2pInfo.Instance.userIds.OverwriteAllUserIdsWithOrdered(data);
+            p2pInfo.Instance.userIds.OverwriteUserIdsWithHostData(data);
         }
         #endregion
     }
