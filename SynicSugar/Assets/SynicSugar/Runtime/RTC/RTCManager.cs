@@ -336,7 +336,10 @@ namespace SynicSugar.RTC {
                 }else{
                     CurrentLobby.Members[UserId.GetUserId(info.ParticipantId).ToString()].RTCState.IsLocalMute = !info.AudioEnabled;
                 }
-                Logger.Log("OnUpdateReceiving", $"the toggle is successful. CurrentStatus: {info.AudioEnabled} / Target: {UserId.GetUserId(info.ParticipantId).ToMaskedString()}");
+            #if SYNICSUGAR_LOG
+                string target = info.ParticipantId == null ? "All remote users" : UserId.GetUserId(info.ParticipantId).ToMaskedString();
+                Logger.Log("OnUpdateReceiving", $"the toggle is successful. CurrentStatus: {info.AudioEnabled} / Target: {target}");
+            #endif
                 result = (Result)info.ResultCode;
             }
         }
@@ -377,8 +380,10 @@ namespace SynicSugar.RTC {
                 }else{
                     CurrentLobby.Members[UserId.GetUserId(info.ParticipantId).ToString()].RTCState.LocalOutputedVolume =  info.Volume;
                 }
-
-                Logger.Log("OnUpdateParticipantVolume", $"volume change is successful. target: {UserId.GetUserId(info.ParticipantId).ToMaskedString()} / Volume:{info.Volume}");
+            #if SYNICSUGAR_LOG
+                string target = info.ParticipantId == null ? "All remote users" : UserId.GetUserId(info.ParticipantId).ToMaskedString();
+                Logger.Log("OnUpdateParticipantVolume", $"volume change is successful. Target: {target} / Volume:{info.Volume}");
+            #endif
                 result = (Result)info.ResultCode;
             }
         }
