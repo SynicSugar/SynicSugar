@@ -860,7 +860,8 @@ namespace SynicSugar.MatchMake {
                 p2pInfo.Instance.ConnectionNotifier.Connected(UserId.GetUserId(info.TargetUserId));
                 // Send Id list.
                 if(p2pInfo.Instance.IsHost()){
-                    ConnectionSetupHandler.SendUserList(UserId.GetUserId(info.TargetUserId));
+                    ConnectionSetupHandler setupHandler = new();
+                    setupHandler.SendUserList(UserId.GetUserId(info.TargetUserId));
                     Logger.Log($"MemberStatusNotyfy", $"Send user list to {UserId.GetUserId(info.TargetUserId).ToMaskedString()}.");
                 }
             }
@@ -1436,19 +1437,19 @@ namespace SynicSugar.MatchMake {
             RemoveNotifyLobbyMemberUpdateReceived();
             p2pConfig.Instance.sessionCore.OpenConnection(true);
             Logger.Log("OpenConnection", "Sending a connection request to other peers.");
-
-            Result canConnect = await ConnectionSetupHandler.WaitConnectPreparation(token, setupTimeoutSec * 1000); //Pass time as ms.
+            
+            ConnectionSetupHandler setupHandler = new();
+            Result canConnect = await setupHandler.WaitConnectPreparation(token, setupTimeoutSec * 1000); //Pass time as ms.
             if(canConnect != Result.Success){
                 return Result.ConnectEstablishFailed;
             }
             //Host sends AllUserIds list, Guest Receives AllUserIds.
             if(p2pInfo.Instance.IsHost()){
                 Logger.Log("OpenConnection", "Sending UserList to other peers as the Host.");
-                await ConnectionSetupHandler.SendUserListToAll(token);
+                await setupHandler.SendUserListToAll(token);
             }else{
                 Logger.Log("OpenConnection", "Waiting for UserList from the Host.");
-                ConnectionSetupHandler basicInfo = new();
-                await basicInfo.ReciveUserIdsPacket(token);
+                await setupHandler.ReciveUserIdsPacket(token);
             }
             p2pInfo.Instance.pings.Init();
             return Result.Success;

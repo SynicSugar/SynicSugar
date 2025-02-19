@@ -8,7 +8,6 @@ using PlayEveryWare.EpicOnlineServices;
 using Epic.OnlineServices;
 using Epic.OnlineServices.P2P;
 using ResultE = Epic.OnlineServices.Result;
-using UnityEngine;
 
 namespace SynicSugar.MatchMake {
     internal class ConnectionSetupHandler {
@@ -16,7 +15,7 @@ namespace SynicSugar.MatchMake {
         /// To open and request initial connection.
         /// </summary>
         /// <returns>Return true, after end the conenction. If pass time before finish prepartion, return false/</returns>
-        internal static async UniTask<Result> WaitConnectPreparation(CancellationToken token, int timeoutMS){
+        internal async UniTask<Result> WaitConnectPreparation(CancellationToken token, int timeoutMS){
             await UniTask.WhenAny(UniTask.WaitUntil(() => p2pInfo.Instance.ConnectionNotifier.completeConnectPreparetion, cancellationToken: token), UniTask.Delay(timeoutMS, cancellationToken: token));
 
             Logger.Log("WaitConnectPreparation", "Connection setup is ready. Proceed to user list synchronization.");
@@ -34,17 +33,16 @@ namespace SynicSugar.MatchMake {
         /// Different Assembly can have same CH, but not sorted when receive packet. <br />
         /// So must not use the same ch for what SynicSugar may receive at the same time.
         /// </summary>
-        const byte basicInfoCh = 252;
-        const int SendBatchSize = 8;
-        byte ch;
-        ProductUserId id;
-        ArraySegment<byte> payload;
+        const byte BASICINFO_CH = 252;
+        const int SEND_BATCH_SIZE = 8;
         SocketId ReferenceSocketId;
+        // Allocate memory at maximum packet size in advance.
+        byte[] buffer = new byte[1170];
         #region Send
         /// <summary>
         /// For Host to send List after re-connecter has came.
         /// </summary>
-        internal static void SendUserList(UserId target){
+        internal void SendUserList(UserId target){
             BasicInfo basicInfo = new BasicInfo();
             basicInfo.userIds = p2pInfo.Instance.AllUserIds.ConvertAll(id => id.ToString());
             
@@ -57,22 +55,22 @@ namespace SynicSugar.MatchMake {
 
             using var compressor  = new BrotliCompressor(MatchMakeManager.Instance.BasicInfoPacketCompressionLevel);
             MemoryPackSerializer.Serialize(compressor, basicInfo);
-            SendPacket(basicInfoCh, compressor.ToArray(), target);
+            SendPacket(BASICINFO_CH, compressor.ToArray(), target);
         }
         /// <summary>
         /// For Host to send AllUserList after connection.
         /// </summary>
-        internal static async UniTask SendUserListToAll(CancellationToken token){
+        internal async UniTask SendUserListToAll(CancellationToken token){
             BasicInfo basicInfo = new BasicInfo();
             basicInfo.userIds = p2pInfo.Instance.AllUserIds.ConvertAll(id => id.ToString());
             
             using var compressor  = new BrotliCompressor(MatchMakeManager.Instance.BasicInfoPacketCompressionLevel);
             MemoryPackSerializer.Serialize(compressor, basicInfo);
             
-            int count = SendBatchSize;
+            int count = SEND_BATCH_SIZE;
             var compressorArray = compressor.ToArray();
             foreach(var id in p2pInfo.Instance.userIds.RemoteUserIds){
-                SendPacket(basicInfoCh, compressorArray, id);
+                SendPacket(BASICINFO_CH, compressorArray, id);
 
                 count--;
                 if(count <= 0){
@@ -81,7 +79,7 @@ namespace SynicSugar.MatchMake {
                         Logger.LogWarning("SendUserListToAll", "Get out of the loop by Cancel");
                         break;
                     }
-                    count = SendBatchSize;
+                    count = SEND_BATCH_SIZE;
                 }
             }
         }
@@ -112,20 +110,24 @@ namespace SynicSugar.MatchMake {
             //Next packet size
             var getNextReceivedPacketSizeOptions = new GetNextReceivedPacketSizeOptions {
                 LocalUserId = p2pInfo.Instance.userIds.LocalUserId.AsEpic,
-                RequestedChannel = basicInfoCh
+                RequestedChannel = BASICINFO_CH
             };
+            byte ch = BASICINFO_CH;
+            ProductUserId id = new();
+            ArraySegment<byte> payload = new();
             while(!token.IsCancellationRequested){
                 bool recivePacket = GetPacketFromBuffer(ref p2pInterface, ref getNextReceivedPacketSizeOptions, ref ch, ref id, ref payload);
 
                 if(recivePacket){
-                    ConvertFromPacket();
+                    UnityEngine.Debug.Log("ReciveUserIdsPacket");
+                    ConvertFromPacket(in ch, in payload);
                     return;
                 }
                 await UniTask.Yield(cancellationToken: token);
             }
         }
         /// <summary>
-        /// To get RECONNECTIONCH packet.
+        /// To get basicInfo packet about a user list.
         /// </summary>
         /// <param name="ch"></param>
         /// <param name="id"></param>
@@ -133,7 +135,6 @@ namespace SynicSugar.MatchMake {
         /// <returns></returns>
         bool GetPacketFromBuffer(ref P2PInterface p2pInterface,ref GetNextReceivedPacketSizeOptions sizeOptions, ref byte ch, ref ProductUserId id, ref ArraySegment<byte> payload){
             ResultE result = p2pInterface.GetNextReceivedPacketSize(ref sizeOptions, out uint nextPacketSizeBytes);
-
             if(result != ResultE.Success){
                 return false; //No packet
             }
@@ -142,24 +143,23 @@ namespace SynicSugar.MatchMake {
             ReceivePacketOptions options = new ReceivePacketOptions(){
                 LocalUserId = p2pInfo.Instance.userIds.LocalUserId.AsEpic,
                 MaxDataSizeBytes = nextPacketSizeBytes,
-                RequestedChannel = basicInfoCh
+                RequestedChannel = BASICINFO_CH
             };
 
-            byte[] data = new byte[nextPacketSizeBytes];
-            var dataSegment = new ArraySegment<byte>(data);
-            result = p2pInterface.ReceivePacket(ref options, ref id, ref ReferenceSocketId, out byte outChannel, dataSegment, out uint bytesWritten);
+            payload = new ArraySegment<byte>(buffer, 0, (int)nextPacketSizeBytes);
+            result = p2pInterface.ReceivePacket(ref options, ref id, ref ReferenceSocketId, out byte outChannel, payload, out uint bytesWritten);
             
             if (result != ResultE.Success){
                 return false; //No packet
             }
             ch = outChannel;
-            payload = new ArraySegment<byte>(dataSegment.Array, dataSegment.Offset, (int)bytesWritten);;
 
             return true;
         }
         
-        void ConvertFromPacket(){
-            if(ch != basicInfoCh){
+        void ConvertFromPacket(in byte ch, in ArraySegment<byte> payload){
+            if(ch != BASICINFO_CH){
+                Logger.LogError("ConvertFromPacket", "Could not get packets about UserList because the packets were on different channels.");
                 return;
             }
 
