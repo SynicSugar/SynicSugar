@@ -8,7 +8,6 @@ using PlayEveryWare.EpicOnlineServices;
 using Epic.OnlineServices;
 using Epic.OnlineServices.P2P;
 using ResultE = Epic.OnlineServices.Result;
-using UnityEngine;
 
 namespace SynicSugar.MatchMake {
     internal class ConnectionSetupHandler {
@@ -16,7 +15,7 @@ namespace SynicSugar.MatchMake {
         /// To open and request initial connection.
         /// </summary>
         /// <returns>Return true, after end the conenction. If pass time before finish prepartion, return false/</returns>
-        internal static async UniTask<Result> WaitConnectPreparation(CancellationToken token, int timeoutMS){
+        internal async UniTask<Result> WaitConnectPreparation(CancellationToken token, int timeoutMS){
             await UniTask.WhenAny(UniTask.WaitUntil(() => p2pInfo.Instance.ConnectionNotifier.completeConnectPreparetion, cancellationToken: token), UniTask.Delay(timeoutMS, cancellationToken: token));
 
             Logger.Log("WaitConnectPreparation", "Connection setup is ready. Proceed to user list synchronization.");
@@ -44,7 +43,7 @@ namespace SynicSugar.MatchMake {
         /// <summary>
         /// For Host to send List after re-connecter has came.
         /// </summary>
-        internal static void SendUserList(UserId target){
+        internal void SendUserList(UserId target){
             BasicInfo basicInfo = new BasicInfo();
             basicInfo.userIds = p2pInfo.Instance.AllUserIds.ConvertAll(id => id.ToString());
             
@@ -62,7 +61,7 @@ namespace SynicSugar.MatchMake {
         /// <summary>
         /// For Host to send AllUserList after connection.
         /// </summary>
-        internal static async UniTask SendUserListToAll(CancellationToken token){
+        internal async UniTask SendUserListToAll(CancellationToken token){
             BasicInfo basicInfo = new BasicInfo();
             basicInfo.userIds = p2pInfo.Instance.AllUserIds.ConvertAll(id => id.ToString());
             
