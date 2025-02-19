@@ -27,8 +27,8 @@ namespace SynicSugar.P2P {
         void OnDestroy() {
             if( Instance == this ) {
                 UserId.CacheClear();
-                ConnectionNotifier.Clear();
-                SyncSnyicNotifier.Clear();
+                ConnectionNotifier.Reset();
+                SyncSnyicNotifier.Reset();
 
                 Instance = null;
             }
@@ -43,8 +43,8 @@ namespace SynicSugar.P2P {
             lastTargetRPCInfo = new();
             CurrentSessionStartUTC = DateTime.MinValue;
             UserId.CacheClear();
-            ConnectionNotifier.Clear();
-            SyncSnyicNotifier.Clear();
+            ConnectionNotifier.Reset();
+            SyncSnyicNotifier.Reset();
         }
         /// <summary>
         /// Set reference of some manager classes.
