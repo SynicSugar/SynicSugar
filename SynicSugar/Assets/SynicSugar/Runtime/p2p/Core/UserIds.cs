@@ -50,19 +50,43 @@ namespace SynicSugar.P2P {
         internal void OverwriteAllUserIdsWithOrdered(BasicInfo data){
             Logger.Log("OverwriteAllUserIdsWithOrdered", $"Overwrite AllUserIds with {data.userIds.Count} users. , isReconencter: {isJustReconnected}");
 
-            AllUserIds.Clear();
             //Change order　to same in host local.
-            foreach(var id in data.userIds){
-                AllUserIds.Add(UserId.GenerateFromStringForReconnecter(id));
+            if(AllUserIds.Count == data.userIds.Count)
+            {
+                for (int i = 0; i < data.userIds.Count; i++)
+                {
+                    AllUserIds[i] = UserId.GenerateFromStringForReconnecter(data.userIds[i]);
+                }
+            }
+            else
+            {
+                AllUserIds.Clear();
+                foreach(var id in data.userIds)
+                {
+                    AllUserIds.Add(UserId.GenerateFromStringForReconnecter(id));
+                }
             }
 
             if(!isJustReconnected){
                 return;
             }
             //Create current lefted user list
-            foreach(var index in data.disconnectedUserIndexes){
-                DisconnectedUserIds.Add(AllUserIds[index]);
+            if(DisconnectedUserIds.Count == data.disconnectedUserIndexes.Count)
+            {
+                for (int i = 0; i < data.disconnectedUserIndexes.Count; i++)
+                {
+                    DisconnectedUserIds[i] = AllUserIds[data.disconnectedUserIndexes[i]];
+                }
             }
+            else
+            {
+                DisconnectedUserIds.Clear();
+                foreach(var index in data.disconnectedUserIndexes)
+                {
+                    DisconnectedUserIds.Add(AllUserIds[index]);
+                }
+            }
+
             //Complement disconnected users.
             foreach(var id in DisconnectedUserIds){
                 CurrentAllUserIds.Add(id);
