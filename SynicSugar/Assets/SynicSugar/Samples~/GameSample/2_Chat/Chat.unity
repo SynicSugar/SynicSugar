@@ -638,6 +638,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1127570235843273856, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
+      propertyPath: _basicInfoPacketCompressionLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127570235843273856, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
       propertyPath: customSaveLobbyID.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -712,6 +716,10 @@ PrefabInstance:
     - target: {fileID: 2114254298220440419, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
       propertyPath: getPacketFrequency
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114254298220440419, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
+      propertyPath: AllowDelayedDelivery
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2114254298220440419, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
       propertyPath: UseDisconnectedEarlyNotify
@@ -3411,10 +3419,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6132300884961527158, guid: 9561edae41291f44e83554c3b8d20aba, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6132300884961527158, guid: 9561edae41291f44e83554c3b8d20aba, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
@@ -3492,7 +3496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6132300885885006420, guid: 9561edae41291f44e83554c3b8d20aba, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

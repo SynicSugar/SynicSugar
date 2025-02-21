@@ -54,13 +54,17 @@ namespace SynicSugar.Samples.Chat
                 RTCManager.Instance.ParticipantUpdatedNotifier.Register(t => OnStartSpeaking(t), t => OnStopSpeaking(t));
             }
         }
-    #if SYNICSUGAR_FPSTEST
+        void Oestroy()
+        {
+            PacketMonitor.Instance.SetUpdateTiming(PacketMonitor.UpdateTiming.None);
+        }
+#if SYNICSUGAR_FPSTEST
         private void Update()
         {
             float fps = 1f / Time.deltaTime;
             Debug.Log("--UPDATE-- fps:" + fps);
         }
-    #endif
+#endif
         public void SwitchPanelContent()
         {
             matchmakeCanvas.SetActive(false);
