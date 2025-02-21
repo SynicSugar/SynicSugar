@@ -34,7 +34,9 @@ namespace SynicSugar.Samples.Chat
         //In fact, you had better check id like this on the Title screen after user Login to EOS.
         private void Start()
         {   
-            PacketMonitor.Instance.SetUpdateTiming(PacketMonitor.UpdateTiming.Update);
+            #if SYNICSUGAR_PACKETINFO
+                PacketMonitor.Instance.SetUpdateTiming(PacketMonitor.UpdateTiming.Update);
+            #endif
             Debug.Log("ChatMatchmake");
             //Prep matchmaking
             // SetGUIEvents();

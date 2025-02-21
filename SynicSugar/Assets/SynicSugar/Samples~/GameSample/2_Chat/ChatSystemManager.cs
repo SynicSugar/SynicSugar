@@ -56,7 +56,9 @@ namespace SynicSugar.Samples.Chat
         }
         void Oestroy()
         {
-            PacketMonitor.Instance.SetUpdateTiming(PacketMonitor.UpdateTiming.None);
+            #if SYNICSUGAR_PACKETINFO
+                PacketMonitor.Instance.SetUpdateTiming(PacketMonitor.UpdateTiming.None);
+            #endif
         }
 #if SYNICSUGAR_FPSTEST
         private void Update()
