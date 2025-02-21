@@ -23,6 +23,8 @@ namespace SynicSugar.P2P {
                 LocalUserId = SynicSugarManger.Instance.LocalUserId.AsEpic,
                 RequestedChannel = 255
             };
+
+            queueOptions = new GetPacketQueueInfoOptions();
         }
 
         /// <summary>
@@ -42,6 +44,7 @@ namespace SynicSugar.P2P {
         /// To get packets
         /// </summary>
         GetNextReceivedPacketSizeOptions standardPacketSizeOptions, synicPacketSizeOptions;
+        GetPacketQueueInfoOptions queueOptions;
         ProductUserId productUserId;
         
     #region INetworkCore
@@ -60,7 +63,7 @@ namespace SynicSugar.P2P {
             RemoveNotifyAndCloseConnection();
             
             GetPacketQueueInfoOptions options = new GetPacketQueueInfoOptions();
-            PacketQueueInfo info = new PacketQueueInfo();
+            Epic.OnlineServices.P2P.PacketQueueInfo info = new Epic.OnlineServices.P2P.PacketQueueInfo();
             P2PHandle.GetPacketQueueInfo(ref options, out info);
 
             while (info.IncomingPacketQueueCurrentPacketCount > 0){
@@ -109,9 +112,9 @@ namespace SynicSugar.P2P {
 #endif
                 return false; //No packet
             }
-        #if SYNICSUGAR_PACKETINFO
-            Debug.Log($"ReceivePacket: ch: {ch} from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
-        #endif
+        // #if SYNICSUGAR_PACKETINFO
+        //     Debug.Log($"ReceivePacket: ch: {ch} from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
+        // #endif
             id = UserId.GetUserId(productUserId);
             return true;
         }
@@ -175,6 +178,26 @@ namespace SynicSugar.P2P {
                 }
             }
             Logger.Log("ClearPacketQueue", "Finish!");
+        }
+        public override Result GetPacketQueueInfo(out PacketQueueInformation info)
+        {
+            var result = (Result)P2PHandle.GetPacketQueueInfo(ref queueOptions, out PacketQueueInfo packetInfo);
+            if(result != Result.Success){
+                Logger.LogError("GetPacketQueueInfo", "Failed to get packet queue info.", result);
+                info = new PacketQueueInformation();
+            }
+            else
+            {
+                info = new PacketQueueInformation(){
+                    IncomingPacketQueueMaxSizeBytes = packetInfo.IncomingPacketQueueMaxSizeBytes,
+                    IncomingPacketQueueCurrentSizeBytes = packetInfo.IncomingPacketQueueCurrentSizeBytes,
+                    IncomingPacketQueueCurrentPacketCount = packetInfo.IncomingPacketQueueCurrentPacketCount,
+                    OutgoingPacketQueueMaxSizeBytes = packetInfo.OutgoingPacketQueueMaxSizeBytes,
+                    OutgoingPacketQueueCurrentSizeBytes = packetInfo.OutgoingPacketQueueCurrentSizeBytes,
+                    OutgoingPacketQueueCurrentPacketCount = packetInfo.OutgoingPacketQueueCurrentPacketCount
+                };
+            }
+            return result;
         }
 #region Notify(ConnectRquest)
         /// <summary>

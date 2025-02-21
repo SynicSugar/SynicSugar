@@ -446,5 +446,12 @@ namespace SynicSugar.Base {
         void INetworkCore.GetPong(string id, ArraySegment<byte> utc){
             p2pInfo.Instance.pings.GetPong(id, utc);
         }
+
+        /// <summary>
+        /// Get the packet queue information.
+        /// </summary>
+        /// <param name="Info">The object to return the result.</param>
+        /// <returns></returns>
+        public abstract Result GetPacketQueueInfo(out PacketQueueInformation Info);
     }
 }
