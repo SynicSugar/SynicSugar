@@ -280,6 +280,14 @@ namespace SynicSugar.P2P {
         }
     #endregion
         /// <summary>
+        /// Get the information related to the current state of the packet queues. 
+        /// </summary>
+        /// <param name="packetQueueInformation"></param>
+        /// <returns></returns>
+        public Result GetPacketQueueInfo(out PacketQueueInformation packetQueueInformation){
+            return sessionCore.GetPacketQueueInfo(out packetQueueInformation);
+        }
+        /// <summary>
         /// the last byte array sent with RPC that record data.
         /// </summary>
         public byte[] LastRPCPayload => lastRpcInfo.payload;

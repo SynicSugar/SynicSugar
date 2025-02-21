@@ -63,7 +63,7 @@ namespace SynicSugar.P2P {
             RemoveNotifyAndCloseConnection();
             
             GetPacketQueueInfoOptions options = new GetPacketQueueInfoOptions();
-            Epic.OnlineServices.P2P.PacketQueueInfo info = new Epic.OnlineServices.P2P.PacketQueueInfo();
+            PacketQueueInfo info = new PacketQueueInfo();
             P2PHandle.GetPacketQueueInfo(ref options, out info);
 
             while (info.IncomingPacketQueueCurrentPacketCount > 0){
