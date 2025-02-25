@@ -71,14 +71,17 @@ namespace SynicSugar.P2P {
             OnTargetEarlyDisconnected += earlyDisconnected;
             OnTargetRestored += restored;
         }
+        internal void Init(){
+            establishedMemberCounts = 0;
+            completeConnectPreparetion = false;
+        }
         /// <summary>
         /// Remove all events and init all variables. <br />
         /// NetworkObject can be used without being initialized, so called this on the last of the session.
         /// </summary>
         internal void Reset(){
             Clear();
-            establishedMemberCounts = 0;
-            completeConnectPreparetion = false;
+            Init();
         }
         /// <summary>
         /// Remove all events from the actions. <br />
@@ -150,8 +153,9 @@ namespace SynicSugar.P2P {
         }
         private int establishedMemberCounts;
         internal bool completeConnectPreparetion; 
-        internal void OnEstablished(){
+        internal void OnEstablished(UserId id){
             establishedMemberCounts++;
+            Logger.Log("OnEstablished", $"A connection has been established with {id.ToMaskedString()}");
             completeConnectPreparetion = p2pInfo.Instance.userIds.RemoteUserIds.Count == establishedMemberCounts;
         }
     }

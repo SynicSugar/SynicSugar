@@ -375,7 +375,7 @@ namespace SynicSugar.P2P {
         
         if(data.ConnectionType == ConnectionEstablishedType.NewConnection &&
             p2pInfo.Instance.userIds.RemoteUserIds.Contains(UserId.GetUserId(data.RemoteUserId))){
-            p2pInfo.Instance.ConnectionNotifier.OnEstablished();
+            p2pInfo.Instance.ConnectionNotifier.OnEstablished(UserId.GetUserId(data.RemoteUserId));
             return;
         }
     }

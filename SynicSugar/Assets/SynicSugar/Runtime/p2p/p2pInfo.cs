@@ -28,7 +28,6 @@ namespace SynicSugar.P2P {
             if( Instance == this ) {
                 UserId.CacheClear();
                 ConnectionNotifier.Reset();
-                SyncSnyicNotifier.Reset();
 
                 Instance = null;
             }
