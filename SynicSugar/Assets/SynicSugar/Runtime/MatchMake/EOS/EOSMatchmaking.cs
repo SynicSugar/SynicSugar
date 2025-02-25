@@ -849,14 +849,14 @@ namespace SynicSugar.MatchMake {
 
             }else if(info.CurrentStatus == LobbyMemberStatus.Left) {
                 Logger.Log($"MemberStatusNotyfy", $"{UserId.GetUserId(info.TargetUserId).ToMaskedString()} left from lobby.");
-                p2pInfo.Instance.userIds.RemoveUserId(info.TargetUserId);
+                p2pInfo.Instance.userIds.RemoveUserIdFromNonAllUserIds(info.TargetUserId);
                 p2pInfo.Instance.ConnectionNotifier.Leaved(UserId.GetUserId(info.TargetUserId), Reason.Left);
             }else if(info.CurrentStatus == LobbyMemberStatus.Disconnected){
                 Logger.Log($"MemberStatusNotyfy", $"{UserId.GetUserId(info.TargetUserId).ToMaskedString()} diconnect from lobby.");
-                p2pInfo.Instance.userIds.MoveTargetUserIdToLefts(info.TargetUserId);
+                p2pInfo.Instance.userIds.MoveUserIdToDisconnected(info.TargetUserId);
                 p2pInfo.Instance.ConnectionNotifier.Disconnected(UserId.GetUserId(info.TargetUserId), Reason.Disconnected);
             }else if(info.CurrentStatus == LobbyMemberStatus.Joined){
-                p2pInfo.Instance.userIds.MoveTargetUserIdToRemoteUsersFromLeft(info.TargetUserId);
+                p2pInfo.Instance.userIds.MoveUserIdToConnectedFromDisconnected(info.TargetUserId);
                 // Send Id list.
                 if(p2pInfo.Instance.IsHost()){
                     ConnectionSetupHandler setupHandler = new();

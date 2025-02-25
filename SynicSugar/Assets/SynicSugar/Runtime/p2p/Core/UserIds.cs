@@ -100,37 +100,40 @@ namespace SynicSugar.P2P {
         /// Remove user ID when the user leaves lobby.<br />
         /// </summary>
         /// <param name="targetId"></param>
-        internal void RemoveUserId(ProductUserId targetId){
-            Logger.Log("RemoveUserId", $"Remove {UserId.GetUserId(targetId).ToMaskedString()}");
+        internal void RemoveUserIdFromNonAllUserIds(ProductUserId targetId){
+            Logger.Log("RemoveUserIdFromNonAllUserIds", $"Deactivate {UserId.GetUserId(targetId).ToMaskedString()} on current session.");
             UserId userId = UserId.GetUserId(targetId);
+            p2pInfo.Instance.pings.pingInfo.Remove(userId.ToString());
+
             RemoteUserIds.Remove(userId);
             CurrentAllUserIds.Remove(userId);
             CurrentConnectedUserIds.Remove(userId);
-            p2pInfo.Instance.pings.pingInfo.Remove(userId.ToString());
         }
         /// <summary>
         /// Move UserID from RemotoUserIDs to LeftUsers not to SendPacketToALl in vain.<br />
         /// </summary>
         /// <param name="targetId"></param>
-        internal void MoveTargetUserIdToLefts(ProductUserId targetId){
-            Logger.Log("MoveTargetUserIdToLefts", $"Move {UserId.GetUserId(targetId).ToMaskedString()}");
+        internal void MoveUserIdToDisconnected(ProductUserId targetId){
+            Logger.Log("MoveUserIdToDisconnected", $"Move {UserId.GetUserId(targetId).ToMaskedString()} to DisconnectedUserIds.");
             UserId userId = UserId.GetUserId(targetId);
+            p2pInfo.Instance.pings.pingInfo[userId.ToString()].Ping = -1;
+
             RemoteUserIds.Remove(userId);
             CurrentConnectedUserIds.Remove(userId);
             DisconnectedUserIds.Add(userId);
-            p2pInfo.Instance.pings.pingInfo[userId.ToString()].Ping = -1;
         }
         /// <summary>
         /// Move UserID to RemotoUserIDs from LeftUsers on reconnect.
         /// </summary>
         /// <param name="targetId"></param>
         /// <returns></returns>
-        internal void MoveTargetUserIdToRemoteUsersFromLeft(ProductUserId targetId){
-            Logger.Log("MoveTargetUserIdToRemoteUsersFromLeft", $"Move {UserId.GetUserId(targetId).ToMaskedString()}");
+        internal void MoveUserIdToConnectedFromDisconnected(ProductUserId targetId){
+            Logger.Log("MoveUserIdToConnectedFromDisconnected", $"Move {UserId.GetUserId(targetId).ToMaskedString()} from DisconnectedUserIds.");
             UserId userId = UserId.GetUserId(targetId);
+
             DisconnectedUserIds.Remove(userId);
-            CurrentConnectedUserIds.Add(userId);
             RemoteUserIds.Add(userId);
+            CurrentConnectedUserIds.Add(userId);
         }
     }
 }
