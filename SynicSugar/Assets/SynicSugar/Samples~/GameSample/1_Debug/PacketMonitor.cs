@@ -31,11 +31,11 @@ namespace SynicSugar.Samples {
             LateUpdate
         }
         public UpdateTiming updateTiming { get; private set; } = UpdateTiming.None;
-        private bool incomingIsZero, outgoingIsZero ;
+        private ulong prevIncomingPacketSize, prevOutgoingPacketSize;
         public void SetUpdateTiming(UpdateTiming updateTiming)
         {
-            incomingIsZero = false;
-            outgoingIsZero = false;
+            prevIncomingPacketSize = ulong.MaxValue;
+            prevOutgoingPacketSize = ulong.MaxValue;
             this.updateTiming = updateTiming;
         }
         private void Update()
@@ -57,16 +57,16 @@ namespace SynicSugar.Samples {
             Result result = p2pInfo.Instance.GetPacketQueueInfo(out PacketQueueInformation packetQueueInformation);
             if(result == Result.Success){
                 //Incoming Packets
-                if(packetQueueInformation.IncomingPacketQueueCurrentPacketCount != 0 || !incomingIsZero)
+                if(packetQueueInformation.IncomingPacketQueueCurrentPacketCount != prevIncomingPacketSize)
                 {
-                    incomingIsZero = packetQueueInformation.IncomingPacketQueueCurrentPacketCount == 0;
-                    Debug.Log($"PacketQueueInfo(Incoming): IncomingPacketQueueMaxSizeBytes: {packetQueueInformation.IncomingPacketQueueMaxSizeBytes} / IncomingPacketQueueCurrentSizeBytes: {packetQueueInformation.IncomingPacketQueueCurrentSizeBytes} / IncomingPacketQueueCurrentPacketCount: {packetQueueInformation.IncomingPacketQueueCurrentPacketCount}");   
+                    prevIncomingPacketSize = packetQueueInformation.IncomingPacketQueueCurrentPacketCount;
+                    Debug.Log($"PacketQueueInfo(Incoming): IncomingPacketQueueCurrentSizeBytes: {packetQueueInformation.IncomingPacketQueueCurrentSizeBytes} / IncomingPacketQueueCurrentPacketCount: {packetQueueInformation.IncomingPacketQueueCurrentPacketCount} / IncomingPacketQueueMaxSizeBytes: {packetQueueInformation.IncomingPacketQueueMaxSizeBytes}");   
                 }
                 // Outgoing Packets
-                if(packetQueueInformation.OutgoingPacketQueueCurrentPacketCount != 0 || !outgoingIsZero)
+                if(packetQueueInformation.OutgoingPacketQueueCurrentPacketCount != prevOutgoingPacketSize)
                 {
-                    outgoingIsZero = packetQueueInformation.OutgoingPacketQueueCurrentPacketCount == 0;
-                    Debug.Log($"PacketQueueInfo(Outgoing): OutgoingPacketQueueMaxSizeBytes: {packetQueueInformation.OutgoingPacketQueueMaxSizeBytes} / OutgoingPacketQueueCurrentSizeBytes: {packetQueueInformation.OutgoingPacketQueueCurrentSizeBytes} / OutgoingPacketQueueCurrentPacketCount: {packetQueueInformation.OutgoingPacketQueueCurrentPacketCount}");
+                    prevOutgoingPacketSize = packetQueueInformation.OutgoingPacketQueueCurrentPacketCount;
+                    Debug.Log($"PacketQueueInfo(Outgoing): OutgoingPacketQueueCurrentSizeBytes: {packetQueueInformation.OutgoingPacketQueueCurrentSizeBytes} / OutgoingPacketQueueCurrentPacketCount: {packetQueueInformation.OutgoingPacketQueueCurrentPacketCount} / OutgoingPacketQueueMaxSizeBytes: {packetQueueInformation.OutgoingPacketQueueMaxSizeBytes}");
                 }
             }
         }
