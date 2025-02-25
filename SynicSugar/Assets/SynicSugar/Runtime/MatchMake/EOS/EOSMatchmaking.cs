@@ -857,13 +857,13 @@ namespace SynicSugar.MatchMake {
                 p2pInfo.Instance.ConnectionNotifier.Disconnected(UserId.GetUserId(info.TargetUserId), Reason.Disconnected);
             }else if(info.CurrentStatus == LobbyMemberStatus.Joined){
                 p2pInfo.Instance.userIds.MoveTargetUserIdToRemoteUsersFromLeft(info.TargetUserId);
-                p2pInfo.Instance.ConnectionNotifier.Connected(UserId.GetUserId(info.TargetUserId));
                 // Send Id list.
                 if(p2pInfo.Instance.IsHost()){
                     ConnectionSetupHandler setupHandler = new();
                     setupHandler.SendUserList(UserId.GetUserId(info.TargetUserId));
                     Logger.Log($"MemberStatusNotyfy", $"Send user list to {UserId.GetUserId(info.TargetUserId).ToMaskedString()}.");
                 }
+                p2pInfo.Instance.ConnectionNotifier.Connected(UserId.GetUserId(info.TargetUserId));
             }
         }
         /// <summary>
