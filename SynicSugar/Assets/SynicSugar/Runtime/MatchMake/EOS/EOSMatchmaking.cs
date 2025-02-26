@@ -573,7 +573,7 @@ namespace SynicSugar.MatchMake {
         /// <returns></returns>
         async UniTask<Result> TryJoinSearchResults(LobbySearch lobbySearch, List<AttributeData> userAttributes, bool isReconnecter = false, CancellationToken token = default(CancellationToken)){ 
             if (lobbySearch == null){
-                Logger.LogError("TryJoinSearchResults", "There is no LobbySearch.");
+                Logger.LogError("TryJoinSearchResults", "Could not get Lobby data by the process to find a lobby from EOS.");
                 return Result.NotFound;
             }
 
@@ -861,7 +861,6 @@ namespace SynicSugar.MatchMake {
                 if(p2pInfo.Instance.IsHost()){
                     ConnectionSetupHandler setupHandler = new();
                     setupHandler.SendUserList(UserId.GetUserId(info.TargetUserId));
-                    Logger.Log($"MemberStatusNotyfy", $"Send user list to {UserId.GetUserId(info.TargetUserId).ToMaskedString()}.");
                 }
                 p2pInfo.Instance.ConnectionNotifier.Connected(UserId.GetUserId(info.TargetUserId));
             }
