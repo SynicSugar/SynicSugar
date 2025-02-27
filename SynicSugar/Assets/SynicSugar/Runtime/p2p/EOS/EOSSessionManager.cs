@@ -112,10 +112,10 @@ namespace SynicSugar.P2P {
 #endif
                 return false; //No packet
             }
-        // #if SYNICSUGAR_PACKETINFO
-        //     Debug.Log($"ReceivePacket: ch: {ch} from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
-        // #endif
             id = UserId.GetUserId(productUserId);
+        #if SYNICSUGAR_PACKETINFO
+            Debug.Log($"ReceivePacket: ch: {ch} from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
+        #endif
             return true;
         }
         /// <summary>
@@ -149,10 +149,10 @@ namespace SynicSugar.P2P {
 #endif
                 return false; //No packet
             }
+            id = UserId.GetUserId(productUserId);
         #if SYNICSUGAR_PACKETINFO
             Debug.Log($"ReceivePacket(Synic): ch: {ch}  from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
         #endif
-            id = UserId.GetUserId(productUserId);
             return true;
         }
     
@@ -235,7 +235,9 @@ namespace SynicSugar.P2P {
 
             if (result != ResultE.Success){
                 Logger.LogError("OnIncomingConnectionRequest", "error while accepting connection.", (Result)result);
+                return;
             }
+            Logger.Log("OnIncomingConnectionRequest", $"Accept the connection with {UserId.GetUserId(data.RemoteUserId).ToMaskedString()}");
         }
         void RemoveNotifyPeerConnectionRequest(){
             P2PHandle.RemoveNotifyPeerConnectionRequest(RequestNotifyId);
@@ -253,10 +255,8 @@ namespace SynicSugar.P2P {
         AcceptAllConenctions();
 
         if(checkInitConnect || p2pConfig.Instance.UseDisconnectedEarlyNotify){
-            AddNotifyPeerConnectionEstablished();
-        }
-        if(checkInitConnect){
             UpdatePacketOptions();
+            AddNotifyPeerConnectionEstablished();
         }
         if(p2pConfig.Instance.UseDisconnectedEarlyNotify){
             AddNotifyPeerConnectionInterrupted();
@@ -297,9 +297,10 @@ namespace SynicSugar.P2P {
     /// </summary>
     void AcceptAllConenctions(){
         ResultE result = ResultE.Success;
+        ProductUserId localUserId = p2pInfo.Instance.userIds.LocalUserId.AsEpic;
         foreach(var id in p2pInfo.Instance.userIds.RemoteUserIds){
             AcceptConnectionOptions options = new AcceptConnectionOptions(){
-                LocalUserId = p2pInfo.Instance.userIds.LocalUserId.AsEpic,
+                LocalUserId = localUserId,
                 RemoteUserId = id.AsEpic,
                 SocketId = SocketId
             };
@@ -310,6 +311,7 @@ namespace SynicSugar.P2P {
                 Logger.LogError("AcceptAllConenctions", $"error while accepting connection for {id.ToMaskedString()}.", (Result)result);
                 break;
             }
+            Logger.Log("AcceptAllConenctions", $"Accept the connection with {id.ToMaskedString()}");
         }
     }
 #endregion
