@@ -20,8 +20,8 @@ namespace SynicSugar.MatchMake {
         /// <returns>Return true, after end the conenction. If pass time before finish prepartion, return false/</returns>
         internal async UniTask<Result> WaitConnectPreparation(CancellationToken token, int timeoutMS){
             await UniTask.WhenAny(UniTask.WaitUntil(() => p2pInfo.Instance.ConnectionNotifier.completeConnectPreparetion, cancellationToken: token), UniTask.Delay(timeoutMS, cancellationToken: token));
-
-            Logger.Log("WaitConnectPreparation", "Connection setup is ready. Proceed to user list synchronization.");
+            
+            Logger.Log("WaitConnectPreparation", p2pInfo.Instance.ConnectionNotifier.completeConnectPreparetion ? "Connection setup is ready. Proceed to user list synchronization." : "Connection setup is not ready. Timeout.");
 
             if(!p2pConfig.Instance.UseDisconnectedEarlyNotify){
                 ((EOSSessionManager)p2pConfig.Instance.sessionCore).RemoveNotifyPeerConnectionnEstablished();
