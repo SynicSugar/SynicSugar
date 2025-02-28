@@ -113,7 +113,7 @@ namespace SynicSugar.P2P {
             }
             id = UserId.GetUserId(productUserId);
         #if SYNICSUGAR_PACKETINFO
-            Debug.Log($"ReceivePacket: ch: {ch} from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
+            UnityEngine.Debug.Log($"ReceivePacket: ch: {ch} from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
         #endif
             return true;
         }
@@ -150,7 +150,7 @@ namespace SynicSugar.P2P {
             }
             id = UserId.GetUserId(productUserId);
         #if SYNICSUGAR_PACKETINFO
-            Debug.Log($"ReceivePacket(Synic): ch: {ch}  from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
+            UnityEngine.Debug.Log($"ReceivePacket(Synic): ch: {ch}  from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
         #endif
             return true;
         }

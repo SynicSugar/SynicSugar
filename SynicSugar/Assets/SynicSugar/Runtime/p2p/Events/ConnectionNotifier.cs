@@ -156,7 +156,7 @@ namespace SynicSugar.P2P {
         internal void OnEstablished(UserId id){
             establishedMemberCounts++;
             completeConnectPreparetion = p2pInfo.Instance.userIds.RemoteUserIds.Count == establishedMemberCounts;
-            Logger.Log("OnEstablished", $"A connection has been established with {id.ToMaskedString()} / CompleteConnectPreparetion: {completeConnectPreparetion}");
+            Logger.Log("OnEstablished", $"A connection has been established with {id.ToMaskedString()} / CurrentConnections: {establishedMemberCounts} / {p2pInfo.Instance.userIds.RemoteUserIds.Count}");
         }
     }
 }
