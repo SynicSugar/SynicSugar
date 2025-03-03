@@ -249,11 +249,11 @@ namespace SynicSugar.P2P {
     /// Call from the library after the MatchMake is established.
     /// </summary>
     //* Maybe: Some processes in InitConnectConfig need time to complete and the Member list will be created after that end. Therefore, we will add Notify first to spent time.
-    protected override Result InitiateConnection(bool checkInitConnect = false){
+    protected override Result InitiateConnection(){
         AddNotifyPeerConnectionRequest();
         AcceptAllConenctions();
 
-        if(checkInitConnect || p2pConfig.Instance.UseDisconnectedEarlyNotify){
+        if(!SynicSugarManger.Instance.State.IsInSession || p2pConfig.Instance.UseDisconnectedEarlyNotify){
             UpdatePacketOptions();
             AddNotifyPeerConnectionEstablished();
         }
@@ -320,7 +320,7 @@ namespace SynicSugar.P2P {
     /// </summary>
     /// <param name="targetId"></param>
     /// <returns></returns>
-    protected override Result AcceptConnection(UserId targetId){
+    public override Result AcceptConnection(UserId targetId){
         AcceptConnectionOptions options = new AcceptConnectionOptions(){
             LocalUserId = SynicSugarManger.Instance.LocalUserId.AsEpic,
             RemoteUserId = targetId.AsEpic,
@@ -460,6 +460,24 @@ namespace SynicSugar.P2P {
             if(result != Result.Success){
                 Logger.LogError("CloseConnections", "Failed to close connection.", result);
             }
+            return result;
+        }
+        /// <summary>
+        /// Close the connection and drop packets about target user.
+        /// </summary>
+        /// <param name="targetId"></param>
+        /// <returns></returns>
+        public override Result CloseConnection (UserId targetId){
+            var closeOptions = new CloseConnectionOptions(){
+                LocalUserId = p2pInfo.Instance.userIds.LocalUserId.AsEpic,
+                RemoteUserId = targetId.AsEpic,
+                SocketId = SocketId
+            };
+            Result result = (Result)P2PHandle.CloseConnection(ref closeOptions);
+            if(result != Result.Success){
+                Logger.LogError("CloseConnection", "Failed to close connection.", result);
+            }
+            Logger.Log("CloseConnection", $"Close the connection with {targetId.ToMaskedString()}");
             return result;
         }
 #endregion

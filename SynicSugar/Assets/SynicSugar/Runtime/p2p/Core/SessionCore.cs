@@ -46,6 +46,21 @@ namespace SynicSugar.Base {
         /// Can change this flag own, but basically Base class manages the flags.　
         /// </summary>
         public bool IsConnected { get; protected set; }
+
+        /// <summary>
+        /// Is this local user in Matchmaking or Session?
+        /// </summary>
+        /// <returns></returns>
+        protected bool IsInNetworkProcess(){
+           return SynicSugarManger.Instance.State.IsInSession || SynicSugarManger.Instance.State.IsMatchmaking;
+        }
+        /// <summary>
+        /// Is this local user in SetupProcess（Matchmaking and not looking for oponents） or Session?
+        /// </summary>
+        /// <returns></returns>
+        protected bool IsInSetupProcessOrSession(){
+           return SynicSugarManger.Instance.State.IsInSession || (SynicSugarManger.Instance.State.IsMatchmaking && !MatchMakeManager.Instance.isLooking);
+        }
         
         /// <summary>
         /// Generate packet receiver object and add each receiver script.
@@ -367,12 +382,16 @@ namespace SynicSugar.Base {
     #endregion
 #region Connect
         /// <summary>
-        /// Prep for p2p connections.
-        /// Call from the library after the MatchMake is established.
+        /// Prep for p2p connections.<br />
+        /// Connect or Request a connection with all other peers. <br />
         /// </summary>
         //* Maybe: Some processes in InitConnectConfig need time to complete and the Member list will be created after that end. Therefore, we will add Notify first to spent time.
-        public Result OpenConnection(bool checkInitConnect = false){
-            Result result = InitiateConnection(checkInitConnect);
+        public Result OpenConnection(){
+            if(!IsInSetupProcessOrSession()){
+                Logger.LogWarning("OpenConnection", "This local user is NOT in SetupProcess or Session. No action taken.");
+                return Result.InvalidAPICall;
+            }
+            Result result = InitiateConnection();
 
             if (result == Result.Success){
                 rttTokenSource = new CancellationTokenSource();
@@ -380,19 +399,14 @@ namespace SynicSugar.Base {
             }
             return result;
         }
-        protected abstract Result InitiateConnection(bool checkInitConnect);
+        protected abstract Result InitiateConnection();
 
         /// <summary>
-        /// Prep for p2p connections with disconencted user.
+        /// Connect or Request a connection with other peer.<br />
         /// </summary>
         /// <param name="targetId">Reconnected user's id</param>
         /// <returns></returns>
-        public Result OpenConnection(UserId targetId){
-            Result result = AcceptConnection(targetId);
-
-            return result;
-        }
-        protected abstract Result AcceptConnection(UserId targetId);
+        public abstract Result AcceptConnection(UserId targetId);
 #endregion
 #region Disconnect
         /// <summary>
@@ -409,7 +423,17 @@ namespace SynicSugar.Base {
             }
             return result;
         }
+        /// <summary>
+        /// Close all p2p conenction
+        /// </summary>
+        /// <returns></returns>
         protected abstract Result CloseConnection();
+        /// <summary>
+        /// Close the connection with target user.
+        /// </summary>
+        /// <param name="targetId"></param>
+        /// <returns></returns>
+        public abstract Result CloseConnection(UserId targetId);
 #endregion
 
         protected internal abstract Result ResetConnections();
