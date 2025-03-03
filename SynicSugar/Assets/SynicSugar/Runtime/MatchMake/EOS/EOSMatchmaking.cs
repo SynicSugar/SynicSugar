@@ -857,12 +857,6 @@ namespace SynicSugar.MatchMake {
                 p2pInfo.Instance.ConnectionNotifier.Disconnected(UserId.GetUserId(info.TargetUserId), Reason.Disconnected);
             }else if(info.CurrentStatus == LobbyMemberStatus.Joined){
                 p2pInfo.Instance.userIds.MoveUserIdToConnectedFromDisconnected(info.TargetUserId);
-                // Send Id list.
-                if(p2pInfo.Instance.IsHost()){
-                    ConnectionSetupHandler setupHandler = new();
-                    setupHandler.SendUserList(UserId.GetUserId(info.TargetUserId));
-                }
-                p2pInfo.Instance.ConnectionNotifier.Connected(UserId.GetUserId(info.TargetUserId));
             }
         }
         /// <summary>
@@ -1430,6 +1424,7 @@ namespace SynicSugar.MatchMake {
         /// <returns></returns>
         async UniTask<Result> OpenConnection(ushort setupTimeoutSec, CancellationToken token){
             if(p2pConfig.Instance.relayControl != RelayControl.AllowRelays){
+                Logger.Log("OpenConnection", "Set relay control to allow.");
                 p2pConfig.Instance.SetRelayControl(p2pConfig.Instance.relayControl);
             }
             await p2pConfig.Instance.natRelayManager.Init();

@@ -381,6 +381,18 @@ namespace SynicSugar.Base {
             return result;
         }
         protected abstract Result InitiateConnection(bool checkInitConnect);
+
+        /// <summary>
+        /// Prep for p2p connections with disconencted user.
+        /// </summary>
+        /// <param name="targetId">Reconnected user's id</param>
+        /// <returns></returns>
+        public Result OpenConnection(UserId targetId){
+            Result result = AcceptConnection(targetId);
+
+            return result;
+        }
+        protected abstract Result AcceptConnection(UserId targetId);
 #endregion
 #region Disconnect
         /// <summary>

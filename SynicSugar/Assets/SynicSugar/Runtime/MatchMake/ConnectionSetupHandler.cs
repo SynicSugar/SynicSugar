@@ -60,7 +60,7 @@ namespace SynicSugar.MatchMake {
             MemoryPackSerializer.Serialize(compressor, basicInfo);
 
             ArraySegment<byte> payload = new ArraySegment<byte>(compressor.ToArray());
-
+ 
         #if SYNICSUGAR_PACKETINFO
             UnityEngine.Debug.Log($"SendUserList: ch {BASICINFO_CH} / payload {payload.ToHexString()}");
         #endif
@@ -127,12 +127,10 @@ namespace SynicSugar.MatchMake {
             ArraySegment<byte> payload = new();
             uint nextPacketSizeBytes = 0;
 
-            UnityEngine.Debug.Log($"size option(ch): {getNextReceivedPacketSizeOptions.RequestedChannel}");
             while(!token.IsCancellationRequested){
                 bool recivePacket = GetPacketFromBuffer(ref getNextReceivedPacketSizeOptions, ref nextPacketSizeBytes ,ref ch, ref payload);
 
                 if(recivePacket){
-                    UnityEngine.Debug.Log("ReciveUserIdsPacket");
                     ConvertFromPacket(in ch, in payload);
                     return;
                 }

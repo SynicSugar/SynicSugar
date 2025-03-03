@@ -220,7 +220,7 @@ namespace SynicSugar.P2P {
         // This function will only be called if the connection has not been accepted yet.
         void OnIncomingConnectionRequest(ref OnIncomingConnectionRequestInfo data){
             if (!(bool)data.SocketId?.SocketName.Equals(ScoketName)){
-                Logger.LogError("OnIncomingConnectionRequest", "unknown socket id. This peer should be no lobby member.");
+                Logger.LogError("OnIncomingConnectionRequest", "This packet uses diffrent socket id with the current session. This peer is likely not a lobby member.");
                 return;
             }
 
@@ -312,6 +312,29 @@ namespace SynicSugar.P2P {
             }
             Logger.Log("AcceptAllConenctions", $"Accept the connection with {id.ToMaskedString()}");
         }
+    }
+    /// <summary>
+    /// For reconnection process. <br />
+    /// Accept the connection with the disconnected user. <br />
+    /// EOS doesn't need this process, because the connection is automatically restored. This is for the other backend in the future.
+    /// </summary>
+    /// <param name="targetId"></param>
+    /// <returns></returns>
+    protected override Result AcceptConnection(UserId targetId){
+        AcceptConnectionOptions options = new AcceptConnectionOptions(){
+            LocalUserId = SynicSugarManger.Instance.LocalUserId.AsEpic,
+            RemoteUserId = targetId.AsEpic,
+            SocketId = SocketId
+        };
+        
+        Result result = (Result)P2PHandle.AcceptConnection(ref options);
+
+        if (result != Result.Success){
+            Logger.LogError("AcceptConnection", $"error while accepting connection for {targetId.ToMaskedString()}.", result);
+            return result;
+        }
+        Logger.Log("AcceptConnection", $"Accept the connection with {targetId.ToMaskedString()}");
+        return Result.Success;
     }
 #endregion
 #region Early Disconnected Notify
