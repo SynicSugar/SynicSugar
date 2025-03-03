@@ -855,8 +855,10 @@ namespace SynicSugar.MatchMake {
                 Logger.Log($"MemberStatusNotyfy", $"{UserId.GetUserId(info.TargetUserId).ToMaskedString()} diconnect from lobby.");
                 p2pInfo.Instance.userIds.MoveUserIdToDisconnected(info.TargetUserId);
                 p2pInfo.Instance.ConnectionNotifier.Disconnected(UserId.GetUserId(info.TargetUserId), Reason.Disconnected);
+                p2pConfig.Instance.sessionCore.CloseConnection(UserId.GetUserId(info.TargetUserId));
             }else if(info.CurrentStatus == LobbyMemberStatus.Joined){
                 p2pInfo.Instance.userIds.MoveUserIdToConnectedFromDisconnected(info.TargetUserId);
+                p2pConfig.Instance.sessionCore.AcceptConnection(UserId.GetUserId(info.TargetUserId));
             }
         }
         /// <summary>
@@ -1429,7 +1431,7 @@ namespace SynicSugar.MatchMake {
             }
             await p2pConfig.Instance.natRelayManager.Init();
             RemoveNotifyLobbyMemberUpdateReceived();
-            p2pConfig.Instance.sessionCore.OpenConnection(true);
+            p2pConfig.Instance.sessionCore.OpenConnection();
             Logger.Log("OpenConnection", "Sending a connection request to other peers.");
             
             ConnectionSetupHandler setupHandler = new();
