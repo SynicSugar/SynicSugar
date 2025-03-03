@@ -127,7 +127,7 @@ namespace SynicSugar.Base {
                 Logger.LogWarning("RestartConnections", IsConnected ?  "The connection is already active. No action taken." : "Cannot restart because the user is not in an online session.");
                 return Result.InvalidAPICall;
             }
-            Result result = RestartConnections();
+            Result result = InitiateConnection();
 
             if(result == Result.Success){
                 IsConnected = true;
@@ -135,7 +135,6 @@ namespace SynicSugar.Base {
             }
             return result;
         }
-        protected abstract Result RestartConnections();
 
         /// <summary>
         /// Use this from hub not to call some methods in Main-Assembly from SynicSugar.dll.<br />

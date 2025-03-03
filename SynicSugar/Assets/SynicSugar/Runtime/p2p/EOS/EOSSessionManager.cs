@@ -73,12 +73,6 @@ namespace SynicSugar.P2P {
             ((INetworkCore)this).StopPacketReceiver();
             return Result.Success;
         }
-        /// <summary>
-        /// Prepare to receive in advance. If user sent packets, it can open to get packets for a socket id without this.
-        /// </summary>
-        protected override Result RestartConnections(){
-            return InitiateConnection();
-        }
         
         /// <summary>
         /// To get Packetｓ.
@@ -310,7 +304,7 @@ namespace SynicSugar.P2P {
                 Logger.LogError("AcceptAllConenctions", $"error while accepting connection for {id.ToMaskedString()}.", (Result)result);
                 break;
             }
-            Logger.Log("AcceptAllConenctions", $"Accept the connection with {id.ToMaskedString()}");
+            Logger.Log("AcceptAllConenctions", $"Accept the connection from {id.ToMaskedString()}");
         }
     }
     /// <summary>
