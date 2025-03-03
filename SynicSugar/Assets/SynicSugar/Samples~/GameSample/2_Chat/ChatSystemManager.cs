@@ -54,7 +54,7 @@ namespace SynicSugar.Samples.Chat
                 RTCManager.Instance.ParticipantUpdatedNotifier.Register(t => OnStartSpeaking(t), t => OnStopSpeaking(t));
             }
         }
-        void Oestroy()
+        void OnDestroy()
         {
             #if SYNICSUGAR_PACKETINFO
                 PacketMonitor.Instance.SetUpdateTiming(PacketMonitor.UpdateTiming.None);
