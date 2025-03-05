@@ -1437,7 +1437,7 @@ namespace SynicSugar.MatchMake {
             ConnectionSetupHandler setupHandler = new();
             Result canConnect = await setupHandler.WaitConnectPreparation(token, setupTimeoutSec * 1000); //Pass time as ms.
             if(canConnect != Result.Success){
-                return Result.ConnectEstablishFailed;
+                return canConnect;
             }
             //Host sends AllUserIds list, Guest Receives AllUserIds.
             if(p2pInfo.Instance.IsHost()){
