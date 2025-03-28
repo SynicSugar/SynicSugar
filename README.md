@@ -7,14 +7,14 @@ The concept is the syntax sugar of netcode. You can implement matchmaking, host 
 There is no charge for use and no CCU limits or server management thanks to EpicGames.<br>
 Almost SynicSugar APIs are zero-allocation in Runtime, so the process is sonic. SynicSugar will be optimized for small-party game not covered by [Mirror](https://github.com/MirrorNetworking/Mirror).
 
-For more details, visit [https://skeyll.github.io/SynicSugar/](https://skeyll.github.io/SynicSugar/).
+For more details, visit [https://synicsugar.github.io/SynicSugar/](https://synicsugar.github.io/SynicSugar/).
 
 ## Why SynicSugar?
 Most networking libraries are designed with dedicated servers in mind. In contrast, SynicSugar is built on a serverless P2P architecture, seamlessly supporting host migration and even providing a reconnection feature for disconnected players. 
 
 With its focus on small-scale games and a simple API, SynicSugar enables efficient and cost-effective network development.
 
-[![Sample(youtube)](https://github.com/skeyll/SynicSugar/blob/main/Resources/youtube_thumbnail.png)](https://www.youtube.com/embed/hQT1yniGNi0)
+[![Sample(youtube)](https://github.com/synicsugar/SynicSugar/blob/main/Resources/youtube_thumbnail.png)](https://www.youtube.com/embed/hQT1yniGNi0)
 
 ## Features:
  - Mesh topology with max 64 peers
@@ -80,13 +80,13 @@ For matchmaking, SynicSugar use [Lobby Interface](https://dev.epicgames.com/docs
 Host user creates lobbies for 2-64 players and Guest user seraches Lobby based on custom attributes you add. After the host closes the lobby manually or the lobby fills up with a specified number of players and the lobby is closed automatically, starts to preparation p2p connection. Host generates a random SocketID and adds the strings to Lobby attribute. Users use this One-time SocketID and UserId of EOS for actual connection.<br>
 Also, at this time, the LobbyID is saved in a specified location. Once the lobby is closed, only users who know the LobbyID can join the Lobby.
 In SynicSugar, all connections continue even if the host drops out. The lobby host-migration occurs automatically. Reconnection can be done easily by calling some APIs. We add the "Synic" attribute to variables essential for restart, enabling safe data restoration for reconnecting players without the risk of direct overwriting as a form of cheating.<br><br>
-While there are plans to add account linking, TitleStorage, and PlayerStorage in the future, these features are not yet implemented. There are no plans to add Easy Anti-Cheat.  Load map is  [here](https://github.com/users/skeyll/projects/5/views/2).<br>
+While there are plans to add account linking, TitleStorage, and PlayerStorage in the future, these features are not yet implemented. There are no plans to add Easy Anti-Cheat.  Load map is  [here](https://github.com/orgs/SynicSugar/projects/3).<br>
 
 
 ## Getting started
 ### 1.Install SynicSugar and depended librarys.  
 The first is to import SynicSugar and dependent libraries. <br>
-You can get SynicSugar from OpenUPM or [SynicSugar/Release](https://github.com/skeyll/SynicSugar/releases)'s unitypackage.  
+You can get SynicSugar from OpenUPM or [SynicSugar/Release](https://github.com/synicsugar/SynicSugar/releases)'s unitypackage.  
  .unitypackage contains Mono.Cecil and System.Runtime.CompilerServices.Unsafe.dll for MemoryPack and, in addition to SynicSugar. Therefore, you can skip some processes, but it is more convenient to download via OpenUPM for version control.  
 
 1. Rigister some package with OpenUPM<br>
@@ -126,7 +126,7 @@ Enter **com.unity.nuget.mono-cecil** in **Edit/ProjectSetting/PackageManager/+/A
 ![image](https://user-images.githubusercontent.com/50002207/231324146-292634b7-3d42-420d-a20c-37f5fc0ad688.png)
 
 - System.Runtime.CompilerServices.Unsafe  
-MemoryPack need System.Runtime.CompilerServices.Unsafe.dll. You can get this dll from Download package in https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe/6.0.0 . Since this contains DLLs for multiple environments, only import packages for Unity. Unzip the downloaded file and drag and drop **lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll** into your project.  You can also get this DLL from this [repo](https://github.com/skeyll/SynicSugar/tree/main/SynicSugar/Assets/Plugins/Runtime.CompilerServices.Unsafe)
+MemoryPack need System.Runtime.CompilerServices.Unsafe.dll. You can get this dll from Download package in https://www.nuget.org/packages/System.Runtime.CompilerServices.Unsafe/6.0.0 . Since this contains DLLs for multiple environments, only import packages for Unity. Unzip the downloaded file and drag and drop **lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll** into your project.  You can also get this DLL from this [repo](https://github.com/synicsugar/SynicSugar/tree/main/SynicSugar/Assets/Plugins/Runtime.CompilerServices.Unsafe)
 
 
 ### 2.Get some tokens for EOS.
@@ -150,4 +150,4 @@ Ponolf is a quiz-based Imposter game. It supports 2-12 players and submit user d
 
 SynicSugar's concept is an easy online game development for everyone. Therefore, the development is also based on this policy. We can create online game for up to 64 people supported by EOS, but the main is small-party(2-16) game. If you want to create MMO, Survival Game and Party Game, you should use [Mirror](https://github.com/MirrorNetworking/Mirror). 
 
-The roadmap is [here](https://github.com/users/skeyll/projects/5/views/2). For the time being, add a basic function for online-game and improve the performance. If you need any necessary functions, please post it to Github Issue or give a pull request. Great thanks for all contributions!
+The roadmap is [here](https://github.com/orgs/SynicSugar/projects/3). For the time being, add a basic function for online-game and improve the performance. If you need any necessary functions, please post it to Github Issue or give a pull request. Great thanks for all contributions!
