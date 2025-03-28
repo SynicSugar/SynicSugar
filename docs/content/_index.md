@@ -14,7 +14,7 @@ title = "SynicSugar"
 SynicSugar is Unity High-Level Network Library with EpicOnlineServices.<br>
 The concept is the syntax sugar of netcode. You can implement matchmaking, host migration, RPC and other basic functions for online game with SynicSugar.<br>
 There is no charge for use and no CCU limits or server management thanks to EpicGames.<br>
-Almost SynicSugar APIs are zero-allocation in Runtime, so the process is sonic. SynicSugar will be optimized for small-party game not covered by [Mirror](https://github.com/MirrorNetworking/Mirror). Can get it from [Github](https://github.com/skeyll/SynicSugar).
+Almost SynicSugar APIs are zero-allocation in Runtime, so the process is sonic. SynicSugar will be optimized for small-party game not covered by [Mirror](https://github.com/MirrorNetworking/Mirror). Can get it from [Github](https://github.com/SynicSugar/SynicSugar).
 
 
 ```cs
@@ -80,4 +80,4 @@ The dependencies are for easily and performance. [EOSSDK is not thread-safe](htt
 ## Contribution Guideline
 SynicSugar's concept is an easy online game development for everyone. Therefore, the development is also based on this policy. We can create online game for up to 64 people supported by EOS, but the main is small-party(2-16) game. If you want to create MMO, Survival Game and Party Game, you should use [Mirror](https://github.com/MirrorNetworking/Mirror). 
 
-The roadmap is [here](https://github.com/users/skeyll/projects/5/views/2). For the time being, add a basic function for online-game and improve the performance. If you need any necessary functions, please post it to Github Issue or give a pull request. Great thanks for all contributions!
+The roadmap is [here](https://github.com/orgs/SynicSugar/projects/3). For the time being, add a basic function for online-game and improve the performance. If you need any necessary functions, please post it to Github Issue or give a pull request. Great thanks for all contributions!

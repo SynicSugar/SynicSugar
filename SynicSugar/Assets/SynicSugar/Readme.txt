@@ -1,5 +1,5 @@
 SynicSugar is Network library with Epic Online Services.
-https://github.com/skeyll/SynicSugar
+https://github.com/SynicSugar/SynicSugar
 
 
 To use SynicSugar, you need to register with EOS and obtain each token.
