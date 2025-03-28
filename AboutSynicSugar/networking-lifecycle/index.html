@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://synicsugar.github.io/SynicSugar/main.css">
+    <link rel="icon" href="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/favicon.ico?raw=true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> SynicSugar | Nerworking Lifecycle </title>
+</head>
+<body>
+
+<script>
+        fetch('https://api.github.com/repos/SynicSugar/SynicSugar/releases/latest')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                let release_name = data.name;
+                let html_url = data.html_url;
+                release.innerHTML = `<a href='${html_url}'>${release_name}</a>`;
+            });
+    </script>
+<main>
+    
+    <nav>
+            <a href="https:&#x2F;&#x2F;synicsugar.github.io&#x2F;SynicSugar&#x2F;">
+                        <img src="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/Logo_doc.png?raw=true" alt="logo"/>
+                    </a>
+                <div id="release"></div>
+            <a href="javascript:void(0);" onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton"></a>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="aboutsynicsugar"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="aboutsynicsugar">AboutSynicSugar</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/overview/">Overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/internaldesign/">InternalDesign</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/faq/">FAQ</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/networking-lifecycle/">Nerworking Lifecycle</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://synicsugar.github.io/SynicSugar/AboutSynicSugar/networking-lifecycle/#networking-lifecycle">Networking Lifecycle</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/networking-lifecycle/#ismatchmaking-and-islooking">IsMatchMaking and IsLooking</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/networking-lifecycle/#ismatchmaking-and-isinsession">IsMatchMaking and IsInSession</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/symbols/">Symbols</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="gettingstarted"
+                           />
+                    <label class="tree-toggle-label"
+                           for="gettingstarted">GettingStarted</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/import-setup/">Import and Set up</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/helloworld/">Hello World</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-core"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-core">SynicSugar.Core</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/synicsugarmanger/">SynicSugarManger</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/result/">Result</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-auth"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-auth">SynicSugar.Auth</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugarauthentication/">SynicSugarAuthentication</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugaraccount/">SynicSugarAccount</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-matchmake"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-matchmake">SynicSugar.MatchMake</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakemanager/">MatchMakeManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobby/">Lobby</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/attributedata/">AttributeData</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakingguievents/">MatchMakingGUIEvents</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobbyidmethod/">LobbyIDMethod</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/asynclobbyidmethod/">AsyncLobbyIDMethod</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-p2p"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-p2p">SynicSugar.P2P</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pconfig/">p2pConfig</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/attributes/">Attributes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/synicobject/">SynicObject</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/userid/">UserId</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/connecthub/">ConnectHub</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pinfo/">p2pInfo</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pstrcut/">p2pStruct</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/additionalclass/">AdditionalClass</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/eosp2p/">EOSp2p</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-rtc"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-rtc">SynicSugar.RTC</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/">RTCConfig</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcmanager/">RTCManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcstruct/">RTCStruct</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-titlesorage"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-titlesorage">SynicSugar.TitleSorage</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.TitleSorage/eostitlestorage/">EOSTitleStorage</a>
+                            </li>
+
+                            </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h1 id="networking-lifecycle">Networking Lifecycle&nbsp;<a class="anchor" href="#networking-lifecycle">&#xE732;</a></h1>
+<p>In the current version of SynicSugar, the state of matchmaking and P2P sessions are clearly distinguished.</p>
+<h3 id="ismatchmaking-and-islooking">IsMatchMaking and IsLooking&nbsp;<a class="anchor" href="#ismatchmaking-and-islooking">&#xE732;</a></h3>
+<p>To start networking process, call the matching API. This process is managed by two flags internally: IsMatchMaking and IsLooking.</p>
+<h4 id="1-ismatchmaking-true">1. IsMatchMaking = true&nbsp;<a class="anchor" href="#1-ismatchmaking-true">&#xE732;</a></h4>
+<p>When the matchmaking API is called, the internal IsMatchMaking flag is set to true. This is the same even in offline mode. In this state, it is not possible to create a new match, but several APIs to end the match will be available.</p>
+<h4 id="2-islooking-true">2. IsLooking = true&nbsp;<a class="anchor" href="#2-islooking-true">&#xE732;</a></h4>
+<p>Right after matchmaking starts, the IsLooking flag is set to true. This indicates that the system is looking for an opponent. This flag is set to true for both host and guest, and also in CreateOfflineLobby, which simulates online matchmaking. In online matchmaking, a timer for the timeout starts immediately after this.</p>
+<h4 id="3-islooking-false">3. IsLooking = false&nbsp;<a class="anchor" href="#3-islooking-false">&#xE732;</a></h4>
+<p>If an opponent is found or the host closes the lobby, the flag will be set to false, and preparations for transitioning to P2P connection will begin.</p>
+<h3 id="ismatchmaking-and-isinsession">IsMatchMaking and IsInSession&nbsp;<a class="anchor" href="#ismatchmaking-and-isinsession">&#xE732;</a></h3>
+<p>When the matchmaking is finished, the player moves to the “Session” state, which is the only state in which communication is possible in SynicSugar. This is true even in offline mode.</p>
+<h4 id="1-ismatchmaking-false-isinsession-true">1. IsMatchMaking = false, IsInSession = true&nbsp;<a class="anchor" href="#1-ismatchmaking-false-isinsession-true">&#xE732;</a></h4>
+<p>When the P2P connection is successfully established and necessary information is exchanged, the matchmaking phase ends and transitions to IsInSession. IsInSession will only be true if matchmaking is successful. Some APIs in the SynicSugar.P2P namespace will return Result.InvalidAPICall if called when IsInSession is not true.<br></p>
+<p>The state &quot;Session&quot; indicates that the system is ready for communication at any time, but it does not represent the actual communication state. <br></p>
+<p>To check if communication is occurring or if it is paused, p2pInfo.Instance.IsConnected should be used. Right after the session transition, the connection will be automatically established, so p2pInfo.Instance.IsConnected will be true. To stop the connection, you can use Pause via ConnectHub.<br></p>
+<p>In offline mode, the state is in the &quot;Session&quot; state, but since no actual connection is made, IsConnected will always be false, and some connection-related APIs will be restricted.</p>
+<p>Online</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span>SynicSugarManger.Instance.State.IsMatchmaking = </span><span style="color:#569cd6;">false</span><span>;
+</span><span>SynicSugarManger.Instance.State.IsInSession = </span><span style="color:#569cd6;">true</span><span>;
+</span><span>p2pInfo.Instance.SessionType = SessionType.OnlineSession;
+</span><span>p2pInfo.Instance.IsConnected = </span><span style="color:#569cd6;">true</span><span>;
+</span></code></pre>
+<p>Offline</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span>SynicSugarManger.Instance.State.IsMatchmaking = </span><span style="color:#569cd6;">false</span><span>;
+</span><span>SynicSugarManger.Instance.State.IsInSession = </span><span style="color:#569cd6;">true</span><span>;
+</span><span>p2pInfo.Instance.SessionType = SessionType.OfflineSession;
+</span><span>p2pInfo.Instance.IsConnected = </span><span style="color:#569cd6;">false</span><span>;
+</span></code></pre>
+<p>Failure in matchmaking</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span>SynicSugarManger.Instance.State.IsMatchmaking = </span><span style="color:#569cd6;">false</span><span>;
+</span><span>SynicSugarManger.Instance.State.IsInSession = </span><span style="color:#569cd6;">false</span><span>;
+</span><span>p2pInfo.Instance.SessionType = SessionType.None;
+</span><span>p2pInfo.Instance.IsConnected = </span><span style="color:#569cd6;">false</span><span>;
+</span></code></pre>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/search_index.en.js" defer></script>
+<script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/js.js" defer></script>
+
+</body>
+</html>
