@@ -5,7 +5,7 @@ weight = 1
 ## Import and Set up
 
 ### 1.Install SynicSugar and depended librarys.  
- The first is to import SynicSugar and dependent libraries.　You can get SynicSugar from OpenUPM or [SynicSugar/Release](https://github.com/skeyll/SynicSugar/releases)'s unitypackage.  
+ The first is to import SynicSugar and dependent libraries.　You can get SynicSugar from OpenUPM or [SynicSugar/Release](https://github.com/SynicSugar/SynicSugar/releases)'s unitypackage.  
  .unitypackage contains Mono.Cecil and System.Runtime.CompilerServices.Unsafe.dll for MemoryPack and, in addition to SynicSugar. Therefore, you can skip some processes, but it is more convenient to download via OpenUPM for version control.  
 
 1. Rigister some package with OpenUPM  
