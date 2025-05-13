@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using SynicSugar.P2P;
@@ -48,25 +49,19 @@ namespace SynicSugar.Samples.Chat
             ConnectHub.Instance.StartPacketReceiver(PacketReceiveTiming.FixedUpdate, 5);
             if(p2pInfo.Instance.AllUserIds.Count > 1)//VC setting for Online mode.
             { 
-                await RTCManager.Instance.StartVoiceSending();
+                RTCManager.Instance.StartVoiceSending();
                 // VC actions with No args
                 // RTCManager.Instance.ParticipantUpdatedNotifier.Register(() => OnStartSpeaking(), t => OnStopSpeaking());
                 RTCManager.Instance.ParticipantUpdatedNotifier.Register(t => OnStartSpeaking(t), t => OnStopSpeaking(t));
             }
         }
-        void OnDestroy()
-        {
-            #if SYNICSUGAR_PACKETINFO
-                PacketMonitor.Instance.SetUpdateTiming(PacketMonitor.UpdateTiming.None);
-            #endif
-        }
-#if SYNICSUGAR_FPSTEST
+    #if SYNICSUGAR_FPSTEST
         private void Update()
         {
             float fps = 1f / Time.deltaTime;
             Debug.Log("--UPDATE-- fps:" + fps);
         }
-#endif
+    #endif
         public void SwitchPanelContent()
         {
             matchmakeCanvas.SetActive(false);
@@ -82,13 +77,11 @@ namespace SynicSugar.Samples.Chat
         
         public void UpdateChatCount()
         {
-            if(p2pInfo.Instance.AllUserIds.Count > 1)
+            string count = string.Empty;
+            foreach(var id in p2pInfo.Instance.AllUserIds)
             {
-                inputCount.text = $"ChatCount: {ConnectHub.Instance.GetUserInstance<ChatPlayer>(p2pInfo.Instance.LocalUserId).submitCount} / {ConnectHub.Instance.GetUserInstance<ChatPlayer>(p2pInfo.Instance.CurrentRemoteUserIds[0]).submitCount}";
-            }
-            else
-            {
-                inputCount.text = $"ChatCount: {ConnectHub.Instance.GetUserInstance<ChatPlayer>(p2pInfo.Instance.LocalUserId).submitCount} / --";
+                ChatPlayer player = ConnectHub.Instance.GetUserInstance<ChatPlayer>(id);
+                count += $"{player.Name}: {player.submitCount} {Environment.NewLine}";
             }
         }
         private void OnDisconect(UserId id)
