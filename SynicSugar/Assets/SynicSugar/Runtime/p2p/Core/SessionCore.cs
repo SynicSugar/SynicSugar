@@ -46,6 +46,21 @@ namespace SynicSugar.Base {
         /// Can change this flag own, but basically Base class manages the flags.　
         /// </summary>
         public bool IsConnected { get; protected set; }
+
+        /// <summary>
+        /// Is this local user in Matchmaking or Session?
+        /// </summary>
+        /// <returns></returns>
+        protected bool IsInNetworkProcess(){
+           return SynicSugarManger.Instance.State.IsInSession || SynicSugarManger.Instance.State.IsMatchmaking;
+        }
+        /// <summary>
+        /// Is this local user in SetupProcess（Matchmaking and not looking for oponents） or Session?
+        /// </summary>
+        /// <returns></returns>
+        protected bool IsInSetupProcessOrSession(){
+           return SynicSugarManger.Instance.State.IsInSession || (SynicSugarManger.Instance.State.IsMatchmaking && !MatchMakeManager.Instance.isLooking);
+        }
         
         /// <summary>
         /// Generate packet receiver object and add each receiver script.
@@ -112,7 +127,7 @@ namespace SynicSugar.Base {
                 Logger.LogWarning("RestartConnections", IsConnected ?  "The connection is already active. No action taken." : "Cannot restart because the user is not in an online session.");
                 return Result.InvalidAPICall;
             }
-            Result result = RestartConnections();
+            Result result = InitiateConnection();
 
             if(result == Result.Success){
                 IsConnected = true;
@@ -120,7 +135,6 @@ namespace SynicSugar.Base {
             }
             return result;
         }
-        protected abstract Result RestartConnections();
 
         /// <summary>
         /// Use this from hub not to call some methods in Main-Assembly from SynicSugar.dll.<br />
@@ -367,12 +381,16 @@ namespace SynicSugar.Base {
     #endregion
 #region Connect
         /// <summary>
-        /// Prep for p2p connections.
-        /// Call from the library after the MatchMake is established.
+        /// Prep for p2p connections.<br />
+        /// Connect or Request a connection with all other peers. <br />
         /// </summary>
         //* Maybe: Some processes in InitConnectConfig need time to complete and the Member list will be created after that end. Therefore, we will add Notify first to spent time.
-        public Result OpenConnection(bool checkInitConnect = false){
-            Result result = InitiateConnection(checkInitConnect);
+        public Result OpenConnection(){
+            if(!IsInSetupProcessOrSession()){
+                Logger.LogWarning("OpenConnection", "This local user is NOT in SetupProcess or Session. No action taken.");
+                return Result.InvalidAPICall;
+            }
+            Result result = InitiateConnection();
 
             if (result == Result.Success){
                 rttTokenSource = new CancellationTokenSource();
@@ -380,7 +398,14 @@ namespace SynicSugar.Base {
             }
             return result;
         }
-        protected abstract Result InitiateConnection(bool checkInitConnect);
+        protected abstract Result InitiateConnection();
+
+        /// <summary>
+        /// Connect or Request a connection with other peer.<br />
+        /// </summary>
+        /// <param name="targetId">Reconnected user's id</param>
+        /// <returns></returns>
+        public abstract Result AcceptConnection(UserId targetId);
 #endregion
 #region Disconnect
         /// <summary>
@@ -397,7 +422,17 @@ namespace SynicSugar.Base {
             }
             return result;
         }
+        /// <summary>
+        /// Close all p2p conenction
+        /// </summary>
+        /// <returns></returns>
         protected abstract Result CloseConnection();
+        /// <summary>
+        /// Close the connection with target user.
+        /// </summary>
+        /// <param name="targetId"></param>
+        /// <returns></returns>
+        public abstract Result CloseConnection(UserId targetId);
 #endregion
 
         protected internal abstract Result ResetConnections();
@@ -446,5 +481,12 @@ namespace SynicSugar.Base {
         void INetworkCore.GetPong(string id, ArraySegment<byte> utc){
             p2pInfo.Instance.pings.GetPong(id, utc);
         }
+
+        /// <summary>
+        /// Get the packet queue information.
+        /// </summary>
+        /// <param name="Info">The object to return the result.</param>
+        /// <returns></returns>
+        public abstract Result GetPacketQueueInfo(out PacketQueueInformation Info);
     }
 }

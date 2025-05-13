@@ -638,6 +638,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1127570235843273856, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
+      propertyPath: p2pSetupTimeoutSec
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1127570235843273856, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
       propertyPath: customSaveLobbyID.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -706,6 +710,14 @@ PrefabInstance:
       value: NetworkManager
       objectReference: {fileID: 0}
     - target: {fileID: 2114254298220440419, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
+      propertyPath: RPCBatchSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114254298220440419, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
+      propertyPath: relayControl
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114254298220440419, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
       propertyPath: InitialConnection
       value: 2
       objectReference: {fileID: 0}
@@ -714,20 +726,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2114254298220440419, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
-      propertyPath: UseDisconnectedEarlyNotify
+      propertyPath: AllowDelayedDelivery
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4569237702368255570, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
-      propertyPath: _vcMode
+    - target: {fileID: 2114254298220440419, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
+      propertyPath: LargePacketBatchSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114254298220440419, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
+      propertyPath: UseDisconnectedEarlyNotify
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4569237702368255570, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
       propertyPath: UseOpenVC
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4569237702368255570, guid: e18422c96d27f49489abe8b774c3a6b9, type: 3}
-      propertyPath: _voiceChatMode
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1678,7 +1690,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1839880479}
   m_Direction: 2
   m_Value: 0.9999997
-  m_Size: 0.66666675
+  m_Size: 0.6666666
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3958,7 +3970,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -762, y: -60}
-  m_SizeDelta: {x: 250, y: 60}
+  m_SizeDelta: {x: 350, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2022834940
 MonoBehaviour:

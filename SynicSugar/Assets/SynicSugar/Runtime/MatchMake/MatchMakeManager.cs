@@ -534,6 +534,7 @@ namespace SynicSugar.MatchMake {
             }
             
             p2pInfo.Instance.userIds = new UserIds(isReconencter);
+            p2pInfo.Instance.ConnectionNotifier.Init();
 
             Result setupResult = await matchmakingCore.SetupP2PConnection(p2pSetupTimeoutSec, token);
 

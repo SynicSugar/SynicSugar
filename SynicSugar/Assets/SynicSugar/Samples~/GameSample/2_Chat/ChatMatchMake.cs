@@ -33,7 +33,10 @@ namespace SynicSugar.Samples.Chat
         //Second,　check whether this player is a reconnector.
         //In fact, you had better check id like this on the Title screen after user Login to EOS.
         private void Start()
-        {
+        {   
+            #if SYNICSUGAR_PACKETINFO
+                PacketMonitor.Instance.SetUpdateTiming(PacketMonitor.UpdateTiming.Update);
+            #endif
             Debug.Log("ChatMatchmake");
             //Prep matchmaking
             // SetGUIEvents();

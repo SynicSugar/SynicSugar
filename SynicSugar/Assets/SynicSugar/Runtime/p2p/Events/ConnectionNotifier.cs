@@ -1,5 +1,6 @@
 #pragma warning disable CS0414 //The field is assigned but its value is never used
 using System;
+using SynicSugar.MatchMake;
 
 namespace SynicSugar.P2P {
     /// <summary>
@@ -71,14 +72,17 @@ namespace SynicSugar.P2P {
             OnTargetEarlyDisconnected += earlyDisconnected;
             OnTargetRestored += restored;
         }
+        internal void Init(){
+            establishedMemberCounts = 0;
+            completeConnectPreparetion = false;
+        }
         /// <summary>
         /// Remove all events and init all variables. <br />
         /// NetworkObject can be used without being initialized, so called this on the last of the session.
         /// </summary>
         internal void Reset(){
             Clear();
-            establishedMemberCounts = 0;
-            completeConnectPreparetion = false;
+            Init();
         }
         /// <summary>
         /// Remove all events from the actions. <br />
@@ -142,17 +146,34 @@ namespace SynicSugar.P2P {
         /// <summary>
         /// This Local user can't connect to lobby anymore.
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="reason"></param>
         internal void Closed(Reason reason){
             ClosedReason = reason;
             OnLobbyClosed?.Invoke(reason);
         }
         private int establishedMemberCounts;
-        internal bool completeConnectPreparetion; 
-        internal void OnEstablished(){
-            establishedMemberCounts++;
-            completeConnectPreparetion = p2pInfo.Instance.userIds.RemoteUserIds.Count == establishedMemberCounts;
+        internal bool completeConnectPreparetion;
+        /// <summary>
+        /// For new connection or connection from complete disconnection.
+        /// </summary>
+        /// <param name="id"></param>
+        internal void OnEstablished(UserId id){
+            if(!SynicSugarManger.Instance.State.IsInSession)
+            {
+                establishedMemberCounts++;
+                completeConnectPreparetion = p2pInfo.Instance.userIds.RemoteUserIds.Count == establishedMemberCounts;
+            }
+            else
+            {
+                // Send Id list.
+                if(p2pInfo.Instance.IsHost()){
+                    ConnectionSetupHandler setupHandler = new();
+                    setupHandler.SendUserList(id);
+                }
+                Connected(id);
+            }
+
+            Logger.Log("OnEstablished", $"A connection has been established with {id.ToMaskedString()} / CurrentConnections: {establishedMemberCounts} / {p2pInfo.Instance.userIds.RemoteUserIds.Count}");
         }
     }
 }
