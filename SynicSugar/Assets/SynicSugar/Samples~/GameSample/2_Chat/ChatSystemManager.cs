@@ -83,6 +83,7 @@ namespace SynicSugar.Samples.Chat
                 ChatPlayer player = ConnectHub.Instance.GetUserInstance<ChatPlayer>(id);
                 count += $"{player.Name}: {player.submitCount} {Environment.NewLine}";
             }
+            inputCount.text = count;
         }
         private void OnDisconect(UserId id)
         {
