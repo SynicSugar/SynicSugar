@@ -66,6 +66,7 @@ If this is no longer needed, we call *[CancelCurrentMatchMake](../../SynicSugar.
 | [GetNATType](../p2pInfo/getnattype) | Get last-queried NAT-type |
 | [GetPing](../p2pInfo/getping) | Get a ping with a peer from cache |
 | [RefreshPing](../p2pInfo/refreshping) | Refresh ping with other all peers |
+| [GetPacketQueueInfo](../p2pInfo/getpacketqueueinfo) | Get the packet queue info |
 
 
 

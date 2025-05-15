@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using SynicSugar.P2P;
@@ -48,7 +49,7 @@ namespace SynicSugar.Samples.Chat
             ConnectHub.Instance.StartPacketReceiver(PacketReceiveTiming.FixedUpdate, 5);
             if(p2pInfo.Instance.AllUserIds.Count > 1)//VC setting for Online mode.
             { 
-                await RTCManager.Instance.StartVoiceSending();
+                RTCManager.Instance.StartVoiceSending();
                 // VC actions with No args
                 // RTCManager.Instance.ParticipantUpdatedNotifier.Register(() => OnStartSpeaking(), t => OnStopSpeaking());
                 RTCManager.Instance.ParticipantUpdatedNotifier.Register(t => OnStartSpeaking(t), t => OnStopSpeaking(t));
@@ -76,14 +77,13 @@ namespace SynicSugar.Samples.Chat
         
         public void UpdateChatCount()
         {
-            if(p2pInfo.Instance.AllUserIds.Count > 1)
+            string count = string.Empty;
+            foreach(var id in p2pInfo.Instance.AllUserIds)
             {
-                inputCount.text = $"ChatCount: {ConnectHub.Instance.GetUserInstance<ChatPlayer>(p2pInfo.Instance.LocalUserId).submitCount} / {ConnectHub.Instance.GetUserInstance<ChatPlayer>(p2pInfo.Instance.CurrentRemoteUserIds[0]).submitCount}";
+                ChatPlayer player = ConnectHub.Instance.GetUserInstance<ChatPlayer>(id);
+                count += $"{player.Name}: {player.submitCount} {Environment.NewLine}";
             }
-            else
-            {
-                inputCount.text = $"ChatCount: {ConnectHub.Instance.GetUserInstance<ChatPlayer>(p2pInfo.Instance.LocalUserId).submitCount} / --";
-            }
+            inputCount.text = count;
         }
         private void OnDisconect(UserId id)
         {

@@ -573,7 +573,7 @@ namespace SynicSugar.MatchMake {
         /// <returns></returns>
         async UniTask<Result> TryJoinSearchResults(LobbySearch lobbySearch, List<AttributeData> userAttributes, bool isReconnecter = false, CancellationToken token = default(CancellationToken)){ 
             if (lobbySearch == null){
-                Logger.LogError("TryJoinSearchResults", "There is no LobbySearch.");
+                Logger.LogError("TryJoinSearchResults", "Could not get Lobby data by the process to find a lobby from EOS.");
                 return Result.NotFound;
             }
 
@@ -849,20 +849,16 @@ namespace SynicSugar.MatchMake {
 
             }else if(info.CurrentStatus == LobbyMemberStatus.Left) {
                 Logger.Log($"MemberStatusNotyfy", $"{UserId.GetUserId(info.TargetUserId).ToMaskedString()} left from lobby.");
-                p2pInfo.Instance.userIds.RemoveUserId(info.TargetUserId);
+                p2pInfo.Instance.userIds.RemoveUserIdFromNonAllUserIds(info.TargetUserId);
                 p2pInfo.Instance.ConnectionNotifier.Leaved(UserId.GetUserId(info.TargetUserId), Reason.Left);
             }else if(info.CurrentStatus == LobbyMemberStatus.Disconnected){
                 Logger.Log($"MemberStatusNotyfy", $"{UserId.GetUserId(info.TargetUserId).ToMaskedString()} diconnect from lobby.");
-                p2pInfo.Instance.userIds.MoveTargetUserIdToLefts(info.TargetUserId);
+                p2pInfo.Instance.userIds.MoveUserIdToDisconnected(info.TargetUserId);
                 p2pInfo.Instance.ConnectionNotifier.Disconnected(UserId.GetUserId(info.TargetUserId), Reason.Disconnected);
+                p2pConfig.Instance.sessionCore.CloseConnection(UserId.GetUserId(info.TargetUserId));
             }else if(info.CurrentStatus == LobbyMemberStatus.Joined){
-                p2pInfo.Instance.userIds.MoveTargetUserIdToRemoteUsersFromLeft(info.TargetUserId);
-                p2pInfo.Instance.ConnectionNotifier.Connected(UserId.GetUserId(info.TargetUserId));
-                // Send Id list.
-                if(p2pInfo.Instance.IsHost()){
-                    ConnectionSetupHandler.SendUserList(UserId.GetUserId(info.TargetUserId));
-                    Logger.Log($"MemberStatusNotyfy", $"Send user list to {UserId.GetUserId(info.TargetUserId).ToMaskedString()}.");
-                }
+                p2pInfo.Instance.userIds.MoveUserIdToConnectedFromDisconnected(info.TargetUserId);
+                p2pConfig.Instance.sessionCore.AcceptConnection(UserId.GetUserId(info.TargetUserId));
             }
         }
         /// <summary>
@@ -1401,7 +1397,7 @@ namespace SynicSugar.MatchMake {
 
                 userIds.AllUserIds.Add(targetId);
 
-                if(userIds.LocalUserId != targetId){
+                if(targetId != userIds.LocalUserId){
                     userIds.RemoteUserIds.Add(targetId);
                 }
             }
@@ -1430,25 +1426,26 @@ namespace SynicSugar.MatchMake {
         /// <returns></returns>
         async UniTask<Result> OpenConnection(ushort setupTimeoutSec, CancellationToken token){
             if(p2pConfig.Instance.relayControl != RelayControl.AllowRelays){
+                Logger.Log("OpenConnection", "Set relay control to allow.");
                 p2pConfig.Instance.SetRelayControl(p2pConfig.Instance.relayControl);
             }
             await p2pConfig.Instance.natRelayManager.Init();
             RemoveNotifyLobbyMemberUpdateReceived();
-            p2pConfig.Instance.sessionCore.OpenConnection(true);
+            p2pConfig.Instance.sessionCore.OpenConnection();
             Logger.Log("OpenConnection", "Sending a connection request to other peers.");
-
-            Result canConnect = await ConnectionSetupHandler.WaitConnectPreparation(token, setupTimeoutSec * 1000); //Pass time as ms.
+            
+            ConnectionSetupHandler setupHandler = new();
+            Result canConnect = await setupHandler.WaitConnectPreparation(token, setupTimeoutSec * 1000); //Pass time as ms.
             if(canConnect != Result.Success){
-                return Result.ConnectEstablishFailed;
+                return canConnect;
             }
             //Host sends AllUserIds list, Guest Receives AllUserIds.
             if(p2pInfo.Instance.IsHost()){
                 Logger.Log("OpenConnection", "Sending UserList to other peers as the Host.");
-                await ConnectionSetupHandler.SendUserListToAll(token);
+                await setupHandler.SendUserListToAll(token);
             }else{
                 Logger.Log("OpenConnection", "Waiting for UserList from the Host.");
-                ConnectionSetupHandler basicInfo = new();
-                await basicInfo.ReciveUserIdsPacket(token);
+                await setupHandler.ReciveUserIdsPacket(token);
             }
             p2pInfo.Instance.pings.Init();
             return Result.Success;

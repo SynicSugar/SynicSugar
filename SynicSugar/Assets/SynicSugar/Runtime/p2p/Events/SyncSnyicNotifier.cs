@@ -12,7 +12,22 @@ namespace SynicSugar.P2P {
         public void Register(Action syncedSynic){
             OnSyncedSynic += syncedSynic;
         }
-        internal void Clear(){
+        /// <summary>
+        /// Remove all events and init all variables. <br />
+        /// NetworkObject can be used without being initialized, so called this on the last of the session.
+        /// </summary>
+        internal void Reset(){
+            LastSyncedUserId = SynicSugarManger.Instance.LocalUserId;
+            LastSyncedPhase = 0;
+            ReceivedUsers.Clear();
+            _receivedAllSyncSynic = false;
+            includeDisconnectedData = false;
+        }
+        /// <summary>
+        /// Remove all events from the actions. <br />
+        /// Events are automatically cleared when they are no longer needed.
+        /// </summary>
+        public void Clear(){
             OnSyncedSynic = null;
         }
 

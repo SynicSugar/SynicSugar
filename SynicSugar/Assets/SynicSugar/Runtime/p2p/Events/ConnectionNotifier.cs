@@ -1,5 +1,6 @@
 #pragma warning disable CS0414 //The field is assigned but its value is never used
 using System;
+using SynicSugar.MatchMake;
 
 namespace SynicSugar.P2P {
     /// <summary>
@@ -12,23 +13,31 @@ namespace SynicSugar.P2P {
 
         /// <summary>
         /// Invoke when another user leaves.<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<UserId> OnTargetLeaved;
         /// <summary>
         /// Invoke when another user disconnects unexpectedly.<br />
-        /// This has a lag of about 5-10 seconds after a user downs in its local.
+        /// This has a lag of about 5-10 seconds after a user downs in its local.<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<UserId> OnTargetDisconnected;
         /// <summary>
         /// Invoke when a user re-connects after matchmaking.<br />
-        /// For returnee and newcomer
+        /// For returnee and newcomer<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<UserId> OnTargetConnected;
         
         /// <summary>
         /// Invoke when a connection is interrupted with another peer. <br />
         /// The connection is attempted to be restored, and if that's failed, "Diconnected" is fired.<br />
-        /// This notification is early, but this doesn't means just that other user is disconnected.
+        /// This notification is early, but this doesn't means just that other user is disconnected.<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<UserId> OnTargetEarlyDisconnected;
         
@@ -39,14 +48,16 @@ namespace SynicSugar.P2P {
         public event Action<UserId> OnTargetRestored;
         
         /// <summary>
-        /// Invoked when the Lobby is closed and the local user is removed　￥ from the Lobby.<br />
+        /// Invoked when the Lobby is closed and the local user is removed　from the Lobby.<br />
         /// Possible reasons include:<br />
         /// - Disconnected: An unexpected disconnection occurred.<br />
         /// - LobbyClosed: The host closed the Lobby.<br />
         /// - Kicked: The local user was kicked from the Lobby by Host.<br />
         /// Note: This does not include the process for destroying the NetworkManager. If it is no longer needed, please call `Destroy(MatchMakeManager.Instance.gameObject);`. <br />
         /// The LobbyID is deleted only if the Lobby was closed by the host (LobbyClosed). <br />
-        /// If disconnected or kicked, can use `MatchMaking.Instance.ReconnectLobby()` to rejoin.
+        /// If disconnected or kicked, can use `MatchMaking.Instance.ReconnectLobby()` to rejoin.　<br />
+        /// To remove all event handlers at once, call `Clear()`. <br />
+        /// To remove a specific handler, use the `-=` operator.
         /// </summary>
         public event Action<Reason> OnLobbyClosed;
 
@@ -61,15 +72,29 @@ namespace SynicSugar.P2P {
             OnTargetEarlyDisconnected += earlyDisconnected;
             OnTargetRestored += restored;
         }
-        internal void Clear(){
+        internal void Init(){
+            establishedMemberCounts = 0;
+            completeConnectPreparetion = false;
+        }
+        /// <summary>
+        /// Remove all events and init all variables. <br />
+        /// NetworkObject can be used without being initialized, so called this on the last of the session.
+        /// </summary>
+        internal void Reset(){
+            Clear();
+            Init();
+        }
+        /// <summary>
+        /// Remove all events from the actions. <br />
+        /// Events are automatically cleared when they are no longer needed.
+        /// </summary>
+        public void Clear(){
             OnTargetLeaved = null;
             OnTargetDisconnected = null;
             OnTargetConnected = null;
             OnTargetEarlyDisconnected = null;
             OnTargetRestored = null;
             OnLobbyClosed = null;
-            establishedMemberCounts = 0;
-            completeConnectPreparetion = false;
         }
         /// <summary>
         /// Invoked when someone leaves the lobby for reasons other than Leave.
@@ -121,17 +146,34 @@ namespace SynicSugar.P2P {
         /// <summary>
         /// This Local user can't connect to lobby anymore.
         /// </summary>
-        /// <param name="id"></param>
         /// <param name="reason"></param>
         internal void Closed(Reason reason){
             ClosedReason = reason;
             OnLobbyClosed?.Invoke(reason);
         }
         private int establishedMemberCounts;
-        internal bool completeConnectPreparetion; 
-        internal void OnEstablished(){
-            establishedMemberCounts++;
-            completeConnectPreparetion = p2pInfo.Instance.userIds.RemoteUserIds.Count == establishedMemberCounts;
+        internal bool completeConnectPreparetion;
+        /// <summary>
+        /// For new connection or connection from complete disconnection.
+        /// </summary>
+        /// <param name="id"></param>
+        internal void OnEstablished(UserId id){
+            if(!SynicSugarManger.Instance.State.IsInSession)
+            {
+                establishedMemberCounts++;
+                completeConnectPreparetion = p2pInfo.Instance.userIds.RemoteUserIds.Count == establishedMemberCounts;
+            }
+            else
+            {
+                // Send Id list.
+                if(p2pInfo.Instance.IsHost()){
+                    ConnectionSetupHandler setupHandler = new();
+                    setupHandler.SendUserList(id);
+                }
+                Connected(id);
+            }
+
+            Logger.Log("OnEstablished", $"A connection has been established with {id.ToMaskedString()} / CurrentConnections: {establishedMemberCounts} / {p2pInfo.Instance.userIds.RemoteUserIds.Count}");
         }
     }
 }

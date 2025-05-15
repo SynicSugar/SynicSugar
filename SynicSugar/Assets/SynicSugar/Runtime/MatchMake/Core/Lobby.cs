@@ -166,14 +166,14 @@ namespace SynicSugar.MatchMake {
                 return;
             }
 
-            InitFromLobbyDetails(outLobbyDetailsHandle);
+            UpdateLobbyWithLatestLobbyDetails(outLobbyDetailsHandle);
             outLobbyDetailsHandle.Release();
         }
         /// <summary>
         /// Initializing the given LobbyDetails handle and caches all relevant attributes
         /// </summary>
         /// <param name="lobbyDetailsHandle">Specified LobbyDetails handle</param>
-        void InitFromLobbyDetails(LobbyDetails lobbyDetailsHandle){
+        void UpdateLobbyWithLatestLobbyDetails(LobbyDetails lobbyDetailsHandle){
             // Get owner
             var lobbyDetailsGetLobbyOwnerOptions = new LobbyDetailsGetLobbyOwnerOptions();
             ProductUserId newLobbyOwner = lobbyDetailsHandle.GetLobbyOwner(ref lobbyDetailsGetLobbyOwnerOptions);
@@ -185,11 +185,11 @@ namespace SynicSugar.MatchMake {
             var lobbyDetailsCopyInfoOptions = new LobbyDetailsCopyInfoOptions();
             ResultE infoResult = lobbyDetailsHandle.CopyInfo(ref lobbyDetailsCopyInfoOptions, out LobbyDetailsInfo? outLobbyDetailsInfo);
             if (infoResult != ResultE.Success){
-                Logger.LogError("InitFromLobbyDetails", "Can't copy lobby info.", (Result)infoResult);
+                Logger.LogError("UpdateLobbyWithLatestLobbyDetails", "Can't copy lobby info.", (Result)infoResult);
                 return;
             }
             if (outLobbyDetailsInfo == null){
-                Logger.LogError("InitFromLobbyDetails", "Could not copy info: outLobbyDetailsInfo is null.");
+                Logger.LogError("UpdateLobbyWithLatestLobbyDetails", "Could not copy info: outLobbyDetailsInfo is null.");
                 return;
             }
 
@@ -201,7 +201,7 @@ namespace SynicSugar.MatchMake {
             bDisableHostMigration = (bool)(outLobbyDetailsInfo?.AllowHostMigration);
             RejoinAfterKickRequiresInvite = (bool)(outLobbyDetailsInfo?.RejoinAfterKickRequiresInvite);
 
-            Logger.Log("InitFromLobbyDetails", $"Update Lobby Data. {System.Environment.NewLine} MaxLobbyMembers {MaxLobbyMembers} / PermissionLevel {PermissionLevel} / BucketId {BucketId} / AllowInvites {bAllowInvites} / RTCRoomEnabled {bEnableRTCRoom} / AllowHostMigration {bDisableHostMigration} / RejoinAfterKickRequiresInvite {RejoinAfterKickRequiresInvite}");
+            Logger.Log("UpdateLobbyWithLatestLobbyDetails", $"Update Lobby Data. {System.Environment.NewLine} MaxLobbyMembers {MaxLobbyMembers} / PermissionLevel {PermissionLevel} / BucketId {BucketId} / AllowInvites {bAllowInvites} / RTCRoomEnabled {bEnableRTCRoom} / AllowHostMigration {bDisableHostMigration} / RejoinAfterKickRequiresInvite {RejoinAfterKickRequiresInvite}");
 
             // Get attributes
             Attributes.Clear();
@@ -233,7 +233,7 @@ namespace SynicSugar.MatchMake {
                     ResultE memberAttributeResult = lobbyDetailsHandle.CopyMemberAttributeByIndex(ref lobbyDetailsCopyMemberAttributeByIndexOptions, out Attribute? outAttribute);
 
                     if (memberAttributeResult != ResultE.Success){
-                        Logger.Log("InitFromLobbyDetails", "Can't copy member attribute.", (Result)memberAttributeResult);
+                        Logger.Log("UpdateLobbyWithLatestLobbyDetails", "Can't copy member attribute.", (Result)memberAttributeResult);
                         continue;
                     }
  

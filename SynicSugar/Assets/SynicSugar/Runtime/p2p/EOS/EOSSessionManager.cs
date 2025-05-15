@@ -1,7 +1,6 @@
 using PlayEveryWare.EpicOnlineServices;
 using Epic.OnlineServices;
 using Epic.OnlineServices.P2P;
-using UnityEngine;
 using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -23,6 +22,8 @@ namespace SynicSugar.P2P {
                 LocalUserId = SynicSugarManger.Instance.LocalUserId.AsEpic,
                 RequestedChannel = 255
             };
+
+            queueOptions = new GetPacketQueueInfoOptions();
         }
 
         /// <summary>
@@ -42,6 +43,7 @@ namespace SynicSugar.P2P {
         /// To get packets
         /// </summary>
         GetNextReceivedPacketSizeOptions standardPacketSizeOptions, synicPacketSizeOptions;
+        GetPacketQueueInfoOptions queueOptions;
         ProductUserId productUserId;
         
     #region INetworkCore
@@ -70,12 +72,6 @@ namespace SynicSugar.P2P {
 
             ((INetworkCore)this).StopPacketReceiver();
             return Result.Success;
-        }
-        /// <summary>
-        /// Prepare to receive in advance. If user sent packets, it can open to get packets for a socket id without this.
-        /// </summary>
-        protected override Result RestartConnections(){
-            return InitiateConnection();
         }
         
         /// <summary>
@@ -109,10 +105,10 @@ namespace SynicSugar.P2P {
 #endif
                 return false; //No packet
             }
-        #if SYNICSUGAR_PACKETINFO
-            Debug.Log($"ReceivePacket: ch: {ch} from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
-        #endif
             id = UserId.GetUserId(productUserId);
+        #if SYNICSUGAR_PACKETINFO
+            UnityEngine.Debug.Log($"ReceivePacket: ch: {ch} from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
+        #endif
             return true;
         }
         /// <summary>
@@ -146,10 +142,10 @@ namespace SynicSugar.P2P {
 #endif
                 return false; //No packet
             }
-        #if SYNICSUGAR_PACKETINFO
-            Debug.Log($"ReceivePacket(Synic): ch: {ch}  from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
-        #endif
             id = UserId.GetUserId(productUserId);
+        #if SYNICSUGAR_PACKETINFO
+            UnityEngine.Debug.Log($"ReceivePacket(Synic): ch: {ch}  from {id.ToMaskedString()} / packet size {bytesWritten} / payload {payload.ToHexString()}");
+        #endif
             return true;
         }
     
@@ -176,6 +172,26 @@ namespace SynicSugar.P2P {
             }
             Logger.Log("ClearPacketQueue", "Finish!");
         }
+        public override Result GetPacketQueueInfo(out PacketQueueInformation info)
+        {
+            var result = (Result)P2PHandle.GetPacketQueueInfo(ref queueOptions, out PacketQueueInfo packetInfo);
+            if(result != Result.Success){
+                Logger.LogError("GetPacketQueueInfo", "Failed to get packet queue info.", result);
+                info = new PacketQueueInformation();
+            }
+            else
+            {
+                info = new PacketQueueInformation(){
+                    IncomingPacketQueueMaxSizeBytes = packetInfo.IncomingPacketQueueMaxSizeBytes,
+                    IncomingPacketQueueCurrentSizeBytes = packetInfo.IncomingPacketQueueCurrentSizeBytes,
+                    IncomingPacketQueueCurrentPacketCount = packetInfo.IncomingPacketQueueCurrentPacketCount,
+                    OutgoingPacketQueueMaxSizeBytes = packetInfo.OutgoingPacketQueueMaxSizeBytes,
+                    OutgoingPacketQueueCurrentSizeBytes = packetInfo.OutgoingPacketQueueCurrentSizeBytes,
+                    OutgoingPacketQueueCurrentPacketCount = packetInfo.OutgoingPacketQueueCurrentPacketCount
+                };
+            }
+            return result;
+        }
 #region Notify(ConnectRquest)
         /// <summary>
         /// Ready to receive packets of users in the same socket.
@@ -198,7 +214,7 @@ namespace SynicSugar.P2P {
         // This function will only be called if the connection has not been accepted yet.
         void OnIncomingConnectionRequest(ref OnIncomingConnectionRequestInfo data){
             if (!(bool)data.SocketId?.SocketName.Equals(ScoketName)){
-                Logger.LogError("OnIncomingConnectionRequest", "unknown socket id. This peer should be no lobby member.");
+                Logger.LogError("OnIncomingConnectionRequest", "This packet uses diffrent socket id with the current session. This peer is likely not a lobby member.");
                 return;
             }
 
@@ -212,7 +228,9 @@ namespace SynicSugar.P2P {
 
             if (result != ResultE.Success){
                 Logger.LogError("OnIncomingConnectionRequest", "error while accepting connection.", (Result)result);
+                return;
             }
+            Logger.Log("OnIncomingConnectionRequest", $"Accept the connection with {UserId.GetUserId(data.RemoteUserId).ToMaskedString()}");
         }
         void RemoveNotifyPeerConnectionRequest(){
             P2PHandle.RemoveNotifyPeerConnectionRequest(RequestNotifyId);
@@ -225,15 +243,13 @@ namespace SynicSugar.P2P {
     /// Call from the library after the MatchMake is established.
     /// </summary>
     //* Maybe: Some processes in InitConnectConfig need time to complete and the Member list will be created after that end. Therefore, we will add Notify first to spent time.
-    protected override Result InitiateConnection(bool checkInitConnect = false){
+    protected override Result InitiateConnection(){
         AddNotifyPeerConnectionRequest();
         AcceptAllConenctions();
 
-        if(checkInitConnect || p2pConfig.Instance.UseDisconnectedEarlyNotify){
-            AddNotifyPeerConnectionEstablished();
-        }
-        if(checkInitConnect){
+        if(!SynicSugarManger.Instance.State.IsInSession || p2pConfig.Instance.UseDisconnectedEarlyNotify){
             UpdatePacketOptions();
+            AddNotifyPeerConnectionEstablished();
         }
         if(p2pConfig.Instance.UseDisconnectedEarlyNotify){
             AddNotifyPeerConnectionInterrupted();
@@ -274,9 +290,10 @@ namespace SynicSugar.P2P {
     /// </summary>
     void AcceptAllConenctions(){
         ResultE result = ResultE.Success;
+        ProductUserId localUserId = p2pInfo.Instance.userIds.LocalUserId.AsEpic;
         foreach(var id in p2pInfo.Instance.userIds.RemoteUserIds){
             AcceptConnectionOptions options = new AcceptConnectionOptions(){
-                LocalUserId = p2pInfo.Instance.userIds.LocalUserId.AsEpic,
+                LocalUserId = localUserId,
                 RemoteUserId = id.AsEpic,
                 SocketId = SocketId
             };
@@ -287,7 +304,31 @@ namespace SynicSugar.P2P {
                 Logger.LogError("AcceptAllConenctions", $"error while accepting connection for {id.ToMaskedString()}.", (Result)result);
                 break;
             }
+            Logger.Log("AcceptAllConenctions", $"Accept the connection from {id.ToMaskedString()}");
         }
+    }
+    /// <summary>
+    /// For reconnection process. <br />
+    /// Accept the connection with the disconnected user. <br />
+    /// EOS doesn't need this process, because the connection is automatically restored. This is for the other backend in the future.
+    /// </summary>
+    /// <param name="targetId"></param>
+    /// <returns></returns>
+    public override Result AcceptConnection(UserId targetId){
+        AcceptConnectionOptions options = new AcceptConnectionOptions(){
+            LocalUserId = SynicSugarManger.Instance.LocalUserId.AsEpic,
+            RemoteUserId = targetId.AsEpic,
+            SocketId = SocketId
+        };
+        
+        Result result = (Result)P2PHandle.AcceptConnection(ref options);
+
+        if (result != Result.Success){
+            Logger.LogError("AcceptConnection", $"error while accepting connection for {targetId.ToMaskedString()}.", result);
+            return result;
+        }
+        Logger.Log("AcceptConnection", $"Accept the connection with {targetId.ToMaskedString()}");
+        return Result.Success;
     }
 #endregion
 #region Early Disconnected Notify
@@ -352,7 +393,7 @@ namespace SynicSugar.P2P {
         
         if(data.ConnectionType == ConnectionEstablishedType.NewConnection &&
             p2pInfo.Instance.userIds.RemoteUserIds.Contains(UserId.GetUserId(data.RemoteUserId))){
-            p2pInfo.Instance.ConnectionNotifier.OnEstablished();
+            p2pInfo.Instance.ConnectionNotifier.OnEstablished(UserId.GetUserId(data.RemoteUserId));
             return;
         }
     }
@@ -413,6 +454,24 @@ namespace SynicSugar.P2P {
             if(result != Result.Success){
                 Logger.LogError("CloseConnections", "Failed to close connection.", result);
             }
+            return result;
+        }
+        /// <summary>
+        /// Close the connection and drop packets about target user.
+        /// </summary>
+        /// <param name="targetId"></param>
+        /// <returns></returns>
+        public override Result CloseConnection (UserId targetId){
+            var closeOptions = new CloseConnectionOptions(){
+                LocalUserId = p2pInfo.Instance.userIds.LocalUserId.AsEpic,
+                RemoteUserId = targetId.AsEpic,
+                SocketId = SocketId
+            };
+            Result result = (Result)P2PHandle.CloseConnection(ref closeOptions);
+            if(result != Result.Success){
+                Logger.LogError("CloseConnection", "Failed to close connection.", result);
+            }
+            Logger.Log("CloseConnection", $"Close the connection with {targetId.ToMaskedString()}");
             return result;
         }
 #endregion

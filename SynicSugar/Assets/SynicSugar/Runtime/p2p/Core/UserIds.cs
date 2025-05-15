@@ -44,27 +44,52 @@ namespace SynicSugar.P2P {
             isJustReconnected = false;
         }
         /// <summary>
-        /// Update AllUserIds with Host's sending data.
+        /// Update UserId Listｓ with Host's sending data.
         /// </summary>
         /// <param name="data">Contains All UserIds and Disconnected user indexes</param>
-        internal void OverwriteAllUserIdsWithOrdered(BasicInfo data){
-            Logger.Log("OverwriteAllUserIdsWithOrdered", $"Overwrite AllUserIds with {data.userIds.Count} users. , isReconencter: {isJustReconnected}");
+        internal void OverwriteUserIdsWithHostData(BasicInfo data){
+            Logger.Log("OverwriteUserIdsWithHostData", $"Update lists with {data.userIds.Count} users. , isReconencter: {isJustReconnected}");
 
-            AllUserIds.Clear();
             //Change order　to same in host local.
-            foreach(var id in data.userIds){
-                AllUserIds.Add(UserId.GenerateFromStringForReconnecter(id));
+            if(AllUserIds.Count == data.userIds.Count)
+            {
+                for (int i = 0; i < data.userIds.Count; i++)
+                {
+                    AllUserIds[i] = UserId.GenerateFromStringForReconnecter(data.userIds[i]);
+                }
+            }
+            else
+            {
+                AllUserIds.Clear();
+                foreach(var id in data.userIds)
+                {
+                    AllUserIds.Add(UserId.GenerateFromStringForReconnecter(id));
+                }
             }
 
             if(!isJustReconnected){
                 return;
             }
             //Create current lefted user list
-            foreach(var index in data.disconnectedUserIndexes){
-                DisconnectedUserIds.Add(AllUserIds[index]);
+            if(DisconnectedUserIds.Count == data.disconnectedUserIndexes.Count)
+            {
+                for (int i = 0; i < data.disconnectedUserIndexes.Count; i++)
+                {
+                    DisconnectedUserIds[i] = AllUserIds[data.disconnectedUserIndexes[i]];
+                }
             }
-            //Complement disconnected users.
-            foreach(var id in DisconnectedUserIds){
+            else
+            {
+                DisconnectedUserIds.Clear();
+                foreach(var index in data.disconnectedUserIndexes)
+                {
+                    DisconnectedUserIds.Add(AllUserIds[index]);
+                }
+            }
+
+            //Complement disconnected users. CurrentAllUserIds is Current lobby users + disconnected users.
+            foreach(var id in DisconnectedUserIds)
+            {
                 CurrentAllUserIds.Add(id);
             }
             //For the case this user did not have data of CurrentSessionStartUTC.
@@ -75,37 +100,40 @@ namespace SynicSugar.P2P {
         /// Remove user ID when the user leaves lobby.<br />
         /// </summary>
         /// <param name="targetId"></param>
-        internal void RemoveUserId(ProductUserId targetId){
-            Logger.Log("RemoveUserId", $"Remove {UserId.GetUserId(targetId).ToMaskedString()}");
+        internal void RemoveUserIdFromNonAllUserIds(ProductUserId targetId){
+            Logger.Log("RemoveUserIdFromNonAllUserIds", $"Deactivate {UserId.GetUserId(targetId).ToMaskedString()} on current session.");
             UserId userId = UserId.GetUserId(targetId);
+            p2pInfo.Instance.pings.pingInfo.Remove(userId.ToString());
+
             RemoteUserIds.Remove(userId);
             CurrentAllUserIds.Remove(userId);
             CurrentConnectedUserIds.Remove(userId);
-            p2pInfo.Instance.pings.pingInfo.Remove(userId.ToString());
         }
         /// <summary>
         /// Move UserID from RemotoUserIDs to LeftUsers not to SendPacketToALl in vain.<br />
         /// </summary>
         /// <param name="targetId"></param>
-        internal void MoveTargetUserIdToLefts(ProductUserId targetId){
-            Logger.Log("MoveTargetUserIdToLefts", $"Move {UserId.GetUserId(targetId).ToMaskedString()}");
+        internal void MoveUserIdToDisconnected(ProductUserId targetId){
+            Logger.Log("MoveUserIdToDisconnected", $"Move {UserId.GetUserId(targetId).ToMaskedString()} to DisconnectedUserIds.");
             UserId userId = UserId.GetUserId(targetId);
+            p2pInfo.Instance.pings.pingInfo[userId.ToString()].Ping = -1;
+
             RemoteUserIds.Remove(userId);
             CurrentConnectedUserIds.Remove(userId);
             DisconnectedUserIds.Add(userId);
-            p2pInfo.Instance.pings.pingInfo[userId.ToString()].Ping = -1;
         }
         /// <summary>
         /// Move UserID to RemotoUserIDs from LeftUsers on reconnect.
         /// </summary>
         /// <param name="targetId"></param>
         /// <returns></returns>
-        internal void MoveTargetUserIdToRemoteUsersFromLeft(ProductUserId targetId){
-            Logger.Log("MoveTargetUserIdToRemoteUsersFromLeft", $"Move {UserId.GetUserId(targetId).ToMaskedString()}");
+        internal void MoveUserIdToConnectedFromDisconnected(ProductUserId targetId){
+            Logger.Log("MoveUserIdToConnectedFromDisconnected", $"Move {UserId.GetUserId(targetId).ToMaskedString()} from DisconnectedUserIds.");
             UserId userId = UserId.GetUserId(targetId);
+
             DisconnectedUserIds.Remove(userId);
-            CurrentConnectedUserIds.Add(userId);
             RemoteUserIds.Add(userId);
+            CurrentConnectedUserIds.Add(userId);
         }
     }
 }
