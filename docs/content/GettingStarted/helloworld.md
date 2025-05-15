@@ -8,7 +8,7 @@ weight = 2
 At first, we put EOSManager.prefab to the first scene to Log-in EOS. To generate EOSManager, right-click on the Hierarchy and click SynicSugar/EOSManager.<br>
 SynicSugar connects, matchmaking and others on EpicOnlineServices with this EOSManager. 
 
-![Image](https://github.com/skeyll/SynicSugar/assets/50002207/621edac1-d607-4f3f-9da5-f60323a9849e)
+![Image](https://github.com/SynicSugar/SynicSugar/assets/50002207/621edac1-d607-4f3f-9da5-f60323a9849e)
 
 To singin EOS, we use EOSConenction.LoginWithDeviceID. This has two return value type of bool for just result and string for result details.
 

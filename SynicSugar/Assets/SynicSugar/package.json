@@ -7,9 +7,9 @@
   "description": "High-level Networking Library for Mobile and Small-party Games with Epic Online Services.",
   "keywords": ["Network", "Services"],
   "license": "MIT",
-  "documentationUrl": "https://skeyll.github.io/SynicSugar/",
-  "changelogUrl": "https://github.com/skeyll/SynicSugar/releases",
-  "licensesUrl": "https://github.com/skeyll/SynicSugar/blob/main/LICENSE",
+  "documentationUrl": "https://synicsugar.github.io/SynicSugar/",
+  "changelogUrl": "https://github.com/SynicSugar/SynicSugar/releases",
+  "licensesUrl": "https://github.com/SynicSugar/SynicSugar/blob/main/LICENSE",
   "dependencies": {
     "com.playeveryware.eos": "3.3.4",
     "com.cysharp.unitask": "2.5.5",

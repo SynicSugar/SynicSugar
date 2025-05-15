@@ -1,4 +1,4 @@
-base_url = "https://skeyll.github.io/SynicSugar/"
+base_url = "https://synicsugar.github.io/SynicSugar/"
 title = "SynicSugar"
 theme = "EasyDocs"
 compile_sass = true
@@ -11,7 +11,7 @@ highlight_code = true
 highlight_theme = "visual-studio-dark"
 
 [extra]
-logo = "https://github.com/skeyll/SynicSugar/blob/main/Resources/Logo_doc.png?raw=true"
-release = "https://api.github.com/repos/skeyll/SynicSugar/releases/latest"
-favicon = "https://github.com/skeyll/SynicSugar/blob/main/Resources/favicon.ico?raw=true"
+logo = "https://github.com/SynicSugar/SynicSugar/blob/main/Resources/Logo_doc.png?raw=true"
+release = "https://api.github.com/repos/SynicSugar/SynicSugar/releases/latest"
+favicon = "https://github.com/SynicSugar/SynicSugar/blob/main/Resources/favicon.ico?raw=true"
 easydocs_heading_threshold = 5
