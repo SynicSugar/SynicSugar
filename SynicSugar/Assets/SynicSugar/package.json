@@ -2,7 +2,7 @@
 {
   "name": "net.skeyll.synicsugar",
   "displayName": "SynicSugar",
-  "version": "0.9.11",
+  "version": "0.9.12",
   "unity": "2021.3",
   "description": "High-level Networking Library for Mobile and Small-party Games with Epic Online Services.",
   "keywords": ["Network", "Services"],
