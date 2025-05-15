@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://synicsugar.github.io/SynicSugar/main.css">
+    <link rel="icon" href="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/favicon.ico?raw=true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> SynicSugar | RTCConfig </title>
+</head>
+<body>
+
+<script>
+        fetch('https://api.github.com/repos/SynicSugar/SynicSugar/releases/latest')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                let release_name = data.name;
+                let html_url = data.html_url;
+                release.innerHTML = `<a href='${html_url}'>${release_name}</a>`;
+            });
+    </script>
+<main>
+    
+    <nav>
+            <a href="https:&#x2F;&#x2F;synicsugar.github.io&#x2F;SynicSugar&#x2F;">
+                        <img src="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/Logo_doc.png?raw=true" alt="logo"/>
+                    </a>
+                <div id="release"></div>
+            <a href="javascript:void(0);" onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton"></a>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="aboutsynicsugar"
+                           />
+                    <label class="tree-toggle-label"
+                           for="aboutsynicsugar">AboutSynicSugar</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/overview/">Overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/internaldesign/">InternalDesign</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/faq/">FAQ</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/networking-lifecycle/">Nerworking Lifecycle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/symbols/">Symbols</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="gettingstarted"
+                           />
+                    <label class="tree-toggle-label"
+                           for="gettingstarted">GettingStarted</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/import-setup/">Import and Set up</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/helloworld/">Hello World</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-core"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-core">SynicSugar.Core</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/synicsugarmanger/">SynicSugarManger</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/result/">Result</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-auth"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-auth">SynicSugar.Auth</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugarauthentication/">SynicSugarAuthentication</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugaraccount/">SynicSugarAccount</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-matchmake"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-matchmake">SynicSugar.MatchMake</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakemanager/">MatchMakeManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobby/">Lobby</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/attributedata/">AttributeData</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakingguievents/">MatchMakingGUIEvents</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobbyidmethod/">LobbyIDMethod</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/asynclobbyidmethod/">AsyncLobbyIDMethod</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-p2p"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-p2p">SynicSugar.P2P</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pconfig/">p2pConfig</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/attributes/">Attributes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/synicobject/">SynicObject</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/userid/">UserId</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/connecthub/">ConnectHub</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pinfo/">p2pInfo</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pstrcut/">p2pStruct</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/additionalclass/">AdditionalClass</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/eosp2p/">EOSp2p</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-rtc"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="synicsugar-rtc">SynicSugar.RTC</label>
+
+                    <ul class="subtree">
+                        <li class="active">
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/">RTCConfig</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        <ul id="toc">
+                                            <li><a href="
+                                                        https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/#rtcconfig">RTCConfig</a>
+                                                    <ul>
+                                                            <li>
+                                                                    <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/#description">Description</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/#properity">Properity</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/#public-function">Public Function</a>
+                                                                </li>
+                                                            <li>
+                                                                    <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/#static-function">Static Function</a>
+                                                                </li>
+                                                            </ul>
+                                                    </li>
+                                            </ul>
+                                    <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcmanager/">RTCManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcstruct/">RTCStruct</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-titlesorage"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-titlesorage">SynicSugar.TitleSorage</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.TitleSorage/eostitlestorage/">EOSTitleStorage</a>
+                            </li>
+
+                            </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h2 id="rtcconfig">RTCConfig&nbsp;<a class="anchor" href="#rtcconfig">&#xE732;</a></h2>
+<p><small><em>Namespace: SynicSugar.RTC</em></small></p>
+<h3 id="description">Description&nbsp;<a class="anchor" href="#description">&#xE732;</a></h3>
+<p>RTC config for device instead of one session.</p>
+<h3 id="properity">Properity&nbsp;<a class="anchor" href="#properity">&#xE732;</a></h3>
+<table><thead><tr><th>API</th><th>description</th></tr></thead><tbody>
+<tr><td><a href="../RTCConfig/audiodevicechangednotifier">AudioDeviceChangedNotifier</a></td><td>Events for OnDeviceChanged</td></tr>
+</tbody></table>
+<h3 id="public-function">Public Function&nbsp;<a class="anchor" href="#public-function">&#xE732;</a></h3>
+<table><thead><tr><th>API</th><th>description</th></tr></thead><tbody>
+<tr><td><a href="../RTCConfig/addnotifyaudiodeviceschanged">AddNotifyAudioDevicesChanged</a></td><td>Notify to get device changed on System</td></tr>
+<tr><td><a href="../RTCConfig/removenotifyaudiodeviceschanged">RemoveNotifyAudioDevicesChanged</a></td><td>Remove NotifyAudioDevicesChanged notify</td></tr>
+</tbody></table>
+<h3 id="static-function">Static Function&nbsp;<a class="anchor" href="#static-function">&#xE732;</a></h3>
+<table><thead><tr><th>API</th><th>description</th></tr></thead><tbody>
+<tr><td><a href="../RTCConfig/getinputdeviceinformation">GetInputDeviceInformation</a></td><td>Get Devices to input vc</td></tr>
+<tr><td><a href="../RTCConfig/setaudioinputdevice">SetAudioInputDevice</a></td><td>Change InputDevice</td></tr>
+<tr><td><a href="../RTCConfig/changeinputmutestatus">ChangeInputMuteStatus</a></td><td>Change input volume to mute or not</td></tr>
+<tr><td><a href="../RTCConfig/getoutputdeviceinformation">GetOutputDeviceInformation</a></td><td>Get Devices to output vc</td></tr>
+<tr><td><a href="../RTCConfig/setaudiooutputdevice">SetAudioOutputDevice</a></td><td>Change OutputDevice</td></tr>
+<tr><td><a href="../RTCConfig/changeoutputvolume">ChangeOutputVolume</a></td><td>Change output volume of device</td></tr>
+</tbody></table>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>System.Collections.Generic;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.RTC;
+</span><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span style="color:#9b9b9b;">using </span><span>UnityEngine.UI;
+</span><span style="color:#9b9b9b;">using </span><span>UnityEngine.SceneManagement;
+</span><span style="color:#608b4e;">//This settings for local device.
+</span><span style="color:#569cd6;">public class </span><span>MicSetting : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    [SerializeField] Dropdown inputDevices, outputDevices;
+</span><span>    List&lt;AudioInputDeviceInfo&gt; inputs;
+</span><span>    List&lt;AudioOutputDeviceInfo&gt; outputs;
+</span><span>    </span><span style="color:#569cd6;">void </span><span>Start(){
+</span><span>        inputs = RTCConfig.GetInputDeviceInformation();
+</span><span>        outputs = RTCConfig.GetOutputDeviceInformation();
+</span><span>        
+</span><span>        inputDevices.onValueChanged.AddListener(i </span><span style="color:#569cd6;">=&gt; </span><span>OnInputSelected(i));
+</span><span>        outputDevices.onValueChanged.AddListener(i </span><span style="color:#569cd6;">=&gt; </span><span>OnOutputSelected(i));
+</span><span>
+</span><span>        RefreshShownValue();
+</span><span>        </span><span style="color:#608b4e;">//To remove notify by scene.
+</span><span>        RTCConfig.Instance.AddNotifyAudioDevicesChanged(SceneManager.GetActiveScene().name, () </span><span style="color:#569cd6;">=&gt; </span><span>RefreshShownValue());
+</span><span>    }
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>RefreshShownValue(){
+</span><span>        inputDevices.options.Clear();
+</span><span>        outputDevices.options.Clear();
+</span><span>        </span><span style="color:#569cd6;">for</span><span>(</span><span style="color:#569cd6;">int </span><span>i = </span><span style="color:#b5cea8;">0</span><span>; i </span><span style="color:#569cd6;">&lt; </span><span>inputs.Count; i</span><span style="color:#569cd6;">++</span><span>){
+</span><span>            </span><span style="color:#569cd6;">string </span><span>defaultText = inputs[i].DefaultDevice </span><span style="color:#569cd6;">? </span><span style="color:#d69d85;">&quot;(Default)&quot; </span><span style="color:#569cd6;">: </span><span>System.String.Empty;
+</span><span>            </span><span style="color:#569cd6;">string </span><span>name = </span><span style="color:#d69d85;">$&quot;</span><span>{defaultText} {inputs[i].DeviceName}</span><span style="color:#d69d85;">&quot;</span><span>;
+</span><span>            
+</span><span>            inputDevices.options.Add(</span><span style="color:#569cd6;">new </span><span>Dropdown.OptionData { text = name });
+</span><span>            </span><span style="color:#569cd6;">if</span><span>(inputs[i].DefaultDevice){
+</span><span>                inputDevices.value = i;
+</span><span>            }
+</span><span>        }
+</span><span>
+</span><span>        </span><span style="color:#569cd6;">for</span><span>(</span><span style="color:#569cd6;">int </span><span>i = </span><span style="color:#b5cea8;">0</span><span>; i </span><span style="color:#569cd6;">&lt; </span><span>outputs.Count; i</span><span style="color:#569cd6;">++</span><span>){
+</span><span>            </span><span style="color:#569cd6;">string </span><span>defaultText = outputs[i].DefaultDevice </span><span style="color:#569cd6;">? </span><span style="color:#d69d85;">&quot;(Default)&quot; </span><span style="color:#569cd6;">: </span><span>System.String.Empty;
+</span><span>            </span><span style="color:#569cd6;">string </span><span>name = </span><span style="color:#d69d85;">$&quot;</span><span>{defaultText} {outputs[i].DeviceName}</span><span style="color:#d69d85;">&quot;</span><span>;
+</span><span>            
+</span><span>            outputDevices.options.Add(</span><span style="color:#569cd6;">new </span><span>Dropdown.OptionData { text = name });
+</span><span>            </span><span style="color:#569cd6;">if</span><span>(outputs[i].DefaultDevice){
+</span><span>                outputDevices.value = i;
+</span><span>            }
+</span><span>        }
+</span><span>        inputDevices.RefreshShownValue();
+</span><span>        outputDevices.RefreshShownValue();
+</span><span>    }
+</span><span>    </span><span style="color:#569cd6;">void </span><span>OnInputSelected(</span><span style="color:#569cd6;">int </span><span>index){
+</span><span>        RTCConfig.SetAudioInputDevice(inputs[index]);
+</span><span>    }
+</span><span>    </span><span style="color:#569cd6;">void </span><span>OnOutputSelected(</span><span style="color:#569cd6;">int </span><span>index){
+</span><span>        RTCConfig.SetAudioOutputDevice(outputs[index]);
+</span><span>    }
+</span><span>}
+</span><span>
+</span></code></pre>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/search_index.en.js" defer></script>
+<script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/js.js" defer></script>
+
+</body>
+</html>

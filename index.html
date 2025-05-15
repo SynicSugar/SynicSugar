@@ -1,0 +1,298 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://synicsugar.github.io/SynicSugar/main.css">
+    <link rel="icon" href="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/favicon.ico?raw=true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title>SynicSugar</title>
+</head>
+<body>
+
+<script>
+        fetch('https://api.github.com/repos/SynicSugar/SynicSugar/releases/latest')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                let release_name = data.name;
+                let html_url = data.html_url;
+                release.innerHTML = `<a href='${html_url}'>${release_name}</a>`;
+            });
+    </script>
+<main>
+    
+    <nav>
+            <img src="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/Logo_doc.png?raw=true" alt="logo"/>
+                <div id="release"></div>
+            <a href="javascript:void(0);" onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton"></a>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="aboutsynicsugar"
+                           />
+                    <label class="tree-toggle-label"
+                           for="aboutsynicsugar">AboutSynicSugar</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/overview/">Overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/internaldesign/">InternalDesign</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/faq/">FAQ</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/networking-lifecycle/">Nerworking Lifecycle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/symbols/">Symbols</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="gettingstarted"
+                           />
+                    <label class="tree-toggle-label"
+                           for="gettingstarted">GettingStarted</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/import-setup/">Import and Set up</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/helloworld/">Hello World</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-core"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-core">SynicSugar.Core</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/synicsugarmanger/">SynicSugarManger</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/result/">Result</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-auth"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-auth">SynicSugar.Auth</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugarauthentication/">SynicSugarAuthentication</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugaraccount/">SynicSugarAccount</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-matchmake"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-matchmake">SynicSugar.MatchMake</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakemanager/">MatchMakeManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobby/">Lobby</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/attributedata/">AttributeData</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakingguievents/">MatchMakingGUIEvents</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobbyidmethod/">LobbyIDMethod</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/asynclobbyidmethod/">AsyncLobbyIDMethod</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-p2p"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-p2p">SynicSugar.P2P</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pconfig/">p2pConfig</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/attributes/">Attributes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/synicobject/">SynicObject</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/userid/">UserId</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/connecthub/">ConnectHub</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pinfo/">p2pInfo</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pstrcut/">p2pStruct</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/additionalclass/">AdditionalClass</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/eosp2p/">EOSp2p</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-rtc"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-rtc">SynicSugar.RTC</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/">RTCConfig</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcmanager/">RTCManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcstruct/">RTCStruct</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-titlesorage"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-titlesorage">SynicSugar.TitleSorage</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.TitleSorage/eostitlestorage/">EOSTitleStorage</a>
+                            </li>
+
+                            </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            <h1 id="what-is-synicsugar">What is SynicSugar?</h1>
+<p>SynicSugar is Unity High-Level Network Library with EpicOnlineServices.<br>
+The concept is the syntax sugar of netcode. You can implement matchmaking, host migration, RPC and other basic functions for online game with SynicSugar.<br>
+There is no charge for use and no CCU limits or server management thanks to EpicGames.<br>
+Almost SynicSugar APIs are zero-allocation in Runtime, so the process is sonic. SynicSugar will be optimized for small-party game not covered by <a href="https://github.com/MirrorNetworking/Mirror">Mirror</a>. Can get it from <a href="https://github.com/SynicSugar/SynicSugar">Github</a>.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span>[NetworkPlayer(</span><span style="color:#569cd6;">true</span><span>)]
+</span><span style="color:#569cd6;">public partial class </span><span>Player {  
+</span><span>    </span><span style="color:#608b4e;">//Sync every 1000ms(default)
+</span><span>    [SyncVar] </span><span style="color:#569cd6;">public int </span><span>Hp;
+</span><span>    </span><span style="color:#608b4e;">//Sync every 3000ms
+</span><span>    [SyncVar(</span><span style="color:#b5cea8;">3000</span><span>)] Skill skill;
+</span><span>
+</span><span>    [Synic(</span><span style="color:#b5cea8;">0</span><span>)] </span><span style="color:#569cd6;">public string </span><span>name;
+</span><span>    [Synic(</span><span style="color:#b5cea8;">0</span><span>)] </span><span style="color:#569cd6;">public string </span><span>item;
+</span><span>    [Synic(</span><span style="color:#b5cea8;">1</span><span>)] </span><span style="color:#569cd6;">public </span><span>Vector3 pos;
+</span><span>
+</span><span>    </span><span style="color:#608b4e;">//To sync, the local Player just calls the owner&#39;s instance&#39;s RPC from Button or other methods.
+</span><span>    [Rpc] 
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>Attack(</span><span style="color:#569cd6;">int </span><span>damage){ 
+</span><span>        Hp </span><span style="color:#569cd6;">-= </span><span>damage;
+</span><span>    }
+</span><span>    [TargetRpc]
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>GreetTarget(UserId id, </span><span style="color:#569cd6;">string </span><span>message){
+</span><span>        Debug.log(message);
+</span><span>    }
+</span><span>    [Rpc]
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>Heal(HealInfo info){
+</span><span>        Debug.log(</span><span style="color:#d69d85;">$&quot;</span><span>{OwnerUserId}</span><span style="color:#d69d85;"> heal </span><span>{info.target} {info.amount}</span><span style="color:#d69d85;">&quot;</span><span>);
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>SyncBasisStatus(){
+</span><span>        </span><span style="color:#608b4e;">//Sync the Variables that have Synic(0) attribute at once.
+</span><span>        ConnectHub.Instance.SyncSynic(p2pInfo.Instance.LastDisconnectedUsersId, </span><span style="color:#b5cea8;">0</span><span>);
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<h2 id="features">Features:</h2>
+<ul>
+<li>Mesh topology with max 64 peers</li>
+<li>No Use Cost and No CCU Limit</li>
+<li>High-level APIs for mobile and small-party games (MatchMaking, Large-packet, PushToTalk, and Offlinemode...)</li>
+<li>Full support for Host-migration and Re-connection by library</li>
+<li>Almost all RPC processes are zero-allocation</li>
+<li>Free VoiceChat (Max16peers)</li>
+<li>Cross-platform connection <br>
+(Windows / Linux / macOS <br>
+Android / iOS <br>
+Nintendo Switch / Xbox One / Xbox Series X / PlayStation 4 / PlayStation 5)</li>
+</ul>
+<h2 id="requirement">Requirement</h2>
+<ul>
+<li>Unity 21.3 or 22.43 (-ver0.8.0), later (ver0.8.1)</li>
+<li><a href="https://github.com/Cysharp/UniTask">UniTask</a></li>
+<li><a href="https://github.com/Cysharp/MemoryPack">MemoryPack</a></li>
+<li><a href="https://github.com/PlayEveryWare/eos_plugin_for_unity">eos_plugin_for_unity</a></li>
+<li><a href="https://github.com/jbevain/cecil">Mono.Cecil</a></li>
+</ul>
+<p>SynicSugar generates sync processes using Roslyn SourceGenerator and inserts these codes into your project using Mono.Cecil. These operations are automatically performed at compile based on your network attributes. What we need to sync game is just adding network attributes.<br><br></p>
+<p>The dependencies are for easily and performance. <a href="https://dev.epicgames.com/docs/epic-online-services/eos-get-started/working-with-the-eos-sdk/conventions-and-limitations#thread-safety">EOSSDK is not thread-safe</a>, so cannot use async/await or task. However, UniTask runs everything on Unity's main thread and the perform of Unitask better than standard async/await. MemoryPack is the fastest serializer available in C#. Since SynicSugar is not synchronized with the server, we can freely choose a Serializer without having to consider compatibility.<br><br></p>
+<h2 id="contribution-guideline">Contribution Guideline</h2>
+<p>SynicSugar's concept is an easy online game development for everyone. Therefore, the development is also based on this policy. We can create online game for up to 64 people supported by EOS, but the main is small-party(2-16) game. If you want to create MMO, Survival Game and Party Game, you should use <a href="https://github.com/MirrorNetworking/Mirror">Mirror</a>. </p>
+<p>The roadmap is <a href="https://github.com/orgs/SynicSugar/projects/3">here</a>. For the time being, add a basic function for online-game and improve the performance. If you need any necessary functions, please post it to Github Issue or give a pull request. Great thanks for all contributions!</p>
+
+            
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/search_index.en.js" defer></script>
+<script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/js.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,1148 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://synicsugar.github.io/SynicSugar/main.css">
+    <link rel="icon" href="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/favicon.ico?raw=true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> SynicSugar | Result </title>
+</head>
+<body>
+
+<script>
+        fetch('https://api.github.com/repos/SynicSugar/SynicSugar/releases/latest')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                let release_name = data.name;
+                let html_url = data.html_url;
+                release.innerHTML = `<a href='${html_url}'>${release_name}</a>`;
+            });
+    </script>
+<main>
+    
+    <nav>
+            <a href="https:&#x2F;&#x2F;synicsugar.github.io&#x2F;SynicSugar&#x2F;">
+                        <img src="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/Logo_doc.png?raw=true" alt="logo"/>
+                    </a>
+                <div id="release"></div>
+            <a href="javascript:void(0);" onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton"></a>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="aboutsynicsugar"
+                           />
+                    <label class="tree-toggle-label"
+                           for="aboutsynicsugar">AboutSynicSugar</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/overview/">Overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/internaldesign/">InternalDesign</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/faq/">FAQ</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/networking-lifecycle/">Nerworking Lifecycle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/symbols/">Symbols</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="gettingstarted"
+                           />
+                    <label class="tree-toggle-label"
+                           for="gettingstarted">GettingStarted</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/import-setup/">Import and Set up</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/helloworld/">Hello World</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-core"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="synicsugar-core">SynicSugar.Core</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/synicsugarmanger/">SynicSugarManger</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/result/">Result</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-auth"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-auth">SynicSugar.Auth</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugarauthentication/">SynicSugarAuthentication</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugaraccount/">SynicSugarAccount</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-matchmake"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-matchmake">SynicSugar.MatchMake</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakemanager/">MatchMakeManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobby/">Lobby</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/attributedata/">AttributeData</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakingguievents/">MatchMakingGUIEvents</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobbyidmethod/">LobbyIDMethod</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/asynclobbyidmethod/">AsyncLobbyIDMethod</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-p2p"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-p2p">SynicSugar.P2P</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pconfig/">p2pConfig</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/attributes/">Attributes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/synicobject/">SynicObject</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/userid/">UserId</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/connecthub/">ConnectHub</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pinfo/">p2pInfo</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pstrcut/">p2pStruct</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/additionalclass/">AdditionalClass</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/eosp2p/">EOSp2p</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-rtc"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-rtc">SynicSugar.RTC</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/">RTCConfig</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcmanager/">RTCManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcstruct/">RTCStruct</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-titlesorage"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-titlesorage">SynicSugar.TitleSorage</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.TitleSorage/eostitlestorage/">EOSTitleStorage</a>
+                            </li>
+
+                            </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h2 id="result">Result&nbsp;<a class="anchor" href="#result">&#xE732;</a></h2>
+<p><small><em>Namespace: SynicSugar</em></small></p>
+<h3 id="description">Description&nbsp;<a class="anchor" href="#description">&#xE732;</a></h3>
+<p>Result based on EOS. <br><br></p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#608b4e;">// Copyright Epic Games, Inc. All Rights Reserved.
+</span><span style="color:#608b4e;">// Some items are original to SynicSugar; if you implement your own Cores, these result must be able to convert from these.
+</span><span style="color:#569cd6;">namespace </span><span>SynicSugar {
+</span><span> 	</span><span style="color:#569cd6;">public enum </span><span>Result : </span><span style="color:#569cd6;">int </span><span>{
+</span><span>		</span><span style="color:#b4cea8;">ConnectEstablishFailed </span><span>= </span><span style="color:#569cd6;">-</span><span style="color:#b5cea8;">4</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Lobby Closed by Host and kicked out from the current lobby.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyClosed </span><span>= </span><span style="color:#569cd6;">-</span><span style="color:#b5cea8;">3</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Failed due to call SynicSugar API with lack conditions
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidAPICall </span><span>= </span><span style="color:#569cd6;">-</span><span style="color:#b5cea8;">2</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Initial state. SynicSugar has no data.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">None </span><span>= </span><span style="color:#569cd6;">-</span><span style="color:#b5cea8;">1</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Successful result. no further error processing needed
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">Success </span><span>= </span><span style="color:#b5cea8;">0</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Failed due to no connection
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">NoConnection </span><span>= </span><span style="color:#b5cea8;">1</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Failed login due to invalid credentials
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidCredentials </span><span>= </span><span style="color:#b5cea8;">2</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Failed due to invalid or missing user
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidUser </span><span>= </span><span style="color:#b5cea8;">3</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Failed due to invalid or missing authentication token for user (e.g. not logged in)
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidAuth </span><span>= </span><span style="color:#b5cea8;">4</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Failed due to invalid access
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AccessDenied </span><span>= </span><span style="color:#b5cea8;">5</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// If the client does not possess the permission required
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">MissingPermissions </span><span>= </span><span style="color:#b5cea8;">6</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// If the token provided does not represent an account
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">TokenNotAccount </span><span>= </span><span style="color:#b5cea8;">7</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Throttled due to too many requests
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">TooManyRequests </span><span>= </span><span style="color:#b5cea8;">8</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Async request was already pending
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AlreadyPending </span><span>= </span><span style="color:#b5cea8;">9</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invalid parameters specified for request
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidParameters </span><span>= </span><span style="color:#b5cea8;">10</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invalid request
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidRequest </span><span>= </span><span style="color:#b5cea8;">11</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Failed due to unable to parse or recognize a backend response
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">UnrecognizedResponse </span><span>= </span><span style="color:#b5cea8;">12</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Incompatible client for backend version
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">IncompatibleVersion </span><span>= </span><span style="color:#b5cea8;">13</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Not configured correctly for use
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">NotConfigured </span><span>= </span><span style="color:#b5cea8;">14</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Already configured for use.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AlreadyConfigured </span><span>= </span><span style="color:#b5cea8;">15</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Feature not available on this implementation
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">NotImplemented </span><span>= </span><span style="color:#b5cea8;">16</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Operation was canceled (likely by user)
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">Canceled </span><span>= </span><span style="color:#b5cea8;">17</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The requested information was not found
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">NotFound </span><span>= </span><span style="color:#b5cea8;">18</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// An error occurred during an asynchronous operation, and it will be retried. Callbacks receiving this result will be called again in the future.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">OperationWillRetry </span><span>= </span><span style="color:#b5cea8;">19</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The request had no effect
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">NoChange </span><span>= </span><span style="color:#b5cea8;">20</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The request attempted to use multiple or inconsistent API versions
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">VersionMismatch </span><span>= </span><span style="color:#b5cea8;">21</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// A maximum limit was exceeded on the client, different from &lt;</span><span style="color:#569cd6;">see </span><span style="color:#92caf4;">cref</span><span style="color:#608b4e;">=</span><span style="color:#d69d85;">&quot;TooManyRequests&quot; </span><span style="color:#608b4e;">/&gt;
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LimitExceeded </span><span>= </span><span style="color:#b5cea8;">22</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Feature or client ID performing the operation has been disabled.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">Disabled </span><span>= </span><span style="color:#b5cea8;">23</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Duplicate entry not allowed
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">DuplicateNotAllowed </span><span>= </span><span style="color:#b5cea8;">24</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Required parameters are missing. DEPRECATED: This error is no longer used.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">MissingParametersDEPRECATED </span><span>= </span><span style="color:#b5cea8;">25</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Sandbox ID is invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidSandboxId </span><span>= </span><span style="color:#b5cea8;">26</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request timed out
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">TimedOut </span><span>= </span><span style="color:#b5cea8;">27</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// A query returned some but not all of the requested results.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PartialResult </span><span>= </span><span style="color:#b5cea8;">28</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Client is missing the whitelisted role
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">MissingRole </span><span>= </span><span style="color:#b5cea8;">29</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Client is missing the whitelisted feature
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">MissingFeature </span><span>= </span><span style="color:#b5cea8;">30</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The sandbox given to the backend is invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidSandbox </span><span>= </span><span style="color:#b5cea8;">31</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The deployment given to the backend is invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidDeployment </span><span>= </span><span style="color:#b5cea8;">32</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The product ID specified to the backend is invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidProduct </span><span>= </span><span style="color:#b5cea8;">33</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The product user ID specified to the backend is invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidProductUserID </span><span>= </span><span style="color:#b5cea8;">34</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// There was a failure with the backend service
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ServiceFailure </span><span>= </span><span style="color:#b5cea8;">35</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Cache directory is not set in platform options.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">CacheDirectoryMissing </span><span>= </span><span style="color:#b5cea8;">36</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Cache directory is not accessible.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">CacheDirectoryInvalid </span><span>= </span><span style="color:#b5cea8;">37</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The request failed because resource was in an invalid state
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">InvalidState </span><span>= </span><span style="color:#b5cea8;">38</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request is in progress
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">RequestInProgress </span><span>= </span><span style="color:#b5cea8;">39</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Application is suspended
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ApplicationSuspended </span><span>= </span><span style="color:#b5cea8;">40</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Network is disconnected
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">NetworkDisconnected </span><span>= </span><span style="color:#b5cea8;">41</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Account locked due to login failures
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthAccountLocked </span><span>= </span><span style="color:#b5cea8;">1001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Account locked by update operation.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthAccountLockedForUpdate </span><span>= </span><span style="color:#b5cea8;">1002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Refresh token used was invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthInvalidRefreshToken </span><span>= </span><span style="color:#b5cea8;">1003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invalid access token, typically when switching between backend environments
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthInvalidToken </span><span>= </span><span style="color:#b5cea8;">1004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invalid bearer token
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthAuthenticationFailure </span><span>= </span><span style="color:#b5cea8;">1005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invalid platform token
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthInvalidPlatformToken </span><span>= </span><span style="color:#b5cea8;">1006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Auth parameters are not associated with this account
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthWrongAccount </span><span>= </span><span style="color:#b5cea8;">1007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Auth parameters are not associated with this client
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthWrongClient </span><span>= </span><span style="color:#b5cea8;">1008</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Full account is required
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthFullAccountRequired </span><span>= </span><span style="color:#b5cea8;">1009</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Headless account is required
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthHeadlessAccountRequired </span><span>= </span><span style="color:#b5cea8;">1010</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Password reset is required
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthPasswordResetRequired </span><span>= </span><span style="color:#b5cea8;">1011</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Password was previously used and cannot be reused
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthPasswordCannotBeReused </span><span>= </span><span style="color:#b5cea8;">1012</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Authorization code/exchange code has expired
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthExpired </span><span>= </span><span style="color:#b5cea8;">1013</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Consent has not been given by the user
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthScopeConsentRequired </span><span>= </span><span style="color:#b5cea8;">1014</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The application has no profile on the backend
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthApplicationNotFound </span><span>= </span><span style="color:#b5cea8;">1015</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The requested consent wasn&#39;t found on the backend
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthScopeNotFound </span><span>= </span><span style="color:#b5cea8;">1016</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// This account has been denied access to login
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthAccountFeatureRestricted </span><span>= </span><span style="color:#b5cea8;">1017</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The overlay failed to load the Account Portal. This can range from general overlay failure, to overlay failed to connect to the web server, to overlay failed to render the web page.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthAccountPortalLoadError </span><span>= </span><span style="color:#b5cea8;">1018</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// An attempted login has failed due to the user needing to take corrective action on their account.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthCorrectiveActionRequired </span><span>= </span><span style="color:#b5cea8;">1019</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Pin grant code initiated
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthPinGrantCode </span><span>= </span><span style="color:#b5cea8;">1020</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Pin grant code attempt expired
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthPinGrantExpired </span><span>= </span><span style="color:#b5cea8;">1021</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Pin grant code attempt pending
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthPinGrantPending </span><span>= </span><span style="color:#b5cea8;">1022</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// External auth source did not yield an account
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthExternalAuthNotLinked </span><span>= </span><span style="color:#b5cea8;">1030</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// External auth access revoked
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthExternalAuthRevoked </span><span>= </span><span style="color:#b5cea8;">1032</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// External auth token cannot be interpreted
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthExternalAuthInvalid </span><span>= </span><span style="color:#b5cea8;">1033</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// External auth cannot be linked to his account due to restrictions
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthExternalAuthRestricted </span><span>= </span><span style="color:#b5cea8;">1034</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// External auth cannot be used for login
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthExternalAuthCannotLogin </span><span>= </span><span style="color:#b5cea8;">1035</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// External auth is expired
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthExternalAuthExpired </span><span>= </span><span style="color:#b5cea8;">1036</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// External auth cannot be removed since it&#39;s the last possible way to login
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthExternalAuthIsLastLoginType </span><span>= </span><span style="color:#b5cea8;">1037</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Exchange code not found
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthExchangeCodeNotFound </span><span>= </span><span style="color:#b5cea8;">1040</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Originating exchange code session has expired
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthOriginatingExchangeCodeSessionExpired </span><span>= </span><span style="color:#b5cea8;">1041</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The account has been disabled and cannot be used for authentication
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthAccountNotActive </span><span>= </span><span style="color:#b5cea8;">1050</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// MFA challenge required
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthMFARequired </span><span>= </span><span style="color:#b5cea8;">1060</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Parental locks are in place
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthParentalControls </span><span>= </span><span style="color:#b5cea8;">1070</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Korea real ID association required but missing
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AuthNoRealId </span><span>= </span><span style="color:#b5cea8;">1080</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// An outgoing friend invitation is awaiting acceptance; sending another invite to the same user is erroneous
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">FriendsInviteAwaitingAcceptance </span><span>= </span><span style="color:#b5cea8;">2000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// There is no friend invitation to accept/reject
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">FriendsNoInvitation </span><span>= </span><span style="color:#b5cea8;">2001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Users are already friends, so sending another invite is erroneous
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">FriendsAlreadyFriends </span><span>= </span><span style="color:#b5cea8;">2003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Users are not friends, so deleting the friend is erroneous
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">FriendsNotFriends </span><span>= </span><span style="color:#b5cea8;">2004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Remote user has too many invites to receive new invites
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">FriendsTargetUserTooManyInvites </span><span>= </span><span style="color:#b5cea8;">2005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Local user has too many invites to send new invites
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">FriendsLocalUserTooManyInvites </span><span>= </span><span style="color:#b5cea8;">2006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Remote user has too many friends to make a new friendship
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">FriendsTargetUserFriendLimitExceeded </span><span>= </span><span style="color:#b5cea8;">2007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Local user has too many friends to make a new friendship
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">FriendsLocalUserFriendLimitExceeded </span><span>= </span><span style="color:#b5cea8;">2008</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request data was null or invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PresenceDataInvalid </span><span>= </span><span style="color:#b5cea8;">3000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request contained too many or too few unique data items, or the request would overflow the maximum amount of data allowed
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PresenceDataLengthInvalid </span><span>= </span><span style="color:#b5cea8;">3001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request contained data with an invalid key
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PresenceDataKeyInvalid </span><span>= </span><span style="color:#b5cea8;">3002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request contained data with a key too long or too short
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PresenceDataKeyLengthInvalid </span><span>= </span><span style="color:#b5cea8;">3003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request contained data with an invalid value
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PresenceDataValueInvalid </span><span>= </span><span style="color:#b5cea8;">3004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request contained data with a value too long
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PresenceDataValueLengthInvalid </span><span>= </span><span style="color:#b5cea8;">3005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request contained an invalid rich text string
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PresenceRichTextInvalid </span><span>= </span><span style="color:#b5cea8;">3006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request contained a rich text string that was too long
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PresenceRichTextLengthInvalid </span><span>= </span><span style="color:#b5cea8;">3007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request contained an invalid status state
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PresenceStatusInvalid </span><span>= </span><span style="color:#b5cea8;">3008</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The entitlement retrieved is stale, requery for updated information
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">EcomEntitlementStale </span><span>= </span><span style="color:#b5cea8;">4000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The offer retrieved is stale, requery for updated information
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">EcomCatalogOfferStale </span><span>= </span><span style="color:#b5cea8;">4001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The item or associated structure retrieved is stale, requery for updated information
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">EcomCatalogItemStale </span><span>= </span><span style="color:#b5cea8;">4002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The one or more offers has an invalid price. This may be caused by the price setup.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">EcomCatalogOfferPriceInvalid </span><span>= </span><span style="color:#b5cea8;">4003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The checkout page failed to load
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">EcomCheckoutLoadError </span><span>= </span><span style="color:#b5cea8;">4004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Session is already in progress
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsSessionInProgress </span><span>= </span><span style="color:#b5cea8;">5000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Too many players to register with this session
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsTooManyPlayers </span><span>= </span><span style="color:#b5cea8;">5001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Client has no permissions to access this session
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsNoPermission </span><span>= </span><span style="color:#b5cea8;">5002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Session already exists in the system
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsSessionAlreadyExists </span><span>= </span><span style="color:#b5cea8;">5003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Session lock required for operation
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsInvalidLock </span><span>= </span><span style="color:#b5cea8;">5004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invalid session reference
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsInvalidSession </span><span>= </span><span style="color:#b5cea8;">5005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Sandbox ID associated with auth didn&#39;t match
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsSandboxNotAllowed </span><span>= </span><span style="color:#b5cea8;">5006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invite failed to send
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsInviteFailed </span><span>= </span><span style="color:#b5cea8;">5007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invite was not found with the service
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsInviteNotFound </span><span>= </span><span style="color:#b5cea8;">5008</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// This client may not modify the session
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsUpsertNotAllowed </span><span>= </span><span style="color:#b5cea8;">5009</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Backend nodes unavailable to process request
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsAggregationFailed </span><span>= </span><span style="color:#b5cea8;">5010</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Individual backend node is as capacity
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsHostAtCapacity </span><span>= </span><span style="color:#b5cea8;">5011</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Sandbox on node is at capacity
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsSandboxAtCapacity </span><span>= </span><span style="color:#b5cea8;">5012</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// An anonymous operation was attempted on a non anonymous session
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsSessionNotAnonymous </span><span>= </span><span style="color:#b5cea8;">5013</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Session is currently out of sync with the backend, data is saved locally but needs to sync with backend
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsOutOfSync </span><span>= </span><span style="color:#b5cea8;">5014</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// User has received too many invites
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsTooManyInvites </span><span>= </span><span style="color:#b5cea8;">5015</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Presence session already exists for the client
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsPresenceSessionExists </span><span>= </span><span style="color:#b5cea8;">5016</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Deployment on node is at capacity
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsDeploymentAtCapacity </span><span>= </span><span style="color:#b5cea8;">5017</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Session operation not allowed
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsNotAllowed </span><span>= </span><span style="color:#b5cea8;">5018</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Session operation not allowed
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SessionsPlayerSanctioned </span><span>= </span><span style="color:#b5cea8;">5019</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request filename was invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageFilenameInvalid </span><span>= </span><span style="color:#b5cea8;">6000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request filename was too long
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageFilenameLengthInvalid </span><span>= </span><span style="color:#b5cea8;">6001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request filename contained invalid characters
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageFilenameInvalidChars </span><span>= </span><span style="color:#b5cea8;">6002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request operation would grow file too large
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageFileSizeTooLarge </span><span>= </span><span style="color:#b5cea8;">6003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request file length is not valid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageFileSizeInvalid </span><span>= </span><span style="color:#b5cea8;">6004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request file handle is not valid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageFileHandleInvalid </span><span>= </span><span style="color:#b5cea8;">6005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request data is invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageDataInvalid </span><span>= </span><span style="color:#b5cea8;">6006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request data length was invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageDataLengthInvalid </span><span>= </span><span style="color:#b5cea8;">6007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request start index was invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageStartIndexInvalid </span><span>= </span><span style="color:#b5cea8;">6008</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request is in progress
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageRequestInProgress </span><span>= </span><span style="color:#b5cea8;">6009</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// User is marked as throttled which means he can&#39;t perform some operations because limits are exceeded.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageUserThrottled </span><span>= </span><span style="color:#b5cea8;">6010</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Encryption key is not set during SDK init.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageEncryptionKeyNotSet </span><span>= </span><span style="color:#b5cea8;">6011</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// User data callback returned error (&lt;</span><span style="color:#569cd6;">see </span><span style="color:#92caf4;">cref</span><span style="color:#608b4e;">=</span><span style="color:#d69d85;">&quot;PlayerDataStorage.WriteResult.FailRequest&quot; </span><span style="color:#608b4e;">/&gt; or &lt;</span><span style="color:#569cd6;">see </span><span style="color:#92caf4;">cref</span><span style="color:#608b4e;">=</span><span style="color:#d69d85;">&quot;PlayerDataStorage.ReadResult.FailRequest&quot; </span><span style="color:#608b4e;">/&gt;)
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageUserErrorFromDataCallback </span><span>= </span><span style="color:#b5cea8;">6012</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// User is trying to read file that has header from newer version of SDK. Game/SDK needs to be updated.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageFileHeaderHasNewerVersion </span><span>= </span><span style="color:#b5cea8;">6013</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The file is corrupted. In some cases retry can fix the issue.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PlayerDataStorageFileCorrupted </span><span>= </span><span style="color:#b5cea8;">6014</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Auth service deemed the external token invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ConnectExternalTokenValidationFailed </span><span>= </span><span style="color:#b5cea8;">7000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Auth user already exists
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ConnectUserAlreadyExists </span><span>= </span><span style="color:#b5cea8;">7001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Auth expired
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ConnectAuthExpired </span><span>= </span><span style="color:#b5cea8;">7002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Auth invalid token
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ConnectInvalidToken </span><span>= </span><span style="color:#b5cea8;">7003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Auth doesn&#39;t support this token type
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ConnectUnsupportedTokenType </span><span>= </span><span style="color:#b5cea8;">7004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Auth Account link failure
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ConnectLinkAccountFailed </span><span>= </span><span style="color:#b5cea8;">7005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Auth External service for validation was unavailable
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ConnectExternalServiceUnavailable </span><span>= </span><span style="color:#b5cea8;">7006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Auth External Service configuration failure with Dev Portal
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ConnectExternalServiceConfigurationFailure </span><span>= </span><span style="color:#b5cea8;">7007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Auth Account link failure. Tried to link Nintendo Network Service Account without first linking Nintendo Account. DEPRECATED: The requirement has been removed and this error is no longer used.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ConnectLinkAccountFailedMissingNintendoIdAccountDEPRECATED </span><span>= </span><span style="color:#b5cea8;">7008</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The social overlay page failed to load
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">SocialOverlayLoadError </span><span>= </span><span style="color:#b5cea8;">8000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Client has no permissions to modify this lobby
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyNotOwner </span><span>= </span><span style="color:#b5cea8;">9000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Lobby lock required for operation
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyInvalidLock </span><span>= </span><span style="color:#b5cea8;">9001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Lobby already exists in the system
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyLobbyAlreadyExists </span><span>= </span><span style="color:#b5cea8;">9002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Lobby is already in progress
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbySessionInProgress </span><span>= </span><span style="color:#b5cea8;">9003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Too many players to register with this lobby
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyTooManyPlayers </span><span>= </span><span style="color:#b5cea8;">9004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Client has no permissions to access this lobby
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyNoPermission </span><span>= </span><span style="color:#b5cea8;">9005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invalid lobby session reference
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyInvalidSession </span><span>= </span><span style="color:#b5cea8;">9006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Sandbox ID associated with auth didn&#39;t match
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbySandboxNotAllowed </span><span>= </span><span style="color:#b5cea8;">9007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invite failed to send
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyInviteFailed </span><span>= </span><span style="color:#b5cea8;">9008</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invite was not found with the service
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyInviteNotFound </span><span>= </span><span style="color:#b5cea8;">9009</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// This client may not modify the lobby
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyUpsertNotAllowed </span><span>= </span><span style="color:#b5cea8;">9010</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Backend nodes unavailable to process request
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyAggregationFailed </span><span>= </span><span style="color:#b5cea8;">9011</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Individual backend node is as capacity
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyHostAtCapacity </span><span>= </span><span style="color:#b5cea8;">9012</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Sandbox on node is at capacity
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbySandboxAtCapacity </span><span>= </span><span style="color:#b5cea8;">9013</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// User has received too many invites
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyTooManyInvites </span><span>= </span><span style="color:#b5cea8;">9014</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Deployment on node is at capacity
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyDeploymentAtCapacity </span><span>= </span><span style="color:#b5cea8;">9015</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Lobby operation not allowed
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyNotAllowed </span><span>= </span><span style="color:#b5cea8;">9016</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// While restoring a lost connection lobby ownership changed and only local member data was updated
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyMemberUpdateOnly </span><span>= </span><span style="color:#b5cea8;">9017</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Presence lobby already exists for the client
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyPresenceLobbyExists </span><span>= </span><span style="color:#b5cea8;">9018</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Operation requires lobby with voice enabled
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">LobbyVoiceNotEnabled </span><span>= </span><span style="color:#b5cea8;">9019</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// User callback that receives data from storage returned error.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">TitleStorageUserErrorFromDataCallback </span><span>= </span><span style="color:#b5cea8;">10000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// User forgot to set Encryption key during platform init. Title Storage can&#39;t work without it.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">TitleStorageEncryptionKeyNotSet </span><span>= </span><span style="color:#b5cea8;">10001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Downloaded file is corrupted.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">TitleStorageFileCorrupted </span><span>= </span><span style="color:#b5cea8;">10002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Downloaded file&#39;s format is newer than client SDK version.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">TitleStorageFileHeaderHasNewerVersion </span><span>= </span><span style="color:#b5cea8;">10003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// ModSdk process is already running. This error comes from the EOSSDK.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsModSdkProcessIsAlreadyRunning </span><span>= </span><span style="color:#b5cea8;">11000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// ModSdk command is empty. Either the ModSdk configuration file is missing or the manifest location is empty.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsModSdkCommandIsEmpty </span><span>= </span><span style="color:#b5cea8;">11001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Creation of the ModSdk process failed. This error comes from the SDK.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsModSdkProcessCreationFailed </span><span>= </span><span style="color:#b5cea8;">11002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// A critical error occurred in the external ModSdk process that we were unable to resolve.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsCriticalError </span><span>= </span><span style="color:#b5cea8;">11003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// A internal error occurred in the external ModSdk process that we were unable to resolve.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsToolInternalError </span><span>= </span><span style="color:#b5cea8;">11004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// A IPC failure occurred in the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsIPCFailure </span><span>= </span><span style="color:#b5cea8;">11005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// A invalid IPC response received in the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsInvalidIPCResponse </span><span>= </span><span style="color:#b5cea8;">11006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// A URI Launch failure occurred in the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsURILaunchFailure </span><span>= </span><span style="color:#b5cea8;">11007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Attempting to perform an action with a mod that is not installed. This error comes from the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsModIsNotInstalled </span><span>= </span><span style="color:#b5cea8;">11008</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Attempting to perform an action on a game that the user doesn&#39;t own. This error comes from the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsUserDoesNotOwnTheGame </span><span>= </span><span style="color:#b5cea8;">11009</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Invalid result of the request to get the offer for the mod. This error comes from the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsOfferRequestByIdInvalidResult </span><span>= </span><span style="color:#b5cea8;">11010</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Could not find the offer for the mod. This error comes from the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsCouldNotFindOffer </span><span>= </span><span style="color:#b5cea8;">11011</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request to get the offer for the mod failed. This error comes from the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsOfferRequestByIdFailure </span><span>= </span><span style="color:#b5cea8;">11012</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Request to purchase the mod failed. This error comes from the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsPurchaseFailure </span><span>= </span><span style="color:#b5cea8;">11013</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Attempting to perform an action on a game that is not installed or is partially installed. This error comes from the external ModSdk process.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsInvalidGameInstallInfo </span><span>= </span><span style="color:#b5cea8;">11014</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Failed to get manifest location. Either the ModSdk configuration file is missing or the manifest location is empty
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsCannotGetManifestLocation </span><span>= </span><span style="color:#b5cea8;">11015</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Attempting to perform an action with a mod that does not support the current operating system.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ModsUnsupportedOS </span><span>= </span><span style="color:#b5cea8;">11016</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The anti-cheat client protection is not available. Check that the game was started using the anti-cheat bootstrapper.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatClientProtectionNotAvailable </span><span>= </span><span style="color:#b5cea8;">12000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The current anti-cheat mode is incorrect for using this API
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatInvalidMode </span><span>= </span><span style="color:#b5cea8;">12001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The ProductId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatClientProductIdMismatch </span><span>= </span><span style="color:#b5cea8;">12002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The SandboxId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatClientSandboxIdMismatch </span><span>= </span><span style="color:#b5cea8;">12003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// (ProtectMessage/UnprotectMessage) No session key is available, but it is required to complete this operation
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatProtectMessageSessionKeyRequired </span><span>= </span><span style="color:#b5cea8;">12004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// (ProtectMessage/UnprotectMessage) Message integrity is invalid
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatProtectMessageValidationFailed </span><span>= </span><span style="color:#b5cea8;">12005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// (ProtectMessage/UnprotectMessage) Initialization failed
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatProtectMessageInitializationFailed </span><span>= </span><span style="color:#b5cea8;">12006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// (RegisterPeer) Peer is already registered
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatPeerAlreadyRegistered </span><span>= </span><span style="color:#b5cea8;">12007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// (UnregisterPeer) Peer does not exist
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatPeerNotFound </span><span>= </span><span style="color:#b5cea8;">12008</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// (ReceiveMessageFromPeer) Invalid call: Peer is not protected
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatPeerNotProtected </span><span>= </span><span style="color:#b5cea8;">12009</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The DeploymentId provided to the anti-cheat client helper executable does not match what was used to initialize the EOS SDK
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatClientDeploymentIdMismatch </span><span>= </span><span style="color:#b5cea8;">12010</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Connect DeviceID auth method is not supported for anti-cheat
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AntiCheatDeviceIdAuthIsNotSupported </span><span>= </span><span style="color:#b5cea8;">12011</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS RTC room cannot accept more participants
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">TooManyParticipants </span><span>= </span><span style="color:#b5cea8;">13000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS RTC room already exists
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">RoomAlreadyExists </span><span>= </span><span style="color:#b5cea8;">13001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The user kicked out from the room
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">UserKicked </span><span>= </span><span style="color:#b5cea8;">13002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The user is banned
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">UserBanned </span><span>= </span><span style="color:#b5cea8;">13003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS RTC room was left successfully
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">RoomWasLeft </span><span>= </span><span style="color:#b5cea8;">13004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Connection dropped due to long timeout
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ReconnectionTimegateExpired </span><span>= </span><span style="color:#b5cea8;">13005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS RTC room was left due to platform release
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ShutdownInvoked </span><span>= </span><span style="color:#b5cea8;">13006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS RTC operation failed because the user is in the local user&#39;s block list
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">UserIsInBlocklist </span><span>= </span><span style="color:#b5cea8;">13007</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The number of available Snapshot IDs have all been exhausted.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ProgressionSnapshotSnapshotIdUnavailable </span><span>= </span><span style="color:#b5cea8;">14000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The KWS user does not have a parental email associated with the account. The parent account was unlinked or deleted
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">ParentEmailMissing </span><span>= </span><span style="color:#b5cea8;">15000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The KWS user is no longer a minor and trying to update the parent email
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">UserGraduated </span><span>= </span><span style="color:#b5cea8;">15001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// EOS Android VM not stored
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">AndroidJavaVMNotStored </span><span>= </span><span style="color:#b5cea8;">17000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Patch required before the user can use the privilege
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PermissionRequiredPatchAvailable </span><span>= </span><span style="color:#b5cea8;">18000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// System update required before the user can use the privilege
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PermissionRequiredSystemUpdate </span><span>= </span><span style="color:#b5cea8;">18001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Parental control failure usually
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PermissionAgeRestrictionFailure </span><span>= </span><span style="color:#b5cea8;">18002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Premium Account Subscription required but not available
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PermissionAccountTypeFailure </span><span>= </span><span style="color:#b5cea8;">18003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// User restricted from chat
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PermissionChatRestriction </span><span>= </span><span style="color:#b5cea8;">18004</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// User restricted from User Generated Content
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PermissionUGCRestriction </span><span>= </span><span style="color:#b5cea8;">18005</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// Online play is restricted
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">PermissionOnlinePlayRestricted </span><span>= </span><span style="color:#b5cea8;">18006</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The application was not launched through the Bootstrapper. Desktop crossplay functionality is unavailable.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">DesktopCrossplayApplicationNotBootstrapped </span><span>= </span><span style="color:#b5cea8;">19000</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The redistributable service is not installed.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">DesktopCrossplayServiceNotInstalled </span><span>= </span><span style="color:#b5cea8;">19001</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The desktop crossplay service failed to start.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">DesktopCrossplayServiceStartFailed </span><span>= </span><span style="color:#b5cea8;">19002</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// The desktop crossplay service is no longer running for an unknown reason.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">DesktopCrossplayServiceNotRunning </span><span>= </span><span style="color:#b5cea8;">19003</span><span>,
+</span><span>		</span><span style="color:#608b4e;">/// &lt;</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span style="color:#608b4e;">		/// An unexpected error that we cannot identify has occurred.
+</span><span style="color:#608b4e;">		/// &lt;/</span><span style="color:#569cd6;">summary</span><span style="color:#608b4e;">&gt;
+</span><span>		</span><span style="color:#b4cea8;">UnexpectedError </span><span>= </span><span style="color:#b5cea8;">0x7FFFFFFF
+</span><span>	}
+</span><span>}
+</span></code></pre>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/search_index.en.js" defer></script>
+<script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/js.js" defer></script>
+
+</body>
+</html>

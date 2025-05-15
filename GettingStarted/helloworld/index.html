@@ -1,0 +1,495 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://synicsugar.github.io/SynicSugar/main.css">
+    <link rel="icon" href="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/favicon.ico?raw=true">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <title> SynicSugar | Hello World </title>
+</head>
+<body>
+
+<script>
+        fetch('https://api.github.com/repos/SynicSugar/SynicSugar/releases/latest')
+            .then((response) => {
+                return response.json();
+            })
+            .then((data) => {
+                let release_name = data.name;
+                let html_url = data.html_url;
+                release.innerHTML = `<a href='${html_url}'>${release_name}</a>`;
+            });
+    </script>
+<main>
+    
+    <nav>
+            <a href="https:&#x2F;&#x2F;synicsugar.github.io&#x2F;SynicSugar&#x2F;">
+                        <img src="https://github.com/SynicSugar/SynicSugar/blob/main/Resources/Logo_doc.png?raw=true" alt="logo"/>
+                    </a>
+                <div id="release"></div>
+            <a href="javascript:void(0);" onclick="burger()" id="mobile" class="ms-Icon--GlobalNavButton"></a>
+            <div id="trees">
+                <input class="tree-toggle" type="checkbox" id="aboutsynicsugar"
+                           />
+                    <label class="tree-toggle-label"
+                           for="aboutsynicsugar">AboutSynicSugar</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/overview/">Overview</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/internaldesign/">InternalDesign</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/faq/">FAQ</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/networking-lifecycle/">Nerworking Lifecycle</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/AboutSynicSugar/symbols/">Symbols</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="gettingstarted"
+                           checked/>
+                    <label class="tree-toggle-label"
+                           for="gettingstarted">GettingStarted</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/import-setup/">Import and Set up</a>
+                            </li>
+
+                            <li class="active">
+                                <a href="https://synicsugar.github.io/SynicSugar/GettingStarted/helloworld/">Hello World</a>
+                            </li>
+
+                            
+                                    
+                                    
+                                        </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-core"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-core">SynicSugar.Core</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/synicsugarmanger/">SynicSugarManger</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Core/result/">Result</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-auth"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-auth">SynicSugar.Auth</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugarauthentication/">SynicSugarAuthentication</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.Auth/synicsugaraccount/">SynicSugarAccount</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-matchmake"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-matchmake">SynicSugar.MatchMake</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakemanager/">MatchMakeManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobby/">Lobby</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/attributedata/">AttributeData</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/matchmakingguievents/">MatchMakingGUIEvents</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/lobbyidmethod/">LobbyIDMethod</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.MatchMake/asynclobbyidmethod/">AsyncLobbyIDMethod</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-p2p"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-p2p">SynicSugar.P2P</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pconfig/">p2pConfig</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/attributes/">Attributes</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/synicobject/">SynicObject</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/userid/">UserId</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/connecthub/">ConnectHub</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pinfo/">p2pInfo</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/p2pstrcut/">p2pStruct</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/additionalclass/">AdditionalClass</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.P2P/eosp2p/">EOSp2p</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-rtc"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-rtc">SynicSugar.RTC</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcconfig/">RTCConfig</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcmanager/">RTCManager</a>
+                            </li>
+
+                            <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.RTC/rtcstruct/">RTCStruct</a>
+                            </li>
+
+                            </ul>
+                <input class="tree-toggle" type="checkbox" id="synicsugar-titlesorage"
+                           />
+                    <label class="tree-toggle-label"
+                           for="synicsugar-titlesorage">SynicSugar.TitleSorage</label>
+
+                    <ul class="subtree">
+                        <li >
+                                <a href="https://synicsugar.github.io/SynicSugar/SynicSugar.TitleSorage/eostitlestorage/">EOSTitleStorage</a>
+                            </li>
+
+                            </ul>
+                </div>
+        </nav>
+    <article>
+
+        <div id="on_right">
+                <span id="search-ico" class="ms-Icon--Search"></span>
+            </div>
+            <div class="search-container">
+                <input id="search" type="search" placeholder="Search as you type...">
+                <div class="search-results">
+                    <div class="search-results__header"></div>
+                    <ul class="search-results__items"></ul>
+                </div>
+            </div>
+        <div id="wrap">
+            
+        <h2 id="hello-world">Hello World&nbsp;<a class="anchor" href="#hello-world">&#xE732;</a></h2>
+<h3 id="1-sign-in-eos">1. Sign in EOS&nbsp;<a class="anchor" href="#1-sign-in-eos">&#xE732;</a></h3>
+<p>At first, we put EOSManager.prefab to the first scene to Log-in EOS. To generate EOSManager, right-click on the Hierarchy and click SynicSugar/EOSManager.<br>
+SynicSugar connects, matchmaking and others on EpicOnlineServices with this EOSManager. </p>
+<p><img src="https://github.com/SynicSugar/SynicSugar/assets/50002207/621edac1-d607-4f3f-9da5-f60323a9849e" alt="Image" /></p>
+<p>To singin EOS, we use EOSConenction.LoginWithDeviceID. This has two return value type of bool for just result and string for result details.</p>
+<p>SynicSugar is written in (UniTask's) Async/Await. After successful login, can get true or &quot;Success&quot;.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>Cysharp.Threading.Tasks;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.Login;
+</span><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span>
+</span><span style="color:#569cd6;">public class </span><span>SynicSugarLogin : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    </span><span style="color:#569cd6;">async </span><span>UniTaskVoid Start(){
+</span><span>        </span><span style="color:#608b4e;">//(bool isSuccess, Result detail)&#39;s tuple
+</span><span>        </span><span style="color:#569cd6;">var </span><span>result = </span><span style="color:#569cd6;">await </span><span>EOSConnect.LoginWithDeviceID();
+</span><span>
+</span><span>        </span><span style="color:#569cd6;">if</span><span>(result.isSuccess){
+</span><span>            Debug.Log(</span><span style="color:#d69d85;">&quot;SUCCESS.&quot;</span><span>);
+</span><span>            </span><span style="color:#569cd6;">return</span><span>;
+</span><span>        }
+</span><span>        
+</span><span>        Debug.LogErrorFormat(</span><span style="color:#d69d85;">$&quot;FAILURE </span><span>{</span><span style="color:#b5cea8;">0</span><span>}</span><span style="color:#d69d85;">&quot;</span><span>, {result.detail});
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>We can also write without Async/Await processing.</p>
+<p>This is so for other all parts. If we can use task harder, we can write codes as usual or with .Forget(). in the last of the functions.  However, in this case, the next process is started without waiting for the SynicSugar asynchronous processing.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#608b4e;">// using Cysharp.Threading.Tasks;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.Login;
+</span><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span>
+</span><span style="color:#569cd6;">public class </span><span>YourLoginClass : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>LoginWithDeviceID(){
+</span><span>        CancellationTokenSource cancellationToken = </span><span style="color:#569cd6;">new </span><span>CancellationTokenSource();
+</span><span>        
+</span><span>        EOSConnect.LoginWithDeviceID();
+</span><span>        </span><span style="color:#608b4e;">// or
+</span><span>        </span><span style="color:#608b4e;">// EOSConnect.LoginWithDeviceID().Forget();
+</span><span>        
+</span><span>        </span><span style="color:#608b4e;">//Continue to process not to wait for login.
+</span><span>        </span><span style="color:#608b4e;">// ...
+</span><span>    }
+</span><span> }
+</span></code></pre>
+<h3 id="2-matchmaking">2. Matchmaking&nbsp;<a class="anchor" href="#2-matchmaking">&#xE732;</a></h3>
+<p>We need NetwrokManager for MatchMaking and P2P. To generate NetwrokManager, right-click on the Hierarchy of matchmaking scene and click SynicSugar/NetworkManager. This object is a singleton and won't be destroyed until explicitly disposed of it.<br></p>
+<blockquote>
+<p>If you want to use a single scene for online and offline mode, you generate this from Prefab only for online mode. You can get this object from Packages/SynicSugar/NetwrokManager/Prefabs/NetworkManager. </p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.MatchMake;
+</span><span style="color:#569cd6;">public class </span><span>MatchMaker : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>   </span><span style="color:#608b4e;">//Attach on Editor from SynicSugar/Runtime/Prefabs/ConnectManager
+</span><span>   [SerializeField] GameObject ConnectManagerPrefab;
+</span><span>   </span><span style="color:#569cd6;">void </span><span>Awake(){
+</span><span>       </span><span style="color:#569cd6;">if</span><span>(isOnlineMode){ </span><span style="color:#608b4e;">//Flag on your game
+</span><span>           Instantiate(ConnectManagerPrefab);
+</span><span>       }
+</span><span>   }
+</span><span>}
+</span></code></pre>
+<br>
+</blockquote>
+<p>NetwrokManager has some compornent for matchmaking and p2p connection. We can set several configs on Unity Editor. </p>
+<p><img src="https://user-images.githubusercontent.com/50002207/230761023-3754a4fc-46ae-4d33-8f86-9439ce1846c0.png" alt="image" /></p>
+<p>For matchmaking, we just call MatchMakeManager.Instance.SearchAndCreateLobby(Lobby condition). </p>
+<p>At first, let's make a condition for matchmaking. We need LobbyObject for it. The object is created by MatchMakeManager.Instance.GenerateLobbyObject(string[] bucket) which returns <em>Lobby</em>. This bucket on arg is important section for matching like as Region, Mode, Map and so on for a match. (More detail is <a href="https://dev.epicgames.com/docs/en-US/game-services/lobbies">Lobby Interface | Epic Online Services Developer</a>.) SynicSugar use this bucket as just one serarch condition. Pass some condition as string[].Of course, we can specify others after generate. (Up to 99.)<br></p>
+<pre data-lang="cs ConditionSample" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs ConditionSample "><code class="language-cs ConditionSample" data-lang="cs ConditionSample"><span>using SynicSugar.MatchMake;
+</span><span>
+</span><span>public class MatchMakeConditions : MonoBehaviour {
+</span><span>    public Lobby GetLobbyCondition(){
+</span><span>        //Create lobbyObject with basis conditions
+</span><span>        Lobby lobbyCondition = MatchMakeManager.GenerateLobbyObject(new string[3]{&quot;NA&quot;, &quot;Rank&quot;, &quot;Sea&quot;});
+</span><span>        
+</span><span>        lobbyCondition.MaxLobbyMembers = 2; //2-64
+</span><span>        
+</span><span>        //Add conditions as attributes.
+</span><span>        //The limit of conditions is 100.
+</span><span>        //Need &quot;Key&quot;, &quot;Value&quot;, and &quot;ComparisonOption&quot;
+</span><span>        LobbyAttribute attribute = new LobbyAttribute();
+</span><span>        attribute.Key = &quot;Level&quot;;
+</span><span>        attribute.SetValue(1); //Can use int, string, double, bool
+</span><span>        attribute.ComparisonOperator = Epic.OnlineServices.ComparisonOp.Equal; // https://dev.epicgames.com/docs/en-US/game-services/lobbies#comparison-operators
+</span><span>        lobbyCondition.Attributes.Add(attribute);
+</span><span>        
+</span><span>        //attribute = new LobbyAttribute();
+</span><span>        //attribute.Key = &quot;SeaMap&quot;;
+</span><span>        //...
+</span><span>        
+</span><span>        return lobbyCondition;
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>In addition creating conditions, we can set other several configs during matchmaking, such as the behavior of the buttons in matchmaking. See MatchMake.cs in Samples for details.<br></p>
+<p>Now, start matchmakinging with the conditions we set. Just call MatchMakeManager.Instance.SearchAndCreateLobby() with the LobbyObject.<br>
+This process searches lobby on EOS server, then If there is a Lobby that meets the requirements, will try to join it. If not, creates new lobby as Lobby's Host.
+In both pattern, wait until the Lobby is full. If matchmaking is successful, the information necessary for p2p is automatically exchanged.<br>
+If get true, matchmaking is successful and p2p conennction is established.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>Cysharp.Threading.Tasks;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.MatchMake;
+</span><span style="color:#569cd6;">public class </span><span>MatchMaker : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    </span><span style="color:#569cd6;">async </span><span>UniTask StartMatching(){
+</span><span>        </span><span style="color:#569cd6;">bool </span><span>isSuccess = </span><span style="color:#569cd6;">await </span><span>MatchMakeManager.Instance.SearchAndCreateLobby(matchConditions.GetLobbyCondition());
+</span><span>        
+</span><span>        </span><span style="color:#569cd6;">if</span><span>(isSuccess){
+</span><span>            </span><span style="color:#608b4e;">//Success
+</span><span>            </span><span style="color:#608b4e;">//Move to game scene or un-display the UIs for matchmaking.
+</span><span>            </span><span style="color:#569cd6;">return</span><span>;
+</span><span>        }
+</span><span>        </span><span style="color:#608b4e;">//Failure
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<h3 id="3-p2p-connection">3. p2p connection&nbsp;<a class="anchor" href="#3-p2p-connection">&#xE732;</a></h3>
+<p>We have already connect with other peers. To send and receive packets, all that remains is to create components fo that.<br>
+SynicSugar has two type network objects: &quot;NetworkPlayer&quot; and &quot;NetworkCommons&quot;. NetworkPlayer is like NetworkBehavior in other libraries. This each instance has UserID and, the instance is synchronized with the instance owner's process over the network. On the other hand, NetworkCommons has no UserID. All peers can call a process in this class to synchronize with others. (Or just lobby Host can force to synchronize a process with others.)  We can use NetworkCommons for game system such as game time, NPC HP, item drops and so on.<br>
+For both types, we need to create a class with the &quot;public <strong>partial</strong> class&quot; keyword and &quot;NetworkPlayer&quot; or &quot;NetworkCommons&quot; attribute. </p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span>[NetworkCommons]
+</span><span style="color:#569cd6;">public partial class </span><span>SampleClass {
+</span><span>    </span><span style="color:#608b4e;">///
+</span><span>}
+</span><span>
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span>[NetworkPlayer]
+</span><span style="color:#569cd6;">public partial class </span><span>SampleClass {
+</span><span>    </span><span style="color:#608b4e;">///
+</span><span>}
+</span></code></pre>
+<p>In this tutorial, we implement a function to send HelloWorld on debug log of other peers.<br>
+We choice NetworkPlaye to identify who sent it and use Rpc to send it to the others.<br>
+We add Rpc attribute and public modify to a function to synchronize the process.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span>[NetworkPlayer]
+</span><span style="color:#569cd6;">public partial class </span><span>PlayerClass : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    [Rpc]
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>DebugHelloWorld(){
+</span><span>        Debug.Log(</span><span style="color:#d69d85;">$&quot;Hello World&quot;</span><span>);
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>A function can send a message together with 1st arg. We can hard-code &quot;HelloWorld&quot; in the RPC procsess directly, but let's send HelloWorld as args here. <br>
+When this is invoked in the local, this is invoked in other peers by the instance that has the same UserID as OwnerUserID.<br>
+To display message and the sender ID on Debug.Log, we pass &quot;Hello World&quot; 1st arg and, then use OwnerUseID in each local. </p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span>[NetworkPlayer]
+</span><span style="color:#569cd6;">public partial class </span><span>PlayerClass : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    </span><span style="color:#569cd6;">void </span><span>Start(){
+</span><span>        CallSendMessage();
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#608b4e;">//Call this from Unity Button, Start, or so on.
+</span><span>    </span><span style="color:#608b4e;">//To send message as args need to pass it.
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>CallSendMessage(){
+</span><span>        SendMessage(</span><span style="color:#d69d85;">&quot;Hello World&quot;</span><span>);
+</span><span>    }
+</span><span>
+</span><span>    [Rpc]
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>SendMessage(</span><span style="color:#569cd6;">string </span><span>message){
+</span><span>        </span><span style="color:#608b4e;">//SynicSugar SourceGenerator genereates OwnerUserID in all NetworkPlayer.
+</span><span>        Debug.Log(</span><span style="color:#d69d85;">$&quot;</span><span>{message}</span><span style="color:#d69d85;"> from </span><span>{OwnerUserID}</span><span style="color:#d69d85;">&quot;</span><span>);
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>In gaming, we instantiate this component. This instances need UserID to be gave by EOS. SynicSugar have various way to set a user id to the instance. The simplest way is to call SynicObject.AllSpawn(Gameobject prefab). This function generates an prefab object with NetworkPlayer components, then set UserID to the all components.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span>
+</span><span style="color:#569cd6;">public class </span><span>ManagementClass : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    </span><span style="color:#608b4e;">// Attach components on Editor that has [NetworkPlayer] like upon PlayerClass.
+</span><span>    [SerializeField] GameObject playerPrefab; 
+</span><span>    </span><span style="color:#569cd6;">void </span><span>Start(){
+</span><span>        SynicObject.AllSpawn(playerPrefab);
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<blockquote>
+<p>For only two players, we can set UserID manually in Start.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span>[NetworkPlayer]
+</span><span style="color:#569cd6;">public partial class </span><span>PlayerClass : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>   </span><span style="color:#608b4e;">//Set this value on Editor
+</span><span>   </span><span style="color:#569cd6;">public bool </span><span>isLocalPlayer;
+</span><span>   </span><span style="color:#569cd6;">void </span><span>Start(){
+</span><span>       </span><span style="color:#569cd6;">if</span><span>(isLocalPlayer){ 
+</span><span>           SetOwnerID(p2pInfo.Instance.LocalUserId);
+</span><span>       }</span><span style="color:#569cd6;">else</span><span>{
+</span><span>           SetOwnerID(p2pInfo.Instance.RemoteUserIds[</span><span style="color:#b5cea8;">0</span><span>]);
+</span><span>       }
+</span><span>       
+</span><span>       CallSendMessage();
+</span><span>   }
+</span><span>   </span><span style="color:#608b4e;">///
+</span><span>}
+</span></code></pre>
+</blockquote>
+<p>Registering UserID automatically registers the instance with ConnectHub.  ConnectHub is for sending and receiving class. In other words, this is the end of the preparation for synchronization. <br>
+Call ConnectHub.Instance.StartPacketReceiver() to get packets from receiving buffer.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span>
+</span><span style="color:#569cd6;">public class </span><span>ManagementClass : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    [SerializeField] GameObject playerPrefab; 
+</span><span>    </span><span style="color:#569cd6;">void </span><span>Start(){
+</span><span>        SynicObject.AllSpawn(playerPrefab);
+</span><span>
+</span><span>        </span><span style="color:#608b4e;">//After generating the instances for receive in the local, start Packet Receiver.
+</span><span>        ConnectHub.Instance.StartPacketReceiver();
+</span><span>
+</span><span>        </span><span style="color:#608b4e;">//PlayerClass call CallSendMessage() on Start ofter this process.
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>If we send the HelloWorld to other peers and can display the message on other device, we have succeeded.<br>
+However, we only want to display the message in other peers' DebugLog, don't need in sender's log. In such case, we can use isLocal to separate the processes.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span>[NetworkPlayer]
+</span><span style="color:#569cd6;">public partial class </span><span>PlayerClass : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    </span><span style="color:#569cd6;">void </span><span>Start(){
+</span><span>        CallSendMessage();
+</span><span>    }
+</span><span>    
+</span><span>    </span><span style="color:#569cd6;">void </span><span>CallSendMessage(){
+</span><span>        SendMessage(</span><span style="color:#d69d85;">&quot;Hello World&quot;</span><span>);
+</span><span>    }
+</span><span>
+</span><span>
+</span><span>    [Rpc]
+</span><span>    </span><span style="color:#569cd6;">public void </span><span>SendMessage(</span><span style="color:#569cd6;">string </span><span>message){
+</span><span>        </span><span style="color:#608b4e;">//This &quot;isLocal&quot; is generated automatically by SynicSugarSourceGenerator to judge local or remote.
+</span><span>        </span><span style="color:#569cd6;">if</span><span>(isLocal){ 
+</span><span>            Debug.Log(</span><span style="color:#d69d85;">&quot;Send message&quot;</span><span>);
+</span><span>            </span><span style="color:#569cd6;">return</span><span>;
+</span><span>        }
+</span><span>
+</span><span>        Debug.Log(</span><span style="color:#d69d85;">$&quot;</span><span>{message}</span><span style="color:#d69d85;"> from </span><span>{OwnerUserID}</span><span style="color:#d69d85;">&quot;</span><span>);
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>If we want to stop connection, call ConnectHub's CloseSession. <br>
+p2p is stopped and user leaves the Lobby that user joined in matchmaking.</p>
+<pre data-lang="cs" style="background-color:#1e1e1e;color:#dcdcdc;" class="language-cs "><code class="language-cs" data-lang="cs"><span style="color:#9b9b9b;">using </span><span>UnityEngine;
+</span><span style="color:#9b9b9b;">using </span><span>SynicSugar.P2P;
+</span><span>[NetworkPlayer]
+</span><span style="color:#569cd6;">public partial class </span><span>PlayerClass : </span><span style="color:#4ec9b0;">MonoBehaviour </span><span>{
+</span><span>    </span><span style="color:#569cd6;">public async void </span><span>CloseSession(){
+</span><span>        </span><span style="color:#569cd6;">await </span><span>ConnectHub.Instance.CloseSession();
+</span><span>        </span><span style="color:#608b4e;">//Back to main menu
+</span><span>    }
+</span><span>}
+</span></code></pre>
+<p>If you want to synchronize a structure, you need to serialize it with <a href="https://github.com/Cysharp/MemoryPack">MemoryPack</a>. See Sample for more details.</p>
+
+    
+        </div>
+
+    </article>
+</main>
+
+
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/elasticlunr.min.js" defer></script>
+    <script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/search_index.en.js" defer></script>
+<script type="text/javascript" src="https://synicsugar.github.io/SynicSugar/js.js" defer></script>
+
+</body>
+</html>
